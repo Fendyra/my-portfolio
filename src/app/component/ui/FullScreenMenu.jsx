@@ -1,7 +1,8 @@
 "use client";
 
-import React, { useState } from "react";
+import React from "react";
 import Link from "next/link";
+
 import { Playfair_Display } from "next/font/google";
 import { Montserrat } from "next/font/google";
 
@@ -24,82 +25,67 @@ const menuItems = [
   { name: "Contact", href: "/contact" },
 ];
 
-const FullScreenMenu = ({ onMenuToggle }) => {
-  const [isOpen, setIsOpen] = useState(false);
-
-  const toggleMenu = () => {
-    setIsOpen(!isOpen);
-    if (onMenuToggle) onMenuToggle(!isOpen); // Notify parent about menu state change
-  };
-
+const FullScreenMenu = ({ isOpen, onClose }) => {
   return (
     <>
-      {/* Hamburger Icon - Only visible when the menu is NOT open */}
-      {!isOpen && (
-        <div
-          className="fixed top-8 right-8 z-50 cursor-pointer p-2 md:p-4"
-          onClick={toggleMenu}
-        >
-          <div
-            className={`w-8 h-1 bg-white my-1 transition-all duration-300`}
-          ></div>
-          <div
-            className={`w-8 h-1 bg-white my-1 transition-all duration-300`}
-          ></div>
-          <div
-            className={`w-8 h-1 bg-white my-1 transition-all duration-300`}
-          ></div>
-        </div>
-      )}
-
-      {/* Fullscreen Overlay Menu */}
+      {/* Fullscreen overlay menu */}
       <div
-        className={`fixed inset-0 bg-black z-40 flex flex-col items-center justify-center transition-opacity duration-500 ${
+        className={`fixed inset-0 bg-background z-40 flex flex-col items-center justify-center transition-opacity duration-500 ${
           isOpen ? "opacity-100 visible" : "opacity-0 invisible"
         }`}
       >
-        <div
-          className={`${montserrat.className} absolute top-8 left-8 text-white text-lg z-50`}
-        >
-          FENDYRA'S PORTFOLIO
-        </div>
-        <div
-          className={`${montserrat.className} absolute top-8 right-8 text-white text-lg z-50 cursor-pointer`}
-          onClick={toggleMenu}
-        >
-          BACK →
+        {/* Top bar inside fullscreen menu */}
+        <div className="absolute top-0 left-0 w-full flex justify-between items-center px-4 py-4 md:px-8">
+          <div
+            className={`${montserrat.className} text-foreground text-lg z-50`}
+          >
+            FENDYRA'S PORTFOLIO
+          </div>
+
+          {/* "BACK" button to close menu */}
+          <div
+            className={`${montserrat.className} text-foreground text-lg z-50 cursor-pointer`}
+            onClick={onClose}
+          >
+            BACK →
+          </div>
         </div>
 
-        <nav className="text-white text-center">
+        {/* Navigation links */}
+        <nav className="text-foreground text-center mt-20">
           <ul className="space-y-4 md:space-y-6">
             {menuItems.map((item, index) => (
-                <li key={index} className="relative group">
+              <li key={index} className="relative group">
                 <Link
-                    href={item.href}
-                    onClick={toggleMenu}
-                    className={`flex items-bottom justify-center gap-2 ${
+                  href={item.href}
+                  onClick={onClose}
+                  className={`flex items-bottom justify-center gap-2 ${
                     index % 2 === 0 ? "flex-row" : "flex-row-reverse"
-                    }`}
+                  }`}
                 >
-                    <span className="text-sm md:text-base text-gray-500 group-hover:text-white transition-colors duration-300">
+                  <span
+                    className={`${playfairDisplay.className} text-sm md:text-base text-muted-foreground group-hover:text-foreground transition-colors duration-300`}
+                  >
                     {`0${index + 1}.`}
-                    </span>
-                    <span
-                    className={`${playfairDisplay.className} text-5xl md:text-7xl font-bold transition-all duration-300 group-hover:scale-105 group-hover:text-white`}
-                    >
+                  </span>
+                  <span
+                    className={`${playfairDisplay.className} text-5xl md:text-7xl font-bold transition-all duration-300 group-hover:scale-105 group-hover:text-foreground`}
+                  >
                     {item.name}
-                    </span>
+                  </span>
                 </Link>
-                </li>
+              </li>
             ))}
           </ul>
         </nav>
 
+        {/* "Get in Touch" button */}
         <div className="mt-12">
           <Link
             href="/contact"
-            onClick={toggleMenu}
-            className="border border-white rounded-full text-white px-8 py-3 text-lg relative overflow-hidden group transition-colors duration-300 hover:bg-white hover:text-black">
+            onClick={onClose}
+            className="border border-foreground rounded-full text-foreground px-8 py-3 text-lg relative overflow-hidden group transition-colors duration-300 hover:bg-foreground hover:text-background"
+          >
             <span className={`${montserrat.className} relative z-10`}>
               GET IN TOUCH
             </span>
