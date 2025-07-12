@@ -2,7 +2,6 @@
 
 import React from "react";
 import Link from "next/link";
-
 import { Playfair_Display } from "next/font/google";
 import { Montserrat } from "next/font/google";
 
@@ -19,7 +18,7 @@ const montserrat = Montserrat({
 
 const menuItems = [
   { name: "Home", href: "/" },
-  { name: "About", href: "/about" },
+  { name: "About", href: "#about" },
   { name: "Works", href: "/works" },
   { name: "Service", href: "/service" },
   { name: "Contact", href: "/contact" },
@@ -90,6 +89,22 @@ const FullScreenMenu = ({ isOpen, onClose }) => {
               GET IN TOUCH
             </span>
           </Link>
+        </div>
+
+        {/* Footer in bottom-left corner - MODIFIED */}
+        <div className="absolute bottom-4 left-4 text-foreground text-sm flex flex-col"> {/* Changed to flex-col for vertical stacking */}
+          <span className={`${montserrat.className}`}>
+            2025 ©
+          </span>
+          <span className={`${montserrat.className} font-bold `}>
+            FENDYVERS
+          </span>
+        </div>
+
+        {/* New footer section for SAY HI and INFO@FENDYRA.COM - Added */}
+        <div className="absolute bottom-4 right-4 text-foreground text-sm flex flex-col items-end"> {/* Positioned at bottom-right, items-end for right alignment */}
+          <span className={`${montserrat.className}`}>SAY HI</span>
+          <span className={`${montserrat.className} font-bold`}>FENDYRA RESTU</span>
         </div>
       </div>
     </>

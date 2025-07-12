@@ -1,9 +1,8 @@
 "use client";
 import React, { useState, useEffect } from "react";
 import { motion } from "framer-motion";
-import { Montserrat } from "next/font/google";
+import { Montserrat, Bebas_Neue, Inter } from "next/font/google";
 import Image from "next/image";
-import Link from "next/link"; // Link is not used in the provided Home component, but kept for consistency if it's used elsewhere.
 
 const MotionImage = motion(Image);
 
@@ -12,10 +11,20 @@ const montserrat = Montserrat({
   weight: ["400", "700"],
 });
 
+const bebasNeue = Bebas_Neue({
+  subsets: ["latin"],
+  weight: ["400"],
+});
+
+const inter = Inter({
+  subsets: ["latin"],
+  weight: ["400"],
+});
+
 function Home() {
   const [displayName, setDisplayName] = useState("Fendyra Restu D");
 
-  const fullName = "Fendyra Restu";
+  const fullName = "Designed by Fendyra";
   const typingSpeed = 150;
   const delayBeforeRestart = 1000;
 
@@ -23,7 +32,7 @@ function Home() {
   useEffect(() => {
     let index = 0;
     let forward = true;
-    let timeoutId; // To store the timeout ID for cleanup
+    let timeoutId;
 
     const typeEffect = () => {
       if (forward) {
@@ -46,7 +55,6 @@ function Home() {
 
     typeEffect();
 
-    // Cleanup function to clear the timeout when the component unmounts
     return () => clearTimeout(timeoutId);
   }, []);
 
@@ -57,37 +65,33 @@ function Home() {
 
   const animationSpeed = "50s";
 
-  // Framer Motion variants for the arrow icon animation
   const arrowVariants = {
     initial: { y: 0 },
     animate: {
-      y: [0, -15, 0], // Bounce animation: moves up by 15px then back to original position
-      rotate: [0, 5, -5, 0], // Subtle rotation for added visual interest
+      y: [0, -15, 0],
+      rotate: [0, 5, -5, 0],
       transition: {
-        duration: 1.8, // Duration of one complete animation cycle
-        repeat: Infinity, // Repeats indefinitely
-        ease: "easeInOut", // Easing function for smooth animation
-        delay: 2.0, // Delay before the animation starts
+        duration: 1.8,
+        repeat: Infinity,
+        ease: "easeInOut",
+        delay: 2.0,
       },
     },
   };
 
-  // Handler for smooth scrolling to the About section
   const handleScrollToAbout = (e) => {
-    e.preventDefault(); // Prevent default anchor link behavior
-    const aboutSection = document.querySelector("#about"); // Select the About section by its ID
+    e.preventDefault();
+    const aboutSection = document.querySelector("#about");
     if (aboutSection) {
-      // If the section is found, scroll into view smoothly
       aboutSection.scrollIntoView({ behavior: "smooth" });
     }
   };
 
   return (
     <motion.section
-      className="flex flex-col items-center justify-center py-16 px-4 text-center min-h-screen" // Added min-h-screen for better vertical centering
+      className="flex flex-col items-center justify-center py-16 px-4 text-center min-h-screen bg-white dark:bg-black text-gray-900 dark:text-white"
       id="home"
     >
-      {/* Logo Image with Framer Motion animations */}
       <MotionImage
         src="/assets/logo-portfolio.png"
         alt="Logo Portfolio"
@@ -100,9 +104,8 @@ function Home() {
       />
 
       <motion.div className="flex flex-col items-center space-y-4">
-        {/* Display Name (typing effect) */}
         <motion.p
-          className={`${montserrat.className} text-sm md:text-xl font-regular text-gray-500`}
+          className={`${inter.className} text-sm md:text-xl font-semibold text-gray-500`}
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 1.0, duration: 0.5 }}
@@ -110,9 +113,8 @@ function Home() {
           {displayName}
         </motion.p>
 
-        {/* Marquee Text Section */}
         <motion.h1
-          className={`${montserrat.className}
+          className={`${bebasNeue.className}
             text-7xl md:text-9xl
             font-bold leading-none
             text-gray-900
@@ -123,9 +125,6 @@ function Home() {
           transition={{ delay: 1.2, duration: 0.5 }}
         >
           <div className="relative w-full h-[180px] md:h-[250px] flex flex-col justify-center overflow-hidden">
-            {" "}
-            {/* Added overflow-hidden to contain marquee */}
-            {/* Marquee 1 */}
             <div
               className="marquee-container"
               style={{ "--speed": animationSpeed }}
@@ -136,14 +135,13 @@ function Home() {
                   .map((_, i) => (
                     <span
                       key={`marquee1-${i}`}
-                      className="blink-text uppercase"
+                      className={`${bebasNeue.className} blink-text uppercase font-bold`}
                     >
                       {marqueeText1}
                     </span>
                   ))}
               </div>
             </div>
-            {/* Marquee 2 */}
             <div
               className="marquee-container"
               style={{ "--speed": animationSpeed }}
@@ -154,7 +152,7 @@ function Home() {
                   .map((_, i) => (
                     <span
                       key={`marquee2-${i}`}
-                      className="blink-text uppercase"
+                      className={`${bebasNeue.className} blink-text uppercase font-bold`}
                     >
                       {marqueeText2}
                     </span>
@@ -164,17 +162,15 @@ function Home() {
           </div>
         </motion.h1>
 
-        {/* Scroll-down Arrow Icon with Framer Motion animation */}
-        {/* The `motion.a` component applies the Framer Motion variants */}
         <motion.a
-          href="#about" // Link to the about section
-          onClick={handleScrollToAbout} // Call the scroll handler on click
+          href="#about"
+          onClick={handleScrollToAbout}
           className="mt-4 px-6 py-3 text-gray-900 dark:text-white font-semibold flex items-center justify-center cursor-pointer"
-          variants={arrowVariants} // Apply the defined animation variants
-          initial="initial" // Set initial state
-          animate="animate" // Animate to the 'animate' state
+          variants={arrowVariants}
+          initial="initial"
+          animate="animate"
           style={{ width: "auto" }}
-          aria-label="Scroll to About section" // Added for accessibility
+          aria-label="Scroll to About section"
         >
           <svg
             xmlns="http://www.w3.org/2000/svg"

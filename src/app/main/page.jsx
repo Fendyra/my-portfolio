@@ -24,7 +24,7 @@ const MainPortfolio = () => {
   };
 
   return (
-    <div className="min-h-screen bg-background text-foreground relative">
+    <div className="min-h-screen bg-background text-foreground relative no-scroll">
       <div className="fixed top-6 left-0 w-full px-4 md:px-8 z-50 flex items-center">
         <div className={`z-50 ${isFullScreenMenuOpen ? "hidden" : ""}`}>
           <Image

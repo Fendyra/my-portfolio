@@ -7,7 +7,7 @@ const About = forwardRef((props, ref) => {
     <div
       ref={ref} // Attach the forwarded ref to the div
       id="about" // Keep the ID for fallback/accessibility if needed
-      className="min-h-screen flex flex-col items-center justify-center bg-gray-100 dark:bg-gray-900 text-gray-900 dark:text-white"
+      className="min-h-screen flex flex-col items-center justify-center bg-white dark:bg-black text-gray-900 dark:text-white"
     >
       <h1 className="text-5xl font-bold mb-4">About Me</h1>
       <p className="text-xl mb-8">
