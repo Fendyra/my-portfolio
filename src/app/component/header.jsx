@@ -28,7 +28,7 @@ const HeaderIcons = () => {
       className={`
         flex items-center justify-center // Keep justify-center for overall centering
         p-2
-        bg-white/10 dark:bg-gray-800/20
+        bg-gray-300/10 dark:bg-gray-800/20
         rounded-full shadow-lg border border-white/20 dark:border-gray-700/30
         backdrop-blur-md
         transition-all duration-300 ease-in-out

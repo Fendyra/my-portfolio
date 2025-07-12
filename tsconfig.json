@@ -1,10 +1,6 @@
 {
   "compilerOptions": {
-    "lib": [
-      "dom",
-      "dom.iterable",
-      "esnext"
-    ],
+    "lib": ["dom", "dom.iterable", "esnext"],
     "allowJs": true,
     "skipLibCheck": true,
     "strict": false,
@@ -26,9 +22,10 @@
     "next-env.d.ts",
     ".next/types/**/*.ts",
     "**/*.ts",
-    "**/*.tsx"
-, "src/app/component/ui/resizable-navbar.jsx"  ],
-  "exclude": [
-    "node_modules"
-  ]
+    "**/*.tsx",
+    "src/app/component/ui/resizable-navbar.jsx",
+    "src/components/magicui/globe.tsx",
+    "src/components/magicui/marquee.tsx"
+, "src/app/component/ui/interactive-hover-button.jsx"  ],
+  "exclude": ["node_modules"]
 }
