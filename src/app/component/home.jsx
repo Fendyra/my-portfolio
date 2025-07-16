@@ -122,7 +122,7 @@ function Home() {
 
         <motion.h1
           className={`${oswald.className} {/* Menggunakan Oswald untuk h1 utama */}
-            text-7xl md:text-9xl
+            text-5xl md:text-7xl
             font-bold leading-none
             text-gray-900
             dark:text-white

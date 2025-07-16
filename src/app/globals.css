@@ -1,3 +1,5 @@
+/* src/app/globals.css */
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -101,6 +103,11 @@ html, body {
     --chart-4: 43 74% 66%;
     --chart-5: 27 87% 67%;
     --radius: 0.5rem;
+
+    /* Variabel untuk stroke large text background di light mode */
+    --stroke-width: 1.5px; /* Sedikit lebih tebal dari 1px */
+    --text-stroke-color: hsl(var(--foreground) / 0.8); /* Warna foreground (gelap) dengan opacity lebih tinggi */
+    --large-text-filter: blur(1px) drop-shadow(0 0 12px rgba(0,0,0,0.2)); /* Blur dan bayangan lebih gelap dan menyebar */
   }
 
   .dark {
@@ -128,6 +135,11 @@ html, body {
     --chart-3: 30 80% 55%;
     --chart-4: 280 65% 60%;
     --chart-5: 340 75% 55%;
+
+    /* Variabel untuk stroke large text background di dark mode */
+    --stroke-width: 2px; /* Tetap tebal */
+    --text-stroke-color: rgba(255, 255, 255, 0.4); /* Putih transparan */
+    --large-text-filter: blur(1px) drop-shadow(0 0 15px rgba(255,255,255,0.1)); /* Sedikit glow, atau bisa juga none */
   }
 }
 
@@ -155,4 +167,3 @@ html, body {
     mask-size: 350vmax;
   }
 }
-

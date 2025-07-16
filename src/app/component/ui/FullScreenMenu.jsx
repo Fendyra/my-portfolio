@@ -1,3 +1,4 @@
+// src/app/component/ui/FullScreenMenu.jsx
 "use client";
 
 import React, { useState } from "react";
@@ -17,41 +18,31 @@ const montserrat = Montserrat({
 });
 
 const menuItems = [
-  { name: "Home", href: "/", largeText: "WELCOME" },
-  { name: "About", href: "#about", largeText: "ABOUT ME" },
-  { name: "Works", href: "/works", largeText: "MY CREATIONS" },
+  { name: "Home", href: "/", largeText: "DIVE IN" },
+  { name: "About", href: "#about", largeText: "WHO I AM" },
+  { name: "Works", href: "/works", largeText: "SHOWCASE" },
   { name: "Service", href: "/service", largeText: "WHAT I DO" },
-  { name: "Contact", href: "/contact", largeText: "GET IN TOUCH" },
+  { name: "Contact", href: "/contact", largeText: "PING ME" },
 ];
 
 const FullScreenMenu = ({ isOpen, onClose }) => {
   const [hoveredItem, setHoveredItem] = useState(null);
 
   const backgroundTextVariants = {
-    hidden: { opacity: 0, scale: 0.8, x: "-50%" },
+    hidden: { opacity: 0, scale: 0.9, x: "-50%", y: "-50%" },
     visible: {
-      opacity: 0.1,
+      opacity: 0.25, // Meningkatkan opacity agar terlihat jelas di light mode, tapi tetap subtle di dark mode
       scale: 1,
       x: "-50%",
-      transition: { duration: 0.7, ease: [0.16, 1, 0.3, 1] }, // Custom ease for a smoother feel
+      y: "-50%",
+      transition: { duration: 0.6, ease: [0.16, 1, 0.3, 1] },
     },
     exit: {
       opacity: 0,
-      scale: 0.8,
+      scale: 0.9,
       x: "-50%",
-      transition: { duration: 0.5, ease: [0.7, 0, 0.84, 0] },
-    },
-  };
-
-  const menuItemVariants = {
-    hidden: { opacity: 0, y: 20 },
-    visible: {
-      opacity: 1,
-      y: 0,
-      transition: {
-        duration: 0.5,
-        ease: "easeOut",
-      },
+      y: "-50%",
+      transition: { duration: 0.4, ease: [0.7, 0, 0.84, 0] },
     },
   };
 
@@ -93,7 +84,8 @@ const FullScreenMenu = ({ isOpen, onClose }) => {
                 <Link
                   href={item.href}
                   onClick={onClose}
-                  className={`relative z-10 flex items-bottom justify-center gap-2 ${
+                  className={`relative z-10 flex items-baseline justify-center gap-2 ${
+                    // Changed items-bottom to items-baseline for better alignment
                     index % 2 === 0 ? "flex-row" : "flex-row-reverse"
                   }`}
                 >
@@ -112,15 +104,27 @@ const FullScreenMenu = ({ isOpen, onClose }) => {
                 <AnimatePresence>
                   {hoveredItem === item.name && (
                     <motion.div
-                      className={`absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 pointer-events-none text-[15vw] md:text-[12vw] lg:text-[10vw] font-extrabold text-white whitespace-nowrap opacity-0 ${montserrat.className}`}
+                      className={`
+                        absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2
+                        pointer-events-none whitespace-nowrap
+                        font-extrabold
+                        text-[clamp(15vw,250px,25vw)]
+                        text-white // Tetap putih untuk teks utama, stroke akan memberikan kontras
+                        z-0 // Ensure it's behind the menu items
+                      `}
                       variants={backgroundTextVariants}
                       initial="hidden"
                       animate="visible"
                       exit="exit"
                       style={{
-                        WebkitTextStroke: "1px rgba(255,255,255,0.1)", // Adjust stroke color and width
+                        // Menggunakan properti CSS kustom untuk stroke dan filter yang diatur oleh Tailwind CSS themes
+                        WebkitTextStroke:
+                          "var(--stroke-width) var(--text-stroke-color)",
+                        textStroke:
+                          "var(--stroke-width) var(--text-stroke-color)",
                         color: "transparent",
-                        filter: "blur(2px)", // Slight blur effect
+                        filter: "var(--large-text-filter)", // Menggunakan variabel filter tunggal
+                        willChange: "transform, opacity, filter",
                       }}
                     >
                       {item.largeText}
@@ -145,20 +149,16 @@ const FullScreenMenu = ({ isOpen, onClose }) => {
           </Link>
         </div>
 
-        {/* Footer in bottom-left corner - MODIFIED */}
+        {/* Footer in bottom-left corner */}
         <div className="absolute bottom-4 left-4 text-foreground text-sm flex flex-col">
-          {" "}
-          {/* Changed to flex-col for vertical stacking */}
           <span className={`${montserrat.className}`}>2025 ©</span>
           <span className={`${montserrat.className} font-bold `}>
             FENDYVERS
           </span>
         </div>
 
-        {/* New footer section for SAY HI and INFO@FENDYRA.COM - Added */}
+        {/* New footer section for SAY HI and INFO@FENDYRA.COM */}
         <div className="absolute bottom-4 right-4 text-foreground text-sm flex flex-col items-end">
-          {" "}
-          {/* Positioned at bottom-right, items-end for right alignment */}
           <span className={`${montserrat.className}`}>SAY HI</span>
           <span className={`${montserrat.className} font-bold`}>
             FENDYRA RESTU
