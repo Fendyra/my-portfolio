@@ -10,7 +10,12 @@ module.exports = {
   theme: {
     extend: {
       fontFamily: {
-        playfair: ["var(--font-playfair)"], // Add this line
+        playfair: ["var(--font-playfair)"],
+        montserrat: ["var(--font-montserrat)"], // Pastikan ini juga ada jika belum
+        'inter-black': ["var(--font-inter-black)"], // Tambahkan ini
+      },
+      fontSize: {
+        'fluid-oversized': 'clamp(10vw, 200px, 25vw)',
       },
       borderRadius: {
         lg: "var(--radius)",

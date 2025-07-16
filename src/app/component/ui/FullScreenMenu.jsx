@@ -1,9 +1,9 @@
 "use client";
 
-import React from "react";
+import React, { useState } from "react";
 import Link from "next/link";
-import { Playfair_Display } from "next/font/google";
-import { Montserrat } from "next/font/google";
+import { Playfair_Display, Montserrat } from "next/font/google";
+import { motion, AnimatePresence } from "framer-motion";
 
 const playfairDisplay = Playfair_Display({
   subsets: ["latin"],
@@ -17,14 +17,44 @@ const montserrat = Montserrat({
 });
 
 const menuItems = [
-  { name: "Home", href: "/" },
-  { name: "About", href: "#about" },
-  { name: "Works", href: "/works" },
-  { name: "Service", href: "/service" },
-  { name: "Contact", href: "/contact" },
+  { name: "Home", href: "/", largeText: "WELCOME" },
+  { name: "About", href: "#about", largeText: "ABOUT ME" },
+  { name: "Works", href: "/works", largeText: "MY CREATIONS" },
+  { name: "Service", href: "/service", largeText: "WHAT I DO" },
+  { name: "Contact", href: "/contact", largeText: "GET IN TOUCH" },
 ];
 
 const FullScreenMenu = ({ isOpen, onClose }) => {
+  const [hoveredItem, setHoveredItem] = useState(null);
+
+  const backgroundTextVariants = {
+    hidden: { opacity: 0, scale: 0.8, x: "-50%" },
+    visible: {
+      opacity: 0.1,
+      scale: 1,
+      x: "-50%",
+      transition: { duration: 0.7, ease: [0.16, 1, 0.3, 1] }, // Custom ease for a smoother feel
+    },
+    exit: {
+      opacity: 0,
+      scale: 0.8,
+      x: "-50%",
+      transition: { duration: 0.5, ease: [0.7, 0, 0.84, 0] },
+    },
+  };
+
+  const menuItemVariants = {
+    hidden: { opacity: 0, y: 20 },
+    visible: {
+      opacity: 1,
+      y: 0,
+      transition: {
+        duration: 0.5,
+        ease: "easeOut",
+      },
+    },
+  };
+
   return (
     <>
       {/* Fullscreen overlay menu */}
@@ -51,14 +81,19 @@ const FullScreenMenu = ({ isOpen, onClose }) => {
         </div>
 
         {/* Navigation links */}
-        <nav className="text-foreground text-center mt-20">
+        <nav className="text-foreground text-center mt-20 relative w-full">
           <ul className="space-y-4 md:space-y-6">
             {menuItems.map((item, index) => (
-              <li key={index} className="relative group">
+              <li
+                key={index}
+                className="relative group"
+                onMouseEnter={() => setHoveredItem(item.name)}
+                onMouseLeave={() => setHoveredItem(null)}
+              >
                 <Link
                   href={item.href}
                   onClick={onClose}
-                  className={`flex items-bottom justify-center gap-2 ${
+                  className={`relative z-10 flex items-bottom justify-center gap-2 ${
                     index % 2 === 0 ? "flex-row" : "flex-row-reverse"
                   }`}
                 >
@@ -73,6 +108,25 @@ const FullScreenMenu = ({ isOpen, onClose }) => {
                     {item.name}
                   </span>
                 </Link>
+                {/* Oversized background text */}
+                <AnimatePresence>
+                  {hoveredItem === item.name && (
+                    <motion.div
+                      className={`absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 pointer-events-none text-[15vw] md:text-[12vw] lg:text-[10vw] font-extrabold text-white whitespace-nowrap opacity-0 ${montserrat.className}`}
+                      variants={backgroundTextVariants}
+                      initial="hidden"
+                      animate="visible"
+                      exit="exit"
+                      style={{
+                        WebkitTextStroke: "1px rgba(255,255,255,0.1)", // Adjust stroke color and width
+                        color: "transparent",
+                        filter: "blur(2px)", // Slight blur effect
+                      }}
+                    >
+                      {item.largeText}
+                    </motion.div>
+                  )}
+                </AnimatePresence>
               </li>
             ))}
           </ul>
@@ -92,19 +146,23 @@ const FullScreenMenu = ({ isOpen, onClose }) => {
         </div>
 
         {/* Footer in bottom-left corner - MODIFIED */}
-        <div className="absolute bottom-4 left-4 text-foreground text-sm flex flex-col"> {/* Changed to flex-col for vertical stacking */}
-          <span className={`${montserrat.className}`}>
-            2025 ©
-          </span>
+        <div className="absolute bottom-4 left-4 text-foreground text-sm flex flex-col">
+          {" "}
+          {/* Changed to flex-col for vertical stacking */}
+          <span className={`${montserrat.className}`}>2025 ©</span>
           <span className={`${montserrat.className} font-bold `}>
             FENDYVERS
           </span>
         </div>
 
         {/* New footer section for SAY HI and INFO@FENDYRA.COM - Added */}
-        <div className="absolute bottom-4 right-4 text-foreground text-sm flex flex-col items-end"> {/* Positioned at bottom-right, items-end for right alignment */}
+        <div className="absolute bottom-4 right-4 text-foreground text-sm flex flex-col items-end">
+          {" "}
+          {/* Positioned at bottom-right, items-end for right alignment */}
           <span className={`${montserrat.className}`}>SAY HI</span>
-          <span className={`${montserrat.className} font-bold`}>FENDYRA RESTU</span>
+          <span className={`${montserrat.className} font-bold`}>
+            FENDYRA RESTU
+          </span>
         </div>
       </div>
     </>

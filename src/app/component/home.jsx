@@ -1,7 +1,8 @@
 "use client";
 import React, { useState, useEffect } from "react";
 import { motion } from "framer-motion";
-import { Montserrat, Bebas_Neue, Inter } from "next/font/google";
+import { Montserrat, Bebas_Neue, Inter, Oswald } from "next/font/google"; // Import Oswald
+
 import Image from "next/image";
 
 const MotionImage = motion(Image);
@@ -19,6 +20,12 @@ const bebasNeue = Bebas_Neue({
 const inter = Inter({
   subsets: ["latin"],
   weight: ["400"],
+});
+
+// Define Oswald font
+const oswald = Oswald({
+  subsets: ["latin"],
+  weight: ["400", "700"], // Oswald has multiple weights, including bold
 });
 
 function Home() {
@@ -114,7 +121,7 @@ function Home() {
         </motion.p>
 
         <motion.h1
-          className={`${bebasNeue.className}
+          className={`${oswald.className} {/* Menggunakan Oswald untuk h1 utama */}
             text-7xl md:text-9xl
             font-bold leading-none
             text-gray-900
@@ -124,7 +131,8 @@ function Home() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 1.2, duration: 0.5 }}
         >
-          <div className="relative w-full h-[180px] md:h-[250px] flex flex-col justify-center overflow-hidden">
+          <div className="relative w-full h-[200px] md:h-[300px] flex flex-col justify-center overflow-hidden">
+            {/* Marquee 1 */}
             <div
               className="marquee-container"
               style={{ "--speed": animationSpeed }}
@@ -135,13 +143,14 @@ function Home() {
                   .map((_, i) => (
                     <span
                       key={`marquee1-${i}`}
-                      className={`${bebasNeue.className} blink-text uppercase font-bold`}
+                      className={`${oswald.className} blink-text uppercase font-bold text-[6rem] md:text-[8rem] lg:text-[10rem] leading-none`} // Menggunakan Oswald di sini
                     >
                       {marqueeText1}
                     </span>
                   ))}
               </div>
             </div>
+            {/* Marquee 2 */}
             <div
               className="marquee-container"
               style={{ "--speed": animationSpeed }}
@@ -152,7 +161,7 @@ function Home() {
                   .map((_, i) => (
                     <span
                       key={`marquee2-${i}`}
-                      className={`${bebasNeue.className} blink-text uppercase font-bold`}
+                      className={`${oswald.className} blink-text uppercase font-bold text-[6rem] md:text-[8rem] lg:text-[10rem] leading-none`} // Menggunakan Oswald di sini
                     >
                       {marqueeText2}
                     </span>
