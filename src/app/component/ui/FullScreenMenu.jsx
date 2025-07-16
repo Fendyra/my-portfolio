@@ -77,27 +77,30 @@ const FullScreenMenu = ({ isOpen, onClose }) => {
             {menuItems.map((item, index) => (
               <li
                 key={index}
-                className="relative group"
+                className="relative group flex justify-center items-center" // Menambahkan flex dan centering untuk li
                 onMouseEnter={() => setHoveredItem(item.name)}
                 onMouseLeave={() => setHoveredItem(null)}
               >
                 <Link
                   href={item.href}
                   onClick={onClose}
-                  className={`relative z-10 flex items-baseline justify-center gap-2 ${
-                    // Changed items-bottom to items-baseline for better alignment
-                    index % 2 === 0 ? "flex-row" : "flex-row-reverse"
-                  }`}
+                  className="relative z-10 inline-block" // Mengubah menjadi inline-block agar Link membungkus kontennya, memungkinkan penomoran absolut relatif terhadap ukurannya
                 >
-                  <span
-                    className={`${playfairDisplay.className} text-sm md:text-base text-muted-foreground group-hover:text-foreground transition-colors duration-300`}
-                  >
-                    {`0${index + 1}.`}
-                  </span>
                   <span
                     className={`${playfairDisplay.className} text-5xl md:text-7xl font-bold transition-all duration-300 group-hover:scale-105 group-hover:text-foreground`}
                   >
                     {item.name}
+                  </span>
+                  {/* Penomoran diposisikan secara absolut relatif terhadap kontainer Link */}
+                  <span
+                    className={`${playfairDisplay.className} text-sm md:text-base text-muted-foreground group-hover:text-foreground transition-colors duration-300 absolute`}
+                    style={{
+                      top: "-1.5rem", // Sesuaikan nilai ini untuk memindahkannya lebih ke atas
+                      // Menggunakan kondisional untuk menempatkan penomoran di kiri atau kanan
+                      [index % 2 === 0 ? "left" : "right"]: "-2rem",
+                    }}
+                  >
+                    {`0${index + 1}.`}
                   </span>
                 </Link>
                 {/* Oversized background text */}
