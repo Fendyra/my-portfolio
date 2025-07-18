@@ -23,7 +23,7 @@ const About = forwardRef((props, ref) => {
     <motion.section
       ref={ref}
       id="about"
-      className="min-h-screen bg-white dark:bg-black text-gray-900 dark:text-white px-6 md:px-12 lg:px-24 py-20"
+      className="min-h-[100vh] bg-white dark:bg-black text-gray-900 dark:text-white px-6 md:px-12 lg:px-24 py-20"
     >
       {/* Top Heading Section (Peter-style) */}
       <motion.div
@@ -33,11 +33,13 @@ const About = forwardRef((props, ref) => {
         className="w-full text-center mb-12"
       >
         <h1
-          className={`${montserrat.className} font-bold  text-[clamp(3rem,10vw,8rem)] uppercase leading-none tracking-tight`} /* Responsive font size: min 3rem, fluid 10vw, max 8rem */
+          className={`${montserrat.className} font-bold text-[clamp(3rem,10vw,8rem)] uppercase leading-none tracking-tight`}
         >
           WHO AM I
         </h1>
-        <p className={`${spaceMono.className} text-sm text-gray-600 dark:text-gray-400 mt-2`}>
+        <p
+          className={`${spaceMono.className} text-sm text-gray-600 dark:text-gray-400 mt-2`}
+        >
           Creative Developer
         </p>
       </motion.div>
@@ -56,9 +58,15 @@ const About = forwardRef((props, ref) => {
           transition={{ duration: 0.6 }}
           className="text-left"
         >
-          <h2 className="font-montserrat text-[clamp(2.5rem,10vw,6rem)] font-bold mb-2 hover:scale-105 hover:letter-spacing-[0.1em] hover:text-shadow-md transition-all duration-300">
+          <h3 className="font-montserrat text-[clamp(2rem,8vw,5rem)] font-bold mb-1 hover:scale-105 hover:letter-spacing-[0.1em] hover:text-shadow-md transition-all duration-300">
             Fendyra
-          </h2>
+          </h3>
+          <h3 className="font-montserrat text-[clamp(2rem,8vw,5rem)] font-bold mb-1 ml-[120px] hover:scale-105 hover:letter-spacing-[0.1em] hover:text-shadow-md transition-all duration-300">
+            Restu
+          </h3>
+          <h3 className="font-montserrat text-[clamp(2rem,8vw,5rem)] font-bold mb-1 hover:scale-105 hover:letter-spacing-[0.1em] hover:text-shadow-md transition-all duration-300">
+            Dewangga
+          </h3>
           <p className="font-mono text-sm text-gray-600 dark:text-gray-400 mb-4">
             [INTRO]
           </p>
@@ -74,15 +82,15 @@ const About = forwardRef((props, ref) => {
           initial={{ x: 50, opacity: 0 }}
           animate={{ x: 0, opacity: 1 }}
           transition={{ duration: 0.6 }}
-          className="flex justify-center"
+          className="flex justify-center ml-10"
         >
           <MotionImage
-            src="/assets/foto-portfolio.jpg" // Ensure this path is correct
+            src="/assets/profile-portfolio.jpg"
             alt="Fendyra's Profile Picture"
-            width={500} // Base width for image
-            height={500} // Base height for image
-            className="rounded-lg shadow-xl object-cover w-full max-w-sm md:max-w-md lg:max-w-lg h-auto" // Responsive image sizing
-            priority // Prioritize loading for LCP
+            width={300} // Reduced base width
+            height={300} // Adjusted height to be more proportional and ideal
+            className="rounded-lg shadow-xl object-cover max-w-xs md:max-w-sm lg:max-w-md w-full"
+            priority
           />
         </motion.div>
       </motion.div>
