@@ -20,7 +20,7 @@ const montserrat = Montserrat({
 // Menu items data, including the large background text for each
 const menuItems = [
   { name: "Home", href: "/", largeText: "DIVE IN" },
-  { name: "About", href: "#about", largeText: "WHO I AM" },
+  { name: "About", href: "#about", largeText: "WHO AM I" },
   { name: "Works", href: "/works", largeText: "SHOWCASE" },
   { name: "Service", href: "/service", largeText: "WHAT I DO" },
   { name: "Contact", href: "/contact", largeText: "PING ME" },
