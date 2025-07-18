@@ -174,7 +174,7 @@ function Home() {
         <motion.a
           href="#about"
           onClick={handleScrollToAbout}
-          className="mt-4 px-6 py-3 text-gray-900 dark:text-white font-semibold flex items-center justify-center cursor-pointer"
+          className="mt-8 px-6 py-3 text-gray-900 dark:text-white font-semibold flex items-center justify-center cursor-pointer"
           variants={arrowVariants}
           initial="initial"
           animate="animate"
