@@ -3,7 +3,12 @@
 import React, { useEffect, forwardRef } from "react";
 import { motion } from "framer-motion";
 import Image from "next/image";
-import { Montserrat, Space_Mono, Plus_Jakarta_Sans } from "next/font/google";
+import {
+  Montserrat,
+  Space_Mono,
+  Plus_Jakarta_Sans,
+  Inter,
+} from "next/font/google";
 
 const montserrat = Montserrat({
   subsets: ["latin"],
@@ -20,6 +25,11 @@ const plusJakartaSans = Plus_Jakarta_Sans({
   subsets: ["latin"],
   weight: ["400", "700"],
   display: "swap",
+});
+
+const inter = Inter({
+  subsets: ["latin"],
+  weight: ["400"],
 });
 
 const MotionImage = motion(Image);
@@ -141,15 +151,39 @@ const About = forwardRef((props, ref) => {
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.6, delay: 0.7 }}
           >
-            <p
-              className={`${plusJakartaSans.className} text-large leading-relaxed text-gray-700 dark:text-gray-300 max-w-prose`}
+            <h4
+              className={`${inter.className} text-large text-justify leading-relaxed text-gray-700 dark:text-gray-300 max-w-prose mb-1`}
             >
-              I’m a passionate developer with a love for creating intuitive and
-              visually appealing web interfaces. With a focus on user-centered
-              design, I enjoy turning ideas into functional, high-quality
-              digital products. My journey in tech is driven by curiosity and a
-              commitment to continuous learning.
-            </p>
+              Hi, I’m <strong>Fendyra Restu Dewangga</strong> — a frontend
+              developer and UI/UX designer driven by a love for clean,
+              meaningful digital experiences. I believe great interfaces begin
+              with empathy and end with precision. Currently in my 5th semester
+              studying Information Systems at{" "}
+              <strong>UPN "Veteran" Yogyakarta</strong>, I combine design
+              thinking with code to create responsive, accessible, and visually
+              engaging web solutions.
+            </h4>
+            <h4
+              className={`${inter.className} text-large text-justify leading-relaxed text-gray-700 dark:text-gray-300 max-w-prose mb-1`}
+            >
+              I’m fascinated by how design and code can shape the way people
+              interact with technology. For me, every line of code is an
+              opportunity to solve problems beautifully from fluid layouts to
+              seamless user flows. I love using <strong>React</strong>,{" "}
+              <strong>Next.js</strong>, and <strong>Tailwind</strong> to turn
+              wireframes into live, responsive products that feel intuitive on
+              every device.
+            </h4>
+            <h4
+              className={`${inter.className} text-large text-justify leading-relaxed text-gray-700 dark:text-gray-300 max-w-prose mb-1`}
+            >
+              Outside the code editor, I thrive in community. As Head of Talent
+              & Interests in the student association, I lead initiatives that
+              blend tech, culture, and collaboration. From organizing developer
+              communities to producing creative campaigns, I value teamwork,
+              communication, and building things that matter both online and
+              offline.
+            </h4>
           </motion.div>
           <motion.div
             initial={{ opacity: 0, x: 20 }}
@@ -157,34 +191,7 @@ const About = forwardRef((props, ref) => {
             transition={{ duration: 0.6, delay: 0.8 }}
             className="grid grid-cols-2 gap-4"
           >
-            <div className="text-center">
-              <p
-                className={`${spaceMono.className} text-sm text-gray-600 dark:text-gray-400 mb-2`}
-              >
-                Tools
-              </p>
-              <ul
-                className={`${plusJakartaSans.className} text-sm text-gray-700 dark:text-gray-300`}
-              >
-                <li>Next.js</li>
-                <li>Tailwind CSS</li>
-                <li>Framer Motion</li>
-              </ul>
-            </div>
-            <div className="text-center">
-              <p
-                className={`${spaceMono.className} text-sm text-gray-600 dark:text-gray-400 mb-2`}
-              >
-                Others
-              </p>
-              <ul
-                className={`${plusJakartaSans.className} text-sm text-gray-700 dark:text-gray-300`}
-              >
-                <li>Figma</li>
-                <li>Git</li>
-                <li>VS Code</li>
-              </ul>
-            </div>
+            <div className="text-center"></div>
           </motion.div>
         </div>
       </motion.div>
