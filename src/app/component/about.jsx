@@ -3,6 +3,8 @@
 import React, { useEffect, forwardRef } from "react";
 import { motion } from "framer-motion";
 import Image from "next/image";
+
+// Font Imports
 import {
   Montserrat,
   Space_Mono,
@@ -10,10 +12,13 @@ import {
   Inter,
 } from "next/font/google";
 
-// Import komponen TextReveal yang baru dibuat
-// Path yang benar dari src/app/component/about.jsx ke src/components/text-reveal.jsx adalah '../../components/text-reveal'
-import { TextReveal } from "../../components/text-reveal"; // Corrected import path
+// UI Components
+import {
+  TextRevealCard,
+  TextRevealCardDescription,
+} from "./ui/text-reveal-card"; // Pastikan path ini benar
 
+// Font Configuration
 const montserrat = Montserrat({
   subsets: ["latin"],
   weight: ["400", "700"],
@@ -39,13 +44,19 @@ const inter = Inter({
 const MotionImage = motion(Image);
 
 const About = forwardRef((props, ref) => {
+  const paragraph1 = `Hi, I’m Fendyra Restu Dewangga — a frontend developer and UI designer passionate about building clean, responsive, and user-centered web experiences. Currently in my 5th semester studying Information Systems at UPN "Veteran" Yogyakarta, I combine design thinking with code using tools like Laravel, React, Next.js, Tailwind, and Figma.`;
+
+  const paragraph2 = `I love turning ideas into intuitive interfaces that feel natural across devices. For me, great design starts with empathy and ends with purposeful execution. Outside of coding, I lead creative initiatives as the Head of Talent & Interests in the student association, where I bridge tech, culture, and community.`;
+
+  const fullDescription = `${paragraph1}\n\n${paragraph2}`;
+
   return (
     <motion.section
       ref={ref}
       id="about"
       className="min-h-[100vh] bg-white dark:bg-black text-gray-900 dark:text-white px-6 md:px-12 lg:px-24 py-20 overflow-hidden"
     >
-      {/* Top Heading Section */}
+      {/* Heading */}
       <motion.div
         initial={{ opacity: 0, y: -50 }}
         animate={{ opacity: 1, y: 0 }}
@@ -64,7 +75,7 @@ const About = forwardRef((props, ref) => {
         </p>
       </motion.div>
 
-      {/* Main About Section */}
+      {/* Main Section */}
       <motion.div
         initial={{ opacity: 0, y: 50 }}
         animate={{ opacity: 1, y: 0 }}
@@ -78,20 +89,18 @@ const About = forwardRef((props, ref) => {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.2 }}
         >
-          {/* Name as Focal Point */}
           <div className="flex flex-col items-start mb-2">
-            <h3 className="font-montserrat text-[clamp(2rem,8vw,5rem)] font-bold mb-1 hover:scale-105 hover:letter-spacing-[0.1em] hover:text-shadow-md transition-all duration-300">
+            <h3 className="font-montserrat text-[clamp(2rem,8vw,5rem)] font-bold mb-1 hover:scale-105 transition-all duration-300">
               Fendyra
             </h3>
-            <h3 className="font-montserrat text-[clamp(2rem,8vw,5rem)] font-bold mb-1 ml-[140px] hover:scale-105 hover:letter-spacing-[0.1em] hover:text-shadow-md transition-all duration-300">
+            <h3 className="font-montserrat text-[clamp(2rem,8vw,5rem)] font-bold mb-1 ml-[140px] hover:scale-105 transition-all duration-300">
               Restu
             </h3>
-            <h3 className="font-montserrat text-[clamp(2rem,8vw,5rem)] font-bold ml-[220px] hover:scale-105 hover:letter-spacing-[0.1em] hover:text-shadow-md transition-all duration-300">
+            <h3 className="font-montserrat text-[clamp(2rem,8vw,5rem)] font-bold ml-[220px] hover:scale-105 transition-all duration-300">
               Dewangga
             </h3>
           </div>
 
-          {/* Intro Section */}
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mt-2">
             <motion.div
               initial={{ opacity: 0, y: 20 }}
@@ -109,10 +118,7 @@ const About = forwardRef((props, ref) => {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.5 }}
             >
-              {/* Menggunakan TextReveal di sini */}
               <p
-                variant="slideUp" // Pilih varian yang Anda inginkan (fade, slideUp, typewriter, dll.)
-                delay={0.6} // Tambahkan delay agar muncul setelah elemen lain
                 className={`${plusJakartaSans.className} text-base leading-relaxed max-w-prose text-gray-700 dark:text-gray-300 text-justify`}
               >
                 Creative developer blending UI design with frontend code to
@@ -122,7 +128,7 @@ const About = forwardRef((props, ref) => {
           </div>
         </motion.div>
 
-        {/* Right Column (Profile Image) */}
+        {/* Right Column */}
         <motion.div
           initial={{ opacity: 0, x: 50 }}
           animate={{ opacity: 1, x: 0 }}
@@ -130,7 +136,7 @@ const About = forwardRef((props, ref) => {
           className="flex justify-end"
         >
           <MotionImage
-            src="/assets/photo-profile.jpg" // Ensure this image exists in your public/assets folder
+            src="/assets/photo-profile.jpg"
             alt="Fendyra's Profile Picture"
             width={350}
             height={450}
@@ -140,7 +146,7 @@ const About = forwardRef((props, ref) => {
         </motion.div>
       </motion.div>
 
-      {/* Extended About Section */}
+      {/* Extended Section */}
       <motion.div
         initial={{ opacity: 0, y: 50 }}
         animate={{ opacity: 1, y: 0 }}
@@ -152,6 +158,7 @@ const About = forwardRef((props, ref) => {
         >
           BEYOND THE CODE
         </h2>
+
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
           <motion.div
             initial={{ opacity: 0, x: -20 }}
@@ -159,59 +166,28 @@ const About = forwardRef((props, ref) => {
             transition={{ duration: 0.6, delay: 0.7 }}
             className="text-justify"
           >
-            {/* Menggunakan TextReveal untuk setiap paragraf deskripsi */}
-            {/* PASTIKAN TIDAK ADA TAG HTML DI DALAM CHILDREN TEXTREVEAL */}
-            <TextReveal
-              variant="slideUp" // Pilih varian yang Anda inginkan
-              delay={0.8} // Sesuaikan delay agar muncul berurutan
-              staggerDelay={0.005} // Stagger lebih kecil untuk paragraf panjang
-              wordLevel={true} // Animasi per kata
-              className={`${inter.className} text-large text-justify leading-relaxed text-gray-700 dark:text-gray-300 max-w-prose mb-1`}
-            >
-              Hi, I’m Fendyra Restu Dewangga — a frontend developer and UI/UX
-              designer driven by a love for clean, meaningful digital
-              experiences. I believe great interfaces begin with empathy and end
-              with precision. Currently in my 5th semester studying Information
-              Systems at UPN "Veteran" Yogyakarta, I combine design thinking
-              with code to create responsive, accessible, and visually engaging
-              web solutions.
-            </TextReveal>
-            <TextReveal
-              variant="slideUp"
-              delay={1.5} // Delay lebih lanjut untuk paragraf kedua
-              staggerDelay={0.005}
-              wordLevel={true}
-              className={`${inter.className} text-large text-justify leading-relaxed text-gray-700 dark:text-gray-300 max-w-prose mb-1`}
-            >
-              I’m fascinated by how design and code can shape the way people
-              interact with technology. For me, every line of code is an
-              opportunity to solve problems beautifully from fluid layouts to
-              seamless user flows. I love using React, Next.js, and Tailwind to
-              turn wireframes into live, responsive products that feel intuitive
-              on every device.
-            </TextReveal>
-            <TextReveal
-              variant="slideUp"
-              delay={2.2} // Delay lebih lanjut untuk paragraf ketiga
-              staggerDelay={0.005}
-              wordLevel={true}
-              className={`${inter.className} text-large text-justify leading-relaxed text-gray-700 dark:text-gray-300 max-w-prose mb-1`}
-            >
-              Outside the code editor, I thrive in community. As Head of Talent
-              & Interests in the student association, I lead initiatives that
-              blend tech, culture, and collaboration. From organizing developer
-              communities to producing creative campaigns, I value teamwork,
-              communication, and building things that matter both online and
-              offline.
-            </TextReveal>
+            <div className="flex items-center justify-center overflow-hidden">
+              <TextRevealCard
+                text={fullDescription}
+                revealText={fullDescription}
+                className="w-full"
+              >
+                <TextRevealCardDescription>
+                  Hover over the card to reveal my full story.
+                </TextRevealCardDescription>
+              </TextRevealCard>
+            </div>
           </motion.div>
+
           <motion.div
             initial={{ opacity: 0, x: 20 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.6, delay: 0.8 }}
             className="grid grid-cols-2 gap-4"
           >
-            <div className="text-center"></div>
+            <div className="text-center">
+              {/* Optional: Add content here */}
+            </div>
           </motion.div>
         </div>
       </motion.div>
@@ -219,4 +195,5 @@ const About = forwardRef((props, ref) => {
   );
 });
 
+About.displayName = "About";
 export default About;
