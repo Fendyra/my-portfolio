@@ -3,8 +3,6 @@
 import React, { useEffect, forwardRef } from "react";
 import { motion } from "framer-motion";
 import Image from "next/image";
-
-// Font Imports
 import {
   Montserrat,
   Space_Mono,
@@ -12,13 +10,12 @@ import {
   Inter,
 } from "next/font/google";
 
-// UI Components
 import {
   TextRevealCard,
-  TextRevealCardDescription,
-} from "./ui/text-reveal-card"; // Pastikan path ini benar
+  TextRevealCardTitle,
+  TextRevealCardDescription, // Import the description component
+} from "./ui/text-reveal-card"; // Make sure the path is correct
 
-// Font Configuration
 const montserrat = Montserrat({
   subsets: ["latin"],
   weight: ["400", "700"],
@@ -44,10 +41,11 @@ const inter = Inter({
 const MotionImage = motion(Image);
 
 const About = forwardRef((props, ref) => {
-  const paragraph1 = `Hi, I’m Fendyra Restu Dewangga — a frontend developer and UI designer passionate about building clean, responsive, and user-centered web experiences. Currently in my 5th semester studying Information Systems at UPN "Veteran" Yogyakarta, I combine design thinking with code using tools like Laravel, React, Next.js, Tailwind, and Figma.`;
-
+  // New description split into two paragraphs
+  const paragraph1 = `Hi, I’m Fendyra Restu Dewangga — a frontend developer and UI enthusiast passionate about building clean, responsive, and user-centered web experiences. Currently in my 5th semester studying Information Systems at UPN "Veteran" Yogyakarta, I combine design thinking with code using tools like Laravel, React, Next.js, Tailwind, and Figma.`;
   const paragraph2 = `I love turning ideas into intuitive interfaces that feel natural across devices. For me, great design starts with empathy and ends with purposeful execution. Outside of coding, I lead creative initiatives as the Head of Talent & Interests in the student association, where I bridge tech, culture, and community.`;
 
+  // Combine them for the fullDescription to be passed to TextRevealCard
   const fullDescription = `${paragraph1}\n\n${paragraph2}`;
 
   return (
@@ -56,7 +54,7 @@ const About = forwardRef((props, ref) => {
       id="about"
       className="min-h-[100vh] bg-white dark:bg-black text-gray-900 dark:text-white px-6 md:px-12 lg:px-24 py-20 overflow-hidden"
     >
-      {/* Heading */}
+      {/* Top Heading Section */}
       <motion.div
         initial={{ opacity: 0, y: -50 }}
         animate={{ opacity: 1, y: 0 }}
@@ -75,32 +73,34 @@ const About = forwardRef((props, ref) => {
         </p>
       </motion.div>
 
-      {/* Main Section */}
+      {/* Main About Section */}
       <motion.div
         initial={{ opacity: 0, y: 50 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.8 }}
         className="grid grid-cols-1 md:grid-cols-2 gap-10 items-center"
       >
-        {/* Left Column */}
+        {/* Left Column (Name and Intro) */}
         <motion.div
-          className="relative"
+          className="relative md:col-span-1 md:col-start-1" /* Explicitly define grid column for safety */
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.2 }}
         >
+          {/* Name as Focal Point - MODIFIED FOR RESPONSIVENESS AND LAYOUT */}
           <div className="flex flex-col items-start mb-2">
-            <h3 className="font-montserrat text-[clamp(2rem,8vw,5rem)] font-bold mb-1 hover:scale-105 transition-all duration-300">
+            <h3 className="font-montserrat text-[clamp(2rem,8vw,5rem)] lg:text-[clamp(3rem,6vw,5rem)] font-bold mb-1 hover:scale-105 hover:letter-spacing-[0.1em] hover:text-shadow-md transition-all duration-300">
               Fendyra
             </h3>
-            <h3 className="font-montserrat text-[clamp(2rem,8vw,5rem)] font-bold mb-1 ml-[140px] hover:scale-105 transition-all duration-300">
+            <h3 className="font-montserrat text-[clamp(2rem,8vw,5rem)] lg:text-[clamp(3rem,6vw,5rem)] font-bold mb-1 ml-[5vw] md:ml-[130px] lg:ml-[160px] hover:scale-105 hover:letter-spacing-[0.1em] hover:text-shadow-md transition-all duration-300">
               Restu
             </h3>
-            <h3 className="font-montserrat text-[clamp(2rem,8vw,5rem)] font-bold ml-[220px] hover:scale-105 transition-all duration-300">
+            <h3 className="font-montserrat text-[clamp(2rem,8vw,5rem)] lg:text-[clamp(3rem,6vw,5rem)] font-bold ml-[10vw] md:ml-[210px] lg:ml-[230px] hover:scale-105 hover:letter-spacing-[0.1em] hover:text-shadow-md transition-all duration-300">
               Dewangga
             </h3>
           </div>
 
+          {/* Intro Section */}
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mt-2">
             <motion.div
               initial={{ opacity: 0, y: 20 }}
@@ -128,15 +128,15 @@ const About = forwardRef((props, ref) => {
           </div>
         </motion.div>
 
-        {/* Right Column */}
+        {/* Right Column (Profile Image) */}
         <motion.div
           initial={{ opacity: 0, x: 50 }}
           animate={{ opacity: 1, x: 0 }}
           transition={{ duration: 0.6, delay: 0.3 }}
-          className="flex justify-end"
+          className="flex justify-center md:justify-end md:col-span-1" /* Center image on mobile, align right on desktop */
         >
           <MotionImage
-            src="/assets/photo-profile.jpg"
+            src="/assets/photo-profile.jpg" // Ensure this image exists in your public/assets folder
             alt="Fendyra's Profile Picture"
             width={350}
             height={450}
@@ -146,7 +146,7 @@ const About = forwardRef((props, ref) => {
         </motion.div>
       </motion.div>
 
-      {/* Extended Section */}
+      {/* Extended About Section */}
       <motion.div
         initial={{ opacity: 0, y: 50 }}
         animate={{ opacity: 1, y: 0 }}
@@ -158,7 +158,6 @@ const About = forwardRef((props, ref) => {
         >
           BEYOND THE CODE
         </h2>
-
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
           <motion.div
             initial={{ opacity: 0, x: -20 }}
@@ -168,8 +167,8 @@ const About = forwardRef((props, ref) => {
           >
             <div className="flex items-center justify-center overflow-hidden">
               <TextRevealCard
-                text={fullDescription}
-                revealText={fullDescription}
+                text={fullDescription} // The `text` prop now holds the two paragraphs
+                revealText={fullDescription} // The `revealText` prop also holds the two paragraphs
                 className="w-full"
               >
                 <TextRevealCardDescription>
@@ -178,16 +177,14 @@ const About = forwardRef((props, ref) => {
               </TextRevealCard>
             </div>
           </motion.div>
-
           <motion.div
             initial={{ opacity: 0, x: 20 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.6, delay: 0.8 }}
             className="grid grid-cols-2 gap-4"
           >
-            <div className="text-center">
-              {/* Optional: Add content here */}
-            </div>
+            {/* This section can be filled with other components or elements if needed */}
+            <div className="text-center"></div>
           </motion.div>
         </div>
       </motion.div>
