@@ -10,6 +10,10 @@ import {
   Inter,
 } from "next/font/google";
 
+// Import komponen TextReveal yang baru dibuat
+// Path yang benar dari src/app/component/about.jsx ke src/components/text-reveal.jsx adalah '../../components/text-reveal'
+import { TextReveal } from "../../components/text-reveal"; // Corrected import path
+
 const montserrat = Montserrat({
   subsets: ["latin"],
   weight: ["400", "700"],
@@ -105,7 +109,10 @@ const About = forwardRef((props, ref) => {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.5 }}
             >
+              {/* Menggunakan TextReveal di sini */}
               <p
+                variant="slideUp" // Pilih varian yang Anda inginkan (fade, slideUp, typewriter, dll.)
+                delay={0.6} // Tambahkan delay agar muncul setelah elemen lain
                 className={`${plusJakartaSans.className} text-base leading-relaxed max-w-prose text-gray-700 dark:text-gray-300 text-justify`}
               >
                 Creative developer blending UI design with frontend code to
@@ -123,7 +130,7 @@ const About = forwardRef((props, ref) => {
           className="flex justify-end"
         >
           <MotionImage
-            src="/assets/photo-profile.jpg"
+            src="/assets/photo-profile.jpg" // Ensure this image exists in your public/assets folder
             alt="Fendyra's Profile Picture"
             width={350}
             height={450}
@@ -150,31 +157,44 @@ const About = forwardRef((props, ref) => {
             initial={{ opacity: 0, x: -20 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.6, delay: 0.7 }}
+            className="text-justify"
           >
-            <h4
+            {/* Menggunakan TextReveal untuk setiap paragraf deskripsi */}
+            {/* PASTIKAN TIDAK ADA TAG HTML DI DALAM CHILDREN TEXTREVEAL */}
+            <TextReveal
+              variant="slideUp" // Pilih varian yang Anda inginkan
+              delay={0.8} // Sesuaikan delay agar muncul berurutan
+              staggerDelay={0.005} // Stagger lebih kecil untuk paragraf panjang
+              wordLevel={true} // Animasi per kata
               className={`${inter.className} text-large text-justify leading-relaxed text-gray-700 dark:text-gray-300 max-w-prose mb-1`}
             >
-              Hi, I’m <strong>Fendyra Restu Dewangga</strong> — a frontend
-              developer and UI/UX designer driven by a love for clean,
-              meaningful digital experiences. I believe great interfaces begin
-              with empathy and end with precision. Currently in my 5th semester
-              studying Information Systems at{" "}
-              <strong>UPN "Veteran" Yogyakarta</strong>, I combine design
-              thinking with code to create responsive, accessible, and visually
-              engaging web solutions.
-            </h4>
-            <h4
+              Hi, I’m Fendyra Restu Dewangga — a frontend developer and UI/UX
+              designer driven by a love for clean, meaningful digital
+              experiences. I believe great interfaces begin with empathy and end
+              with precision. Currently in my 5th semester studying Information
+              Systems at UPN "Veteran" Yogyakarta, I combine design thinking
+              with code to create responsive, accessible, and visually engaging
+              web solutions.
+            </TextReveal>
+            <TextReveal
+              variant="slideUp"
+              delay={1.5} // Delay lebih lanjut untuk paragraf kedua
+              staggerDelay={0.005}
+              wordLevel={true}
               className={`${inter.className} text-large text-justify leading-relaxed text-gray-700 dark:text-gray-300 max-w-prose mb-1`}
             >
               I’m fascinated by how design and code can shape the way people
               interact with technology. For me, every line of code is an
               opportunity to solve problems beautifully from fluid layouts to
-              seamless user flows. I love using <strong>React</strong>,{" "}
-              <strong>Next.js</strong>, and <strong>Tailwind</strong> to turn
-              wireframes into live, responsive products that feel intuitive on
-              every device.
-            </h4>
-            <h4
+              seamless user flows. I love using React, Next.js, and Tailwind to
+              turn wireframes into live, responsive products that feel intuitive
+              on every device.
+            </TextReveal>
+            <TextReveal
+              variant="slideUp"
+              delay={2.2} // Delay lebih lanjut untuk paragraf ketiga
+              staggerDelay={0.005}
+              wordLevel={true}
               className={`${inter.className} text-large text-justify leading-relaxed text-gray-700 dark:text-gray-300 max-w-prose mb-1`}
             >
               Outside the code editor, I thrive in community. As Head of Talent
@@ -183,7 +203,7 @@ const About = forwardRef((props, ref) => {
               communities to producing creative campaigns, I value teamwork,
               communication, and building things that matter both online and
               offline.
-            </h4>
+            </TextReveal>
           </motion.div>
           <motion.div
             initial={{ opacity: 0, x: 20 }}

@@ -1,12 +1,12 @@
- {
-      "compilerOptions": {
-        "baseUrl": ".",
-        "paths": {
-          "@/*": ["./src/app/*"]
-        },
-        "jsx": "preserve"
-      },
-      "include": ["src/**/*.js", "src/**/*.jsx", "src/**/*.ts", "src/**/*.tsx"],
-      "exclude": ["node_modules"]
-    }
-    
+{
+  "compilerOptions": {
+    "baseUrl": ".",
+    "paths": {
+      "@/lib/*": ["src/app/component/lib/*"], // Sesuaikan dengan lokasi cn.js Anda
+      "@/components/*": ["src/app/component/*"]
+    },
+    "jsx": "preserve"
+  },
+  "include": ["next-env.d.ts", "**/*.js", "**/*.jsx", "**/*.mjs"],
+  "exclude": ["node_modules"]
+}
