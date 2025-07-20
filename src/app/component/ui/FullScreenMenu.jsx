@@ -66,7 +66,8 @@ const FullScreenMenu = ({ isOpen, onClose }) => {
         }`}
       >
         {/* Top bar inside fullscreen menu: Portfolio title and BACK button */}
-        <div className="absolute top-0 left-0 w-full flex justify-between items-center px-4 py-4 md:px-8">
+        {/* Adjusted mt-8 for mobile (default), then md:mt-6 and lg:mt-8 for larger screens */}
+        <div className="absolute top-0 left-0 w-full flex justify-between items-center px-4 py-4 md:px-8 mt-8 md:mt-6 lg:mt-8">
           <div
             className={`${montserrat.className} text-foreground text-lg z-50`}
           >

@@ -71,9 +71,10 @@ export default function Home() {
         <div
           style={{
             color: "white",
-            fontSize: "1.8vw",
+            fontSize: "2vw",
             fontWeight: "bold",
             whiteSpace: "nowrap",
+            fontFamily: montserrat.style.fontFamily,
           }}
         >
           THE CREATIVE
@@ -81,9 +82,10 @@ export default function Home() {
         <div
           style={{
             color: "white",
-            fontSize: "1.8vw",
+            fontSize: "2vw",
             fontWeight: "bold",
             whiteSpace: "nowrap",
+            fontFamily: montserrat.style.fontFamily,
           }}
         >
           WEB PORTFOLIO
@@ -91,9 +93,11 @@ export default function Home() {
         <div
           style={{
             color: "white",
-            fontSize: "1.8vw",
+            fontSize: "2vw",
             fontWeight: "bold",
             whiteSpace: "nowrap",
+            fontFamily: montserrat.style.fontFamily,
+
           }}
         >
           2025 SHOWCASE
@@ -101,9 +105,10 @@ export default function Home() {
         <div
           style={{
             color: "white",
-            fontSize: "1.8vw",
+            fontSize: "2vw",
             fontWeight: "bold",
             whiteSpace: "nowrap",
+            fontFamily: montserrat.style.fontFamily,
           }}
         >
           OF
@@ -111,9 +116,10 @@ export default function Home() {
         <div
           style={{
             color: "white",
-            fontSize: "1.8vw",
+            fontSize: "2vw",
             fontWeight: "bold",
             whiteSpace: "nowrap",
+            fontFamily: montserrat.style.fontFamily,
           }}
         >
           FENDYRA
@@ -121,9 +127,10 @@ export default function Home() {
         <div
           style={{
             color: "white",
-            fontSize: "1.8vw",
+            fontSize: "2vw",
             fontWeight: "bold",
             whiteSpace: "nowrap",
+            fontFamily: montserrat.style.fontFamily,
           }}
         >
           RESTU
@@ -139,7 +146,7 @@ export default function Home() {
           left: "50%",
           transform: "translateX(-50%)",
           color: "white",
-          fontSize: "1.5vw",
+          fontSize: "1.8vw",
           fontWeight: "bold",
           padding: "15px 30px",
           cursor: "pointer", // Show pointer cursor on hover
@@ -148,6 +155,7 @@ export default function Home() {
           zIndex: 10,
           transition: "background-color 0.3s ease",
           pointerEvents: "auto", // Ensure the button is interactive
+          fontFamily: montserrat.style.fontFamily,
         }}
       >
         CLICK ENTER TO VIEW PORTFOLIO 

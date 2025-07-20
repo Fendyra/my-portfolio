@@ -199,7 +199,7 @@ const About = forwardRef((props, ref) => {
                 }}
               >
                 <SpinningText>
-                  explore me • resume drop • peek my cv •
+                  explore me • view resume • peek my cv •
                 </SpinningText>
                 <span className="absolute inset-0 z-0"></span>
               </a>
