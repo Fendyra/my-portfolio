@@ -40,6 +40,9 @@ const inter = Inter({
   weight: ["400"],
 });
 
+const cvFile =
+  "https://drive.google.com/file/d/1s_T7k2oWPsuW1i3_CyB1SiGFDdr5qttz/view?usp=sharing";
+
 const MotionImage = motion(Image);
 
 const About = forwardRef((props, ref) => {
@@ -165,6 +168,7 @@ const About = forwardRef((props, ref) => {
             transition={{ duration: 0.6, delay: 0.7 }}
             className="text-justify"
           >
+            {/* Wrapper for TextRevealCard */}
             <div className="flex items-center justify-center overflow-hidden">
               <TextRevealCard
                 text={fullDescription}
@@ -176,13 +180,29 @@ const About = forwardRef((props, ref) => {
                 </TextRevealCardDescription>
               </TextRevealCard>
             </div>
+
+            {/* Container for SpinningText - Adjust these classes */}
             <motion.div
-              initial={{ opacity: 0, x: 0 }}
-              animate={{ opacity: 1, x: 0 }}
+              initial={{ opacity: 0, y: 20 }} 
+              animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.7 }}
-              className="flex items-start justify-start w-full mt-12 md:mt-14 ml-8 lg:ml-12" 
+              className="flex items-start justify-start w-full mt-4 md:mt-6 lg:mt-6" 
             >
-              <SpinningText>explore me • resume drop • peek my cv •</SpinningText>
+              <a
+                href={cvFile}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="relative inline-flex items-center justify-center rounded-full"
+                style={{
+                  width: "12ch",
+                  height: "12ch",
+                }}
+              >
+                <SpinningText>
+                  explore me • resume drop • peek my cv •
+                </SpinningText>
+                <span className="absolute inset-0 z-0"></span>
+              </a>
             </motion.div>
           </motion.div>
           <motion.div
