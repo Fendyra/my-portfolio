@@ -171,9 +171,10 @@ const About = forwardRef((props, ref) => {
                 revealText={fullDescription} // The `revealText` prop also holds the two paragraphs
                 className="w-full"
               >
-                <TextRevealCardDescription>
-                  Hover over the card to reveal my full story.
-                </TextRevealCardDescription>
+          <TextRevealCardDescription>
+            <code>onHover() =&gt; revealProfile()</code>
+          </TextRevealCardDescription>
+
               </TextRevealCard>
             </div>
           </motion.div>
