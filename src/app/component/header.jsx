@@ -32,7 +32,7 @@ const HeaderIcons = () => {
         rounded-full shadow-lg border border-white/20 dark:border-gray-700/30
         backdrop-blur-md
         transition-all duration-300 ease-in-out
-        ${isHeaderHovered ? "w-[240px]" : "w-[180px]"} // Adjusted max width
+        ${isHeaderHovered ? "w-[270px]" : "w-[210px]"} // Adjusted max width
       `}
       onMouseEnter={() => setIsHeaderHovered(true)}
       onMouseLeave={() => setIsHeaderHovered(false)}
