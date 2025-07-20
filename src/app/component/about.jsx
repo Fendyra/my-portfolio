@@ -13,8 +13,10 @@ import {
 import {
   TextRevealCard,
   TextRevealCardTitle,
-  TextRevealCardDescription, // Import the description component
-} from "./ui/text-reveal-card"; // Make sure the path is correct
+  TextRevealCardDescription,
+} from "./ui/text-reveal-card";
+
+import { SpinningText } from "./ui/SpinningText";
 
 const montserrat = Montserrat({
   subsets: ["latin"],
@@ -41,11 +43,9 @@ const inter = Inter({
 const MotionImage = motion(Image);
 
 const About = forwardRef((props, ref) => {
-  // New description split into two paragraphs
   const paragraph1 = `Hi, I’m Fendyra Restu Dewangga — a frontend developer and UI enthusiast passionate about building clean, responsive, and user-centered web experiences. Currently in my 5th semester studying Information Systems at UPN "Veteran" Yogyakarta, I combine design thinking with code using tools like Laravel, React, Next.js, Tailwind, and Figma.`;
   const paragraph2 = `I love turning ideas into intuitive interfaces that feel natural across devices. For me, great design starts with empathy and ends with purposeful execution. Outside of coding, I lead creative initiatives as the Head of Talent & Interests in the student association, where I bridge tech, culture, and community.`;
 
-  // Combine them for the fullDescription to be passed to TextRevealCard
   const fullDescription = `${paragraph1}\n\n${paragraph2}`;
 
   return (
@@ -82,7 +82,7 @@ const About = forwardRef((props, ref) => {
       >
         {/* Left Column (Name and Intro) */}
         <motion.div
-          className="relative md:col-span-1 md:col-start-1" /* Explicitly define grid column for safety */
+          className="relative md:col-span-1 md:col-start-1"
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.2 }}
@@ -133,10 +133,10 @@ const About = forwardRef((props, ref) => {
           initial={{ opacity: 0, x: 50 }}
           animate={{ opacity: 1, x: 0 }}
           transition={{ duration: 0.6, delay: 0.3 }}
-          className="flex justify-center md:justify-end md:col-span-1" /* Center image on mobile, align right on desktop */
+          className="flex justify-center md:justify-end md:col-span-1"
         >
           <MotionImage
-            src="/assets/photo-profile.jpg" // Ensure this image exists in your public/assets folder
+            src="/assets/photo-profile.jpg"
             alt="Fendyra's Profile Picture"
             width={350}
             height={450}
@@ -167,16 +167,23 @@ const About = forwardRef((props, ref) => {
           >
             <div className="flex items-center justify-center overflow-hidden">
               <TextRevealCard
-                text={fullDescription} // The `text` prop now holds the two paragraphs
-                revealText={fullDescription} // The `revealText` prop also holds the two paragraphs
+                text={fullDescription}
+                revealText={fullDescription}
                 className="w-full"
               >
-          <TextRevealCardDescription>
-            <code>onHover() =&gt; revealProfile()</code>
-          </TextRevealCardDescription>
-
+                <TextRevealCardDescription>
+                  <code>onHover() =&gt; revealProfile()</code>
+                </TextRevealCardDescription>
               </TextRevealCard>
             </div>
+            <motion.div
+              initial={{ opacity: 0, x: 0 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.6, delay: 0.7 }}
+              className="flex items-start justify-start w-full mt-12 md:mt-14 ml-8 lg:ml-12" 
+            >
+              <SpinningText>explore me • resume drop • peek my cv •</SpinningText>
+            </motion.div>
           </motion.div>
           <motion.div
             initial={{ opacity: 0, x: 20 }}
