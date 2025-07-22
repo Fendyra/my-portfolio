@@ -154,7 +154,7 @@ const About = forwardRef((props, ref) => {
         initial={{ opacity: 0, y: 50 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.8, delay: 0.6 }}
-        className="mt-16"
+        className="mt-14"
       >
         <h2
           className={`${montserrat.className} font-bold text-[clamp(2rem,6vw,4rem)] mb-6 text-center md:text-left`}
@@ -183,10 +183,10 @@ const About = forwardRef((props, ref) => {
 
             {/* Container for SpinningText - Adjust these classes */}
             <motion.div
-              initial={{ opacity: 0, y: 20 }} 
+              initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.7 }}
-              className="flex items-start justify-start w-full mt-4 md:mt-6 lg:mt-6" 
+              className="flex items-start justify-start w-full mt-4 md:mt-6 lg:mt-6"
             >
               <a
                 href={cvFile}
@@ -205,32 +205,46 @@ const About = forwardRef((props, ref) => {
               </a>
             </motion.div>
           </motion.div>
+          {/* Tag Grid - kanan dari "BEYOND THE CODE" */}
           <motion.div
             initial={{ opacity: 0, x: 20 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.6, delay: 0.8 }}
-            className="grid grid-cols-2 gap-4"
+            className="flex justify-end"
           >
-             {/* Kanan: Grid Tag */}
-  <div className="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-5 gap-4">
-    {[
-      "Startup", "Colourful", "Agency", "Large Type", "React",
-      "Portfolio", "Minimal", "Pastel", "Grid", "Animation",
-      "Dark", "Typographic", "Illustrative", "Netlify", "Fun",
-      "Shop", "Inter", "Mobile"
-    ].map((tag, index) => (
-      <span
-        key={index}
-        className={`border px-4 py-1 rounded-full text-sm text-white ${
-          tag === "React" || tag === "Animation" || tag === "Grid"
-            ? "bg-white text-black"
-            : "border-white"
-        }`}
-      >
-        {tag}
-      </span>
-    ))}
-  </div>
+            <div className="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-5 gap-3 w-fit">
+              {[
+                "Startup",
+                "Colourful",
+                "Agency",
+                "Large Type",
+                "React",
+                "Portfolio",
+                "Minimal",
+                "Pastel",
+                "Grid",
+                "Animation",
+                "Dark",
+                "Typographic",
+                "Illustrative",
+                "Netlify",
+                "Fun",
+                "Shop",
+                "Inter",
+                "Mobile",
+              ].map((tag, index) => (
+                <span
+                  key={index}
+                  className={`border px-4 py-1 rounded-full text-xs md:text-sm whitespace-nowrap transition-all duration-200 ${
+                    tag === "React" || tag === "Animation" || tag === "Grid"
+                      ? "bg-white text-black"
+                      : "border-white text-white"
+                  }`}
+                >
+                  {tag}
+                </span>
+              ))}
+            </div>
           </motion.div>
         </div>
       </motion.div>
