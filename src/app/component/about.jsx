@@ -211,8 +211,26 @@ const About = forwardRef((props, ref) => {
             transition={{ duration: 0.6, delay: 0.8 }}
             className="grid grid-cols-2 gap-4"
           >
-            {/* This section can be filled with other components or elements if needed */}
-            <div className="text-center"></div>
+             {/* Kanan: Grid Tag */}
+  <div className="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-5 gap-4">
+    {[
+      "Startup", "Colourful", "Agency", "Large Type", "React",
+      "Portfolio", "Minimal", "Pastel", "Grid", "Animation",
+      "Dark", "Typographic", "Illustrative", "Netlify", "Fun",
+      "Shop", "Inter", "Mobile"
+    ].map((tag, index) => (
+      <span
+        key={index}
+        className={`border px-4 py-1 rounded-full text-sm text-white ${
+          tag === "React" || tag === "Animation" || tag === "Grid"
+            ? "bg-white text-black"
+            : "border-white"
+        }`}
+      >
+        {tag}
+      </span>
+    ))}
+  </div>
           </motion.div>
         </div>
       </motion.div>
