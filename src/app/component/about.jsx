@@ -12,7 +12,6 @@ import {
 
 import {
   TextRevealCard,
-  TextRevealCardTitle,
   TextRevealCardDescription,
 } from "./ui/text-reveal-card";
 
@@ -50,6 +49,36 @@ const About = forwardRef((props, ref) => {
   const paragraph2 = `I love turning ideas into intuitive interfaces that feel natural across devices. For me, great design starts with empathy and ends with purposeful execution. Outside of coding, I lead creative initiatives as the Head of Talent & Interests in the student association, where I bridge tech, culture, and community.`;
 
   const fullDescription = `${paragraph1}\n\n${paragraph2}`;
+
+  // Daftar tag yang diperbarui dengan skills/tools Anda
+  const tags = [
+    "HTML",
+    "CSS",
+    "JavaScript",
+    "React",
+    "Next.js",
+    "Tailwind",
+    "Figma",
+    "Framer Motion",
+    "Firebase",
+    "UI/UX Design",
+    "Git",
+    "Responsive Design",
+    "Web Performance",
+    "API Integration",
+    "Node.js (Basic)",
+    "SQL (Basic)",
+  ];
+
+  // Tag yang akan diberi gaya 'active'
+  const activeTags = [
+    "React",
+    "Next.js",
+    "Tailwind",
+    "Framer Motion",
+    "UI/UX Design",
+    "Responsive Design",
+  ];
 
   return (
     <motion.section
@@ -205,45 +234,40 @@ const About = forwardRef((props, ref) => {
               </a>
             </motion.div>
           </motion.div>
+
           {/* Tag Grid - kanan dari "BEYOND THE CODE" */}
           <motion.div
             initial={{ opacity: 0, x: 20 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.6, delay: 0.8 }}
-            className="flex justify-end"
+            className="flex justify-start md:justify-end" // Align to start on small screens, end on medium+
           >
-            <div className="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-5 gap-3 w-fit">
-              {[
-                "Startup",
-                "Colourful",
-                "Agency",
-                "Large Type",
-                "React",
-                "Portfolio",
-                "Minimal",
-                "Pastel",
-                "Grid",
-                "Animation",
-                "Dark",
-                "Typographic",
-                "Illustrative",
-                "Netlify",
-                "Fun",
-                "Shop",
-                "Inter",
-                "Mobile",
-              ].map((tag, index) => (
-                <span
-                  key={index}
-                  className={`border px-4 py-1 rounded-full text-xs md:text-sm whitespace-nowrap transition-all duration-200 ${
-                    tag === "React" || tag === "Animation" || tag === "Grid"
-                      ? "bg-white text-black"
-                      : "border-white text-white"
-                  }`}
-                >
-                  {tag}
-                </span>
-              ))}
+            <div className="flex flex-wrap gap-3 max-w-full">
+              {" "}
+              {/* Use flex-wrap for wrapping tags */}
+              {tags.map((tag, index) => {
+                const isActive = activeTags.includes(tag);
+                return (
+                  <span
+                    key={index}
+                    className={`
+                      px-4 py-1 rounded-full text-xs md:text-sm whitespace-nowrap
+                      border
+                      transition-all duration-300 ease-in-out
+                      cursor-pointer
+                      ${
+                        isActive
+                          ? "bg-black text-white dark:bg-white dark:text-black" // Active style
+                          : "bg-transparent text-black border-black hover:bg-black hover:text-white hover:shadow-lg hover:scale-[1.05] " + // Light mode default & hover
+                            "dark:text-white dark:border-white dark:hover:bg-white dark:hover:text-black dark:hover:shadow-lg dark:hover:scale-[1.05]" // Dark mode default & hover
+                      }
+                    `}
+                    aria-label={tag}
+                  >
+                    {tag}
+                  </span>
+                );
+              })}
             </div>
           </motion.div>
         </div>
