@@ -60,14 +60,13 @@ const About = forwardRef((props, ref) => {
     "Tailwind",
     "Figma",
     "Framer Motion",
-    "Firebase",
-    "UI/UX Design",
+    "MYSQL",
+    "UI/UX",
     "Git",
     "Responsive Design",
     "Web Performance",
-    "API Integration",
-    "Node.js (Basic)",
-    "SQL (Basic)",
+    "Node.js",
+    "SQL",
   ];
 
   // Tag yang akan diberi gaya 'active'
@@ -76,7 +75,7 @@ const About = forwardRef((props, ref) => {
     "Next.js",
     "Tailwind",
     "Framer Motion",
-    "UI/UX Design",
+    "UI/UX",
     "Responsive Design",
   ];
 
@@ -251,7 +250,7 @@ const About = forwardRef((props, ref) => {
                   <span
                     key={index}
                     className={`
-                      px-4 py-1 rounded-full text-xs md:text-sm whitespace-nowrap
+                      px-2 py-1 rounded-full text-xs md:text-sm whitespace-nowrap
                       border
                       transition-all duration-300 ease-in-out
                       cursor-pointer
