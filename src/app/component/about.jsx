@@ -83,7 +83,7 @@ const About = forwardRef((props, ref) => {
     <motion.section
       ref={ref}
       id="about"
-      className="min-h-[100vh] bg-white dark:bg-black text-gray-900 dark:text-white px-6 md:px-12 lg:px-24 py-20 overflow-hidden"
+      className="min-h-[100vh] bg-white dark:bg-black text-gray-900 dark:text-white px-6 md:px-10 lg:px-16 py-14 overflow-hidden"
     >
       {/* Top Heading Section */}
       <motion.div
@@ -123,10 +123,10 @@ const About = forwardRef((props, ref) => {
             <h3 className="font-montserrat text-[clamp(2rem,8vw,5rem)] lg:text-[clamp(3rem,6vw,5rem)] font-bold mb-1 hover:scale-105 hover:letter-spacing-[0.1em] hover:text-shadow-md transition-all duration-300">
               Fendyra
             </h3>
-            <h3 className="font-montserrat text-[clamp(2rem,8vw,5rem)] lg:text-[clamp(3rem,6vw,5rem)] font-bold mb-1 ml-[20vw] md:ml-[30px] lg:ml-[100px] hover:scale-105 hover:letter-spacing-[0.1em] hover:text-shadow-md transition-all duration-300">
+            <h3 className="font-montserrat text-[clamp(2rem,8vw,5rem)] lg:text-[clamp(3rem,6vw,5rem)] font-bold mb-1 ml-[25vw] md:ml-0 lg:ml-[150px] hover:scale-105 hover:letter-spacing-[0.1em] hover:text-shadow-md transition-all duration-300">
               Restu
             </h3>
-            <h3 className="font-montserrat text-[clamp(2rem,8vw,5rem)] lg:text-[clamp(3rem,6vw,5rem)] font-bold ml-[30vw] md:ml-[30px] lg:ml-[170px] hover:scale-105 hover:letter-spacing-[0.1em] hover:text-shadow-md transition-all duration-300">
+            <h3 className="font-montserrat text-[clamp(2rem,8vw,5rem)] lg:text-[clamp(3rem,6vw,5rem)] font-bold ml-[35vw] md:ml-0 lg:ml-[230px] hover:scale-105 hover:letter-spacing-[0.1em] hover:text-shadow-md transition-all duration-300">
               Dewangga
             </h3>
           </div>
@@ -197,7 +197,7 @@ const About = forwardRef((props, ref) => {
             className="text-justify"
           >
             {/* Wrapper for TextRevealCard */}
-            <div className="flex items-center justify-center overflow-hidden">
+            <div className="w-full flex justify-start pr-4 md:pr-8 ml-2 md:ml-0 lg:ml-0">
               <TextRevealCard
                 text={fullDescription}
                 revealText={fullDescription}
@@ -214,7 +214,7 @@ const About = forwardRef((props, ref) => {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.7 }}
-              className="flex items-start justify-start w-full mt-4 md:mt-6 lg:mt-6"
+              className="flex items-start justify-start w-full mt-4 md:mt-4 lg:mt-4 ml-2 md:ml-0 lg:ml-0"
             >
               <a
                 href={cvFile}
@@ -241,24 +241,23 @@ const About = forwardRef((props, ref) => {
             transition={{ duration: 0.6, delay: 0.8 }}
             className="flex justify-start md:justify-end" // Align to start on small screens, end on medium+
           >
-            <div className="flex flex-wrap gap-3 max-w-full">
-              {" "}
-              {/* Use flex-wrap for wrapping tags */}
+            {/* Mengganti grid-cols-* dengan flex-wrap untuk layout yang lebih fluid dan konsisten */}
+            <div className="flex flex-wrap gap-3 max-w-full md:max-w-[450px]">
               {tags.map((tag, index) => {
                 const isActive = activeTags.includes(tag);
                 return (
                   <span
                     key={index}
                     className={`
-                      px-2 py-1 rounded-full text-xs md:text-sm whitespace-nowrap
-                      border
+                      px-3 py-1 rounded-full whitespace-nowrap
+                      border text-sm md:text-base
                       transition-all duration-300 ease-in-out
                       cursor-pointer
                       ${
                         isActive
                           ? "bg-black text-white dark:bg-white dark:text-black" // Active style
-                          : "bg-transparent text-black border-black hover:bg-black hover:text-white hover:shadow-lg hover:scale-[1.05] " + // Light mode default & hover
-                            "dark:text-white dark:border-white dark:hover:bg-white dark:hover:text-black dark:hover:shadow-lg dark:hover:scale-[1.05]" // Dark mode default & hover
+                          : "bg-transparent text-black border-black hover:bg-black hover:text-white hover:shadow-lg hover:scale-105 " + // Light mode default & hover
+                            "dark:text-white dark:border-white dark:hover:bg-white dark:hover:text-black dark:hover:shadow-lg dark:hover:scale-105" // Dark mode default & hover
                       }
                     `}
                     aria-label={tag}
