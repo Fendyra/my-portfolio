@@ -126,19 +126,8 @@ const About = forwardRef((props, ref) => {
     >
       {/* Full-Width Edge-to-Edge Heading */}
       <div className="w-full max-w-none mx-0 px-0 relative">
-        {/* Background Text (Optional Backdrop) */}
-        <div
-          className="absolute inset-0 flex items-center justify-center overflow-hidden pointer-events-none"
-          aria-hidden="true"
-        >
-          <span className="text-black/5 dark:text-white/5 font-black uppercase tracking-tight leading-none whitespace-nowrap text-[clamp(4rem,20vw,15rem)]">
-            CTRL + ME
-          </span>
-        </div>
-
-        {/* Main Heading */}
-        <motion.h1
-          initial={{ opacity: 0, y: -30 }}
+        <motion.div
+          initial={{ opacity: 0, y: -30 }} // Retain animation from original motion.h1
           animate={{ opacity: 1, y: 0 }}
           transition={{
             duration: 0.8,
@@ -146,20 +135,20 @@ const About = forwardRef((props, ref) => {
             delay: 0.2,
           }}
           className={`
-            ${montserrat.className}
-            w-full max-w-none mx-0 px-0
-            text-center
-            font-black uppercase tracking-tight leading-none
-            text-black dark:text-white
-            text-[clamp(3rem,15vw,10rem)]
-            whitespace-nowrap
-            py-8 md:py-12 lg:py-16
+            relative flex items-center justify-center overflow-hidden pointer-events-none
+            w-full
+            py-2 md:py-6 lg:py-8
             bg-inherit
+            ${montserrat.className}
+            text-[clamp(4rem,20vw,15rem)]
+            font-black uppercase tracking-tight leading-none whitespace-nowrap
+            text-black/10 dark:text-white/5
           `}
+          aria-hidden="true"
           aria-label="CTRL + ME - Developer Portfolio Heading"
         >
           CTRL + ME
-        </motion.h1>
+        </motion.div>
       </div>
 
       {/* Content Container with Padding */}
@@ -174,7 +163,7 @@ const About = forwardRef((props, ref) => {
           <p
             className={`${spaceMono.className} text-sm text-gray-600 dark:text-gray-400`}
           >
-            Creative Developer
+            /'Creative Developer'
           </p>
         </motion.div>
 
@@ -350,7 +339,6 @@ const About = forwardRef((props, ref) => {
                         y: -2,
                         transition: { duration: 0.2 },
                       }}
-                      // --- MODIFIED CLASSES HERE ---
                       className={`
                         px-4 py-2 rounded-full text-sm font-medium
                         border cursor-pointer select-none
