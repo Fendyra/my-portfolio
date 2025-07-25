@@ -45,7 +45,7 @@ const cvFile =
 const MotionImage = motion(Image);
 
 const About = forwardRef((props, ref) => {
-  const paragraph1 = `Hi, I’m Fendyra Restu Dewangga — a frontend developer and UI enthusiast passionate about building clean, responsive, and user-centered web experiences. Currently in my 5th semester studying Information Systems at UPN "Veteran" Yogyakarta, I combine design thinking with code using tools like Laravel, React, Next.js, Tailwind, and Figma.`;
+  const paragraph1 = `Hi, I'm Fendyra Restu Dewangga — a frontend developer and UI enthusiast passionate about building clean, responsive, and user-centered web experiences. Currently in my 5th semester studying Information Systems at UPN "Veteran" Yogyakarta, I combine design thinking with code using tools like Laravel, React, Next.js, Tailwind, and Figma.`;
   const paragraph2 = `I love turning ideas into intuitive interfaces that feel natural across devices. For me, great design starts with empathy and ends with purposeful execution. Outside of coding, I lead creative initiatives as the Head of Talent & Interests in the student association, where I bridge tech, culture, and community.`;
 
   const fullDescription = `${paragraph1}\n\n${paragraph2}`;
@@ -67,6 +67,8 @@ const About = forwardRef((props, ref) => {
     "Web Performance",
     "Node.js",
     "SQL",
+    "Laravel",
+    "PHP",
   ];
 
   // Tag yang akan diberi gaya 'active'
@@ -77,6 +79,7 @@ const About = forwardRef((props, ref) => {
     "Framer Motion",
     "UI/UX",
     "Responsive Design",
+    "Laravel",``
   ];
 
   return (
@@ -177,7 +180,7 @@ const About = forwardRef((props, ref) => {
         </motion.div>
       </motion.div>
 
-      {/* Extended About Section */}
+      {/* Extended About Section - BEYOND THE CODE */}
       <motion.div
         initial={{ opacity: 0, y: 50 }}
         animate={{ opacity: 1, y: 0 }}
@@ -185,23 +188,25 @@ const About = forwardRef((props, ref) => {
         className="mt-14"
       >
         <h2
-          className={`${montserrat.className} font-bold text-[clamp(2rem,6vw,4rem)] mb-6 text-center md:text-left`}
+          className={`${montserrat.className} font-bold text-[clamp(2rem,6vw,4rem)] mb-8 text-center md:text-left`}
         >
           BEYOND THE CODE
         </h2>
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12">
+          {/* Left Column - Description and Spinning Text */}
           <motion.div
             initial={{ opacity: 0, x: -20 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.6, delay: 0.7 }}
-            className="text-justify"
+            className="space-y-6"
           >
-            {/* Wrapper for TextRevealCard */}
-            <div className="w-full flex justify-start pr-4 md:pr-8 ml-2 md:ml-0 lg:ml-0">
+            {/* TextRevealCard Wrapper */}
+            <div className="w-full flex justify-start text-justify">
               <TextRevealCard
                 text={fullDescription}
                 revealText={fullDescription}
-                className="w-full"
+                className="w-full text-justify"
               >
                 <TextRevealCardDescription>
                   <code>onHover() =&gt; revealProfile()</code>
@@ -209,18 +214,18 @@ const About = forwardRef((props, ref) => {
               </TextRevealCard>
             </div>
 
-            {/* Container for SpinningText - Adjust these classes */}
+            {/* SpinningText Container */}
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 0.7 }}
-              className="flex items-start justify-start w-full mt-4 md:mt-4 lg:mt-4 ml-2 md:ml-0 lg:ml-0"
+              transition={{ duration: 0.6, delay: 0.8 }}
+              className="flex items-start justify-start w-full"
             >
               <a
                 href={cvFile}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="relative inline-flex items-center justify-center rounded-full"
+                className="relative inline-flex items-center justify-center rounded-full hover:scale-105 transition-transform duration-300"
                 style={{
                   width: "12ch",
                   height: "12ch",
@@ -234,36 +239,68 @@ const About = forwardRef((props, ref) => {
             </motion.div>
           </motion.div>
 
-          {/* Tag Grid - kanan dari "BEYOND THE CODE" */}
+          {/* Right Column - Skills Tags */}
           <motion.div
             initial={{ opacity: 0, x: 20 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.6, delay: 0.8 }}
-            className="flex justify-start md:justify-end" // Align to start on small screens, end on medium+
+            className="flex flex-col items-start lg:items-end"
           >
-            {/* Mengganti grid-cols-* dengan flex-wrap untuk layout yang lebih fluid dan konsisten */}
-            <div className="flex flex-wrap gap-3 max-w-full md:max-w-[450px]">
+            {/* Skills Label */}
+            <motion.div
+              initial={{ opacity: 0, y: -10 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.4, delay: 0.9 }}
+              className="mb-4"
+            >
+              <p
+                className={`${spaceMono.className} text-sm text-gray-600 dark:text-gray-400 uppercase tracking-wider`}
+              >
+                [SKILLS & TOOLS]
+              </p>
+            </motion.div>
+
+            {/* Tags Container - Fixed Structure */}
+            <div className="flex flex-wrap gap-2 max-w-full md:max-w-[500px] lg:max-w-[550px] justify-start lg:justify-end">
               {tags.map((tag, index) => {
                 const isActive = activeTags.includes(tag);
                 return (
-                  <span
+                  <motion.span
                     key={index}
+                    initial={{ opacity: 0, scale: 0.8, y: 10 }}
+                    animate={{ opacity: 1, scale: 1, y: 0 }}
+                    transition={{ 
+                      duration: 0.4, 
+                      delay: 1.0 + (index * 0.05),
+                      ease: "easeOut"
+                    }}
+                    whileHover={{ 
+                      scale: 1.05,
+                      y: -2,
+                      transition: { duration: 0.2 }
+                    }}
                     className={`
-                      px-3 py-1 rounded-full whitespace-nowrap
-                      border text-sm md:text-base
+                      px-4 py-1.5 rounded-full text-sm font-medium
+                      border cursor-pointer select-none
                       transition-all duration-300 ease-in-out
-                      cursor-pointer
+                      whitespace-nowrap inline-block
+                      transform-gpu will-change-transform
                       ${
                         isActive
-                          ? "bg-black text-white dark:bg-white dark:text-black" // Active style
-                          : "bg-transparent text-black border-black hover:bg-black hover:text-white hover:shadow-lg hover:scale-105 " + // Light mode default & hover
-                            "dark:text-white dark:border-white dark:hover:bg-white dark:hover:text-black dark:hover:shadow-lg dark:hover:scale-105" // Dark mode default & hover
+                          ? // Active tags - solid filled with subtle shadow
+                            "bg-black text-white border-black shadow-md " +
+                            "dark:bg-white dark:text-black dark:border-white dark:shadow-md"
+                          : // Inactive tags - outline with hover effects and shadows
+                            "bg-transparent text-black border-black " +
+                            "hover:bg-black hover:text-white hover:shadow-lg hover:shadow-black/20 " +
+                            "dark:text-white dark:border-white " +
+                            "dark:hover:bg-white dark:hover:text-black dark:hover:shadow-lg dark:hover:shadow-white/20"
                       }
                     `}
-                    aria-label={tag}
+                    aria-label={`${tag} skill tag`}
                   >
                     {tag}
-                  </span>
+                  </motion.span>
                 );
               })}
             </div>
