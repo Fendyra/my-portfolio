@@ -17,6 +17,20 @@ import {
 
 import { SpinningText } from "./ui/SpinningText";
 
+// StarIcon Component - No changes needed here
+const StarIcon = ({ filled }) => (
+  <svg
+    className={`w-4 h-4 ${
+      filled ? "text-yellow-400" : "text-gray-300 dark:text-gray-600"
+    }`}
+    fill="currentColor"
+    viewBox="0 0 20 20"
+    xmlns="http://www.w3.org/2000/svg"
+  >
+    <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.538 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.783.57-1.838-.197-1.538-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.462a1 1 0 00.95-.69l1.07-3.292z"></path>
+  </svg>
+);
+
 const montserrat = Montserrat({
   subsets: ["latin"],
   weight: ["400", "700"],
@@ -50,37 +64,56 @@ const About = forwardRef((props, ref) => {
 
   const fullDescription = `${paragraph1}\n\n${paragraph2}`;
 
-  // Daftar tag yang diperbarui dengan skills/tools Anda
-  const tags = [
-    "HTML",
-    "CSS",
-    "JavaScript",
-    "React",
-    "Next.js",
-    "Tailwind",
-    "Figma",
-    "Framer Motion",
-    "MYSQL",
-    "UI/UX",
-    "Git",
-    "Responsive Design",
-    "Web Performance",
-    "Node.js",
-    "SQL",
-    "Laravel",
-    "PHP",
+  // Updated skills with skill levels (1-5 stars)
+  const skills = [
+    { name: "HTML", level: 4 },
+    { name: "CSS", level: 4 },
+    { name: "JavaScript", level: 4 },
+    { name: "React", level: 4 },
+    { name: "Next.js", level: 4 },
+    { name: "Tailwind", level: 4},
+    { name: "Figma", level: 4 },
+    { name: "Framer Motion"},
+    { name: "MYSQL", level: 4 },
+    { name: "UI/UX", level: 4 },
+    { name: "Git", level: 3 },
+    { name: "Responsive Design" },
+    { name: "Web Performance" },
+    { name: "Github", level: 4 },
+    { name: "Vercel", level: 3 },
+    { name: "Deployment", level: 3 },
+    { name: "Prototyping", level: 4 },
+    { name: "Node.js", level: 3 },
+    { name: "SQL", level: 3 },
+    { name: "Laravel", level: 4 },
+    { name: "PHP", level: 4 },
+    { name: "VS Code", level: 5 },
+    { name: "Web Development" },
   ];
 
-  // Tag yang akan diberi gaya 'active'
+  // Tag that will be styled as 'active' (can be derived from skills with high level, or separate)
   const activeTags = [
-    "React",
+    "HTML",
     "Next.js",
     "Tailwind",
     "Framer Motion",
     "UI/UX",
     "Responsive Design",
-    "Laravel",``
+    "Laravel",
+    "Node.js",
+    "Vercel",
+    "Prototyping",
+    "VS Code",
   ];
+
+  const renderStars = (level) => {
+    const stars = [];
+    for (let i = 1; i <= 5; i++) {
+      stars.push(<StarIcon key={i} filled={i <= level} />);
+    }
+    // Added a small margin-top to separate stars from the skill name
+    return <div className="flex mt-0.5">{stars}</div>;
+  };
 
   return (
     <motion.section
@@ -262,44 +295,46 @@ const About = forwardRef((props, ref) => {
 
             {/* Tags Container - Fixed Structure */}
             <div className="flex flex-wrap gap-2 max-w-full md:max-w-[500px] lg:max-w-[550px] justify-start lg:justify-end">
-              {tags.map((tag, index) => {
-                const isActive = activeTags.includes(tag);
+              {skills.map((skill, index) => {
+                const isActive = activeTags.includes(skill.name);
                 return (
                   <motion.span
                     key={index}
                     initial={{ opacity: 0, scale: 0.8, y: 10 }}
                     animate={{ opacity: 1, scale: 1, y: 0 }}
-                    transition={{ 
-                      duration: 0.4, 
-                      delay: 1.0 + (index * 0.05),
-                      ease: "easeOut"
+                    transition={{
+                      duration: 0.4,
+                      delay: 1.0 + index * 0.05,
+                      ease: "easeOut",
                     }}
-                    whileHover={{ 
+                    whileHover={{
                       scale: 1.05,
                       y: -2,
-                      transition: { duration: 0.2 }
+                      transition: { duration: 0.2 },
                     }}
+                    // --- MODIFIED CLASSES HERE ---
                     className={`
-                      px-4 py-1.5 rounded-full text-sm font-medium
+                      px-4 py-2 rounded-full text-sm font-medium // Increased vertical padding for better look
                       border cursor-pointer select-none
                       transition-all duration-300 ease-in-out
-                      whitespace-nowrap inline-block
+                      flex flex-col items-center justify-center // Changed to flex-col and centered
                       transform-gpu will-change-transform
                       ${
                         isActive
-                          ? // Active tags - solid filled with subtle shadow
-                            "bg-black text-white border-black shadow-md " +
+                          ? "bg-black text-white border-black shadow-md " +
                             "dark:bg-white dark:text-black dark:border-white dark:shadow-md"
-                          : // Inactive tags - outline with hover effects and shadows
-                            "bg-transparent text-black border-black " +
+                          : "bg-transparent text-black border-black " +
                             "hover:bg-black hover:text-white hover:shadow-lg hover:shadow-black/20 " +
                             "dark:text-white dark:border-white " +
                             "dark:hover:bg-white dark:hover:text-black dark:hover:shadow-lg dark:hover:shadow-white/20"
                       }
                     `}
-                    aria-label={`${tag} skill tag`}
+                    aria-label={`${skill.name} skill tag with ${skill.level} out of 5 stars`}
                   >
-                    {tag}
+                    <span className="mb-0.5">{skill.name}</span>{" "}
+                    {/* Wrap name to control its spacing */}
+                    {renderStars(skill.level)}{" "}
+                    {/* Stars will now appear below the name */}
                   </motion.span>
                 );
               })}
