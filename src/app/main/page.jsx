@@ -9,6 +9,7 @@ import FullScreenMenu from "../component/ui/FullScreenMenu";
 import HeaderIcons from "../component/header";
 import Home from "../component/home";
 import About from "../component/about";
+import Project from "../component/project";
 
 const montserrat = Montserrat({
   subsets: ["latin"],
@@ -58,6 +59,7 @@ const MainPortfolio = () => {
       </div>
       <Home aboutSectionRef={aboutSectionRef} />
       <About ref={aboutSectionRef} />
+      <Project ref={aboutSectionRef} />
     </div>
   );
 };

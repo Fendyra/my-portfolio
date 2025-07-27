@@ -142,7 +142,7 @@ const About = forwardRef((props, ref) => {
             ${montserrat.className}
             text-[clamp(4rem,20vw,15rem)]
             font-black uppercase tracking-tight leading-none whitespace-nowrap
-            text-black/15 dark:text-white/100
+            text-black/15 dark:text-white/10
           `}
           aria-hidden="true"
           aria-label="CTRL + ME - Developer Portfolio Heading"
@@ -261,7 +261,7 @@ const About = forwardRef((props, ref) => {
               transition={{ duration: 0.6, delay: 1.3 }}
               className="space-y-6"
             >
-              {/* TextRevealCard Wrapper */}
+              {/* TextRevealCard Wrapper - Pastikan perataan kiri pada md dan di atasnya */}
               <div className="w-full flex justify-start text-justify">
                 <TextRevealCard
                   text={fullDescription}
