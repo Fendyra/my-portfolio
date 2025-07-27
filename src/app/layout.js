@@ -19,7 +19,7 @@ export default function RootLayout({ children }) {
   return (
     <html
       lang="en"
-      className={`${montserrat.variable} ${playfairDisplay.variable}`}
+      className={`${montserrat.variable} ${playfairDisplay.variable} dark`} // Tambahkan kelas 'dark' di sini
     >
       <head>
         {/* Anda bisa menambahkan meta tag atau link lain di sini jika diperlukan */}
