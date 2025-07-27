@@ -142,7 +142,7 @@ const About = forwardRef((props, ref) => {
             ${montserrat.className}
             text-[clamp(4rem,20vw,15rem)]
             font-black uppercase tracking-tight leading-none whitespace-nowrap
-            text-black/10 dark:text-white/5
+            text-black/15 dark:text-white/100
           `}
           aria-hidden="true"
           aria-label="CTRL + ME - Developer Portfolio Heading"
