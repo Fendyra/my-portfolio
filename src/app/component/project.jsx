@@ -2,11 +2,17 @@
 
 import React, { forwardRef } from "react";
 import { motion } from "framer-motion";
-import { Montserrat } from "next/font/google";
+import { Montserrat, Space_Mono } from "next/font/google";
 
 const montserrat = Montserrat({
   subsets: ["latin"],
   weight: ["400", "700"],
+});
+
+const spaceMono = Space_Mono({
+  subsets: ["latin"],
+  weight: ["400", "700"],
+  variable: "--font-space-mono",
 });
 
 const Project = forwardRef((props, ref) => {
@@ -35,7 +41,19 @@ const Project = forwardRef((props, ref) => {
           aria-hidden="true"
           aria-label="MY WORKS - Developer Portfolio Heading"
         >
-          MY WORKS
+          SHOWCASE
+        </motion.div>
+
+        {/* Subtitle */}
+        <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.4 }}
+            className="w-full text-center mb-12"
+        >
+        <p className={`${spaceMono.className} text-sm text-gray-600 dark:text-gray-400`}>
+            ./My Builds - A Showcase of My Work
+        </p>
         </motion.div>
       </div>
     </motion.section>

@@ -163,7 +163,7 @@ const About = forwardRef((props, ref) => {
           <p
             className={`${spaceMono.className} text-sm text-gray-600 dark:text-gray-400`}
           >
-            /'Creative Developer'
+            ./Creative Developer - Half designer, half coder
           </p>
         </motion.div>
 
