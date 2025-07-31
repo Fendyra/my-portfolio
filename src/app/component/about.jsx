@@ -17,20 +17,6 @@ import {
 
 import { SpinningText } from "./ui/SpinningText";
 
-// StarIcon Component - No changes needed here
-const StarIcon = ({ filled }) => (
-  <svg
-    className={`w-4 h-4 ${
-      filled ? "text-yellow-400" : "text-gray-300 dark:text-gray-600"
-    }`}
-    fill="currentColor"
-    viewBox="0 0 20 20"
-    xmlns="http://www.w3.org/2000/svg"
-  >
-    <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.538 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.783.57-1.838-.197-1.538-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.462a1 1 0 00.95-.69l1.07-3.292z"></path>
-  </svg>
-);
-
 const montserrat = Montserrat({
   subsets: ["latin"],
   weight: ["400", "700"],
@@ -64,30 +50,29 @@ const About = forwardRef((props, ref) => {
 
   const fullDescription = `${paragraph1}\n\n${paragraph2}`;
 
-  // Updated skills with skill levels (1-5 stars)
   const skills = [
-    { name: "HTML", level: 4 },
-    { name: "CSS", level: 4 },
-    { name: "JavaScript", level: 4 },
-    { name: "React", level: 4 },
-    { name: "Next.js", level: 4 },
-    { name: "Tailwind", level: 4 },
-    { name: "Figma", level: 4 },
+    { name: "HTML" },
+    { name: "CSS" },
+    { name: "JavaScript" },
+    { name: "React" },
+    { name: "Next.js" },
+    { name: "Tailwind" },
+    { name: "Figma" },
     { name: "Framer Motion" },
-    { name: "MYSQL", level: 4 },
-    { name: "UI/UX", level: 4 },
-    { name: "Git", level: 3 },
+    { name: "MYSQL" },
+    { name: "UI/UX" },
+    { name: "Git"},
     { name: "Responsive Design" },
     { name: "Web Performance" },
-    { name: "Github", level: 4 },
-    { name: "Vercel", level: 3 },
-    { name: "Deployment", level: 3 },
-    { name: "Prototyping", level: 4 },
-    { name: "Node.js", level: 3 },
-    { name: "PostgreSQL", level: 2 },
-    { name: "Laravel", level: 4 },
-    { name: "PHP", level: 4 },
-    { name: "VS Code", level: 5 },
+    { name: "Github" },
+    { name: "Vercel"},
+    { name: "Deployment"},
+    { name: "Prototyping" },
+    { name: "Node.js"},
+    { name: "PostgreSQL"},
+    { name: "Laravel" },
+    { name: "PHP" },
+    { name: "VS Code"},
     { name: "Web Development" },
   ];
 
@@ -106,17 +91,7 @@ const About = forwardRef((props, ref) => {
     "VS Code",
   ];
 
-  const renderStars = (level) => {
-    if (typeof level !== "number" || level < 1 || level > 5) {
-      return null; // Return null if level is not a valid number between 1 and 5
-    }
-    const stars = [];
-    for (let i = 1; i <= 5; i++) {
-      stars.push(<StarIcon key={i} filled={i <= level} />);
-    }
-    // Added a small margin-top to separate stars from the skill name
-    return <div className="flex mt-0.5">{stars}</div>;
-  };
+  // REMOVED renderStars function
 
   return (
     <motion.section
@@ -163,7 +138,7 @@ const About = forwardRef((props, ref) => {
           <p
             className={`${spaceMono.className} text-sm text-gray-600 dark:text-gray-400`}
           >
-            ./Creative Developer - Half designer, half coder
+            ./Creative Developer - Code Meets Character
           </p>
         </motion.div>
 
@@ -355,10 +330,9 @@ const About = forwardRef((props, ref) => {
                               "dark:hover:bg-white dark:hover:text-black dark:hover:shadow-lg dark:hover:shadow-white/20"
                         }
                       `}
-                      aria-label={`${skill.name} skill tag with ${skill.level} out of 5 stars`}
+                      aria-label={`${skill.name} skill tag`}
                     >
-                      <span className="mb-0.5">{skill.name}</span>
-                      {renderStars(skill.level)}
+                      <span>{skill.name}</span>
                     </motion.span>
                   );
                 })}
