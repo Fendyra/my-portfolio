@@ -21,7 +21,7 @@ const montserrat = Montserrat({
 const menuItems = [
   { name: "Home", href: "/", largeText: "DIVE IN" },
   { name: "About", href: "#about", largeText: "WHO AM I" },
-  { name: "Works", href: "/works", largeText: "SHOWCASE" },
+  { name: "Works", href: "/works", largeText: "CREATIONS" },
   { name: "Service", href: "/service", largeText: "WHAT I DO" },
   { name: "Contact", href: "/contact", largeText: "PING ME" },
 ];
