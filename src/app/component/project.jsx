@@ -3,7 +3,7 @@
 import React, { forwardRef } from "react";
 import { motion } from "framer-motion";
 import { Montserrat, Space_Mono } from "next/font/google";
-import { HoverImageLinks } from "./ui/HoverImageLinks"; // Import komponen baru
+import { HoverImageLinks } from "./ui/HoverImageLinks"; 
 
 const montserrat = Montserrat({
   subsets: ["latin"],

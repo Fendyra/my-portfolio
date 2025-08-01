@@ -1,70 +1,53 @@
-"use client";
-
 import { useMotionValue, motion, useSpring, useTransform } from "framer-motion";
 import React, { useRef } from "react";
-import { ArrowRight } from "lucide-react";
-import Link from "next/link"; 
-
-const projects = [
-  {
-    heading: "E-Commerce App",
-    subheading: "A full-stack e-commerce platform.",
-    imgSrc: "https://placehold.co/600x400/94a3b8/ffffff?text=Project+1",
-    href: "#",
-  },
-  {
-    heading: "Personal Blog",
-    subheading: "A minimalist blog with a custom CMS.",
-    imgSrc: "https://placehold.co/600x400/94a3b8/ffffff?text=Project+2",
-    href: "#",
-  },
-  {
-    heading: "Social Media Dashboard",
-    subheading: "Analytics and management for social media.",
-    imgSrc: "https://placehold.co/600x400/94a3b8/ffffff?text=Project+3",
-    href: "#",
-  },
-  {
-    heading: "To-Do List App",
-    subheading: "A simple and intuitive task manager.",
-    imgSrc: "https://placehold.co/600x400/94a3b8/ffffff?text=Project+4",
-    href: "#",
-  },
-];
+import { FiArrowRight } from "react-icons/fi";
 
 export const HoverImageLinks = () => {
   return (
-    <section className="bg-inherit px-4 md:px-8">
+    <section className="bg-neutral-950 p-4 md:p-8">
       <div className="mx-auto max-w-5xl">
-        {projects.map((project, index) => (
-          <LinkComponent
-            key={index}
-            heading={project.heading}
-            subheading={project.subheading}
-            imgSrc={project.imgSrc}
-            href={project.href}
-          />
-        ))}
+        <Link
+          heading="BusyWeends Jr"
+          subheading="A full-stack e-commerce platform"
+          imgSrc="/assets/busyweeknds.png"
+          href="#"
+        />
+        <Link
+          heading="E-Learnify"
+          subheading="An interactive e-learning platform built for modern learners"
+          imgSrc="/assets/elearnify.png"
+          href="#"
+        />
+        <Link
+          heading="Portfolio V1"
+          subheading="Where it all started - OG Version"
+          imgSrc="/assets/portfolio-V1.png"
+          href="#"
+        />
+        <Link
+          heading="Portfolio V2"
+          subheading="New look. Same dream. Better code."
+          imgSrc="/assets/portfolio-2025.png"
+          href="#"
+        />
       </div>
     </section>
   );
 };
 
-const LinkComponent = ({ heading, imgSrc, subheading, href }) => {
+const Link = ({ heading, imgSrc, subheading, href }) => {
   const ref = useRef(null);
 
   const x = useMotionValue(0);
   const y = useMotionValue(0);
 
-  const mouseXSpring = useSpring(x, { stiffness: 500, damping: 100 });
-  const mouseYSpring = useSpring(y, { stiffness: 500, damping: 100 });
+  const mouseXSpring = useSpring(x);
+  const mouseYSpring = useSpring(y);
 
   const top = useTransform(mouseYSpring, [0.5, -0.5], ["40%", "60%"]);
   const left = useTransform(mouseXSpring, [0.5, -0.5], ["60%", "70%"]);
 
   const handleMouseMove = (e) => {
-    if (!ref.current) return;
-
     const rect = ref.current.getBoundingClientRect();
 
     const width = rect.width;
@@ -81,10 +64,12 @@ const LinkComponent = ({ heading, imgSrc, subheading, href }) => {
   };
 
   return (
-    <Link
+    <motion.a
       href={href}
       ref={ref}
       onMouseMove={handleMouseMove}
+      initial="initial"
+      whileHover="whileHover"
       className="group relative flex items-center justify-between border-b-2 border-neutral-700 py-4 transition-colors duration-500 hover:border-neutral-50 md:py-8"
     >
       <div>
@@ -110,7 +95,7 @@ const LinkComponent = ({ heading, imgSrc, subheading, href }) => {
               className="inline-block"
               key={i}
             >
-              {l === " " ? <>&nbsp;</> : l}
+              {l}
             </motion.span>
           ))}
         </motion.span>
@@ -150,8 +135,8 @@ const LinkComponent = ({ heading, imgSrc, subheading, href }) => {
         transition={{ type: "spring" }}
         className="relative z-10 p-4"
       >
-        <ArrowRight className="text-5xl text-neutral-50" />
+        <FiArrowRight className="text-5xl text-neutral-50" />
       </motion.div>
-    </Link>
+    </motion.a>
   );
 };
