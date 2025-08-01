@@ -1,10 +1,12 @@
+"use client";
+
 import { useMotionValue, motion, useSpring, useTransform } from "framer-motion";
 import React, { useRef } from "react";
 import { FiArrowRight } from "react-icons/fi";
 
 export const HoverImageLinks = () => {
   return (
-    <section className="bg-neutral-950 p-4 md:p-8">
+    <section className="bg-inherit p-4 md:p-8">
       <div className="mx-auto max-w-5xl">
         <Link
           heading="BusyWeends Jr"
@@ -63,6 +65,8 @@ const Link = ({ heading, imgSrc, subheading, href }) => {
     y.set(yPct);
   };
 
+  const words = heading.split(" ");
+
   return (
     <motion.a
       href={href}
@@ -70,7 +74,7 @@ const Link = ({ heading, imgSrc, subheading, href }) => {
       onMouseMove={handleMouseMove}
       initial="initial"
       whileHover="whileHover"
-      className="group relative flex items-center justify-between border-b-2 border-neutral-700 py-4 transition-colors duration-500 hover:border-neutral-50 md:py-8"
+      className="group relative flex items-center justify-between border-b-2 border-gray-300 dark:border-neutral-700 py-4 transition-colors duration-500 hover:border-black dark:hover:border-neutral-50 md:py-8"
     >
       <div>
         <motion.span
@@ -83,23 +87,30 @@ const Link = ({ heading, imgSrc, subheading, href }) => {
             staggerChildren: 0.075,
             delayChildren: 0.25,
           }}
-          className="relative z-10 block text-4xl font-bold text-neutral-500 transition-colors duration-500 group-hover:text-neutral-50 md:text-6xl"
+          className="relative z-10 block text-4xl font-bold text-gray-500 dark:text-neutral-500 transition-colors duration-500 group-hover:text-black dark:group-hover:text-neutral-50 md:text-6xl"
         >
-          {heading.split("").map((l, i) => (
-            <motion.span
-              variants={{
-                initial: { x: 0 },
-                whileHover: { x: 16 },
-              }}
-              transition={{ type: "spring" }}
-              className="inline-block"
-              key={i}
-            >
-              {l}
-            </motion.span>
+          {words.map((word, wordIndex) => (
+            <React.Fragment key={wordIndex}>
+              {word.split("").map((l, i) => (
+                <motion.span
+                  variants={{
+                    initial: { x: 0 },
+                    whileHover: { x: 16 },
+                  }}
+                  transition={{ type: "spring" }}
+                  className="inline-block"
+                  key={i}
+                >
+                  {l}
+                </motion.span>
+              ))}
+              {wordIndex < words.length - 1 && (
+                <span className="inline-block">&nbsp;</span>
+              )}
+            </React.Fragment>
           ))}
         </motion.span>
-        <span className="relative z-10 mt-2 block text-base text-neutral-500 transition-colors duration-500 group-hover:text-neutral-50">
+        <span className="relative z-10 mt-2 block text-base text-gray-500 dark:text-neutral-500 transition-colors duration-500 group-hover:text-black dark:group-hover:text-neutral-50">
           {subheading}
         </span>
       </div>
@@ -135,7 +146,7 @@ const Link = ({ heading, imgSrc, subheading, href }) => {
         transition={{ type: "spring" }}
         className="relative z-10 p-4"
       >
-        <FiArrowRight className="text-5xl text-neutral-50" />
+        <FiArrowRight className="text-5xl text-black dark:text-neutral-50" />
       </motion.div>
     </motion.a>
   );

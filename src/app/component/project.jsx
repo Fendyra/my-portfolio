@@ -3,7 +3,7 @@
 import React, { forwardRef } from "react";
 import { motion } from "framer-motion";
 import { Montserrat, Space_Mono } from "next/font/google";
-import { HoverImageLinks } from "./ui/HoverImageLinks"; 
+import { HoverImageLinks } from "./ui/HoverImageLinks";
 
 const montserrat = Montserrat({
   subsets: ["latin"],
@@ -21,12 +21,12 @@ const Project = forwardRef((props, ref) => {
     <motion.section
       ref={ref}
       id="project"
-      className="min-h-[100vh] bg-whithe dark:bg-black text-gray-900 dark:text-white relative overflow-hidden"
+      className="min-h-[100vh] bg-white dark:bg-black text-gray-900 dark:text-white relative overflow-hidden"
     >
       {/* Main Project Heading */}
       <div className="w-full max-w-none mx-0 px-0 relative">
         <motion.div
-          initial={{ opacity: 0, y: -30 }} // typo: intial -> initial
+          initial={{ opacity: 0, y: -30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5, delay: 0.2 }}
           className={`
