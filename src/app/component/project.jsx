@@ -34,7 +34,7 @@ const Project = forwardRef((props, ref) => {
             py-2 md:py-6 lg:py-8
             bg-inherit
             ${montserrat.className}
-            text-[clamp(4rem,20vw,15rem)]
+            text-[clamp(3rem,17vw,15rem)]
             font-black uppercase tracking-tight leading-none whitespace-nowrap
             text-black/15 dark:text-white/10
           `}
@@ -60,4 +60,5 @@ const Project = forwardRef((props, ref) => {
   );
 });
 
+Project.displayName = "Project";
 export default Project;
