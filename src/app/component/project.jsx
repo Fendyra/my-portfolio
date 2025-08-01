@@ -3,6 +3,7 @@
 import React, { forwardRef } from "react";
 import { motion } from "framer-motion";
 import { Montserrat, Space_Mono } from "next/font/google";
+import { HoverImageLinks } from "./ui/HoverImageLinks"; // Import komponen baru
 
 const montserrat = Montserrat({
   subsets: ["latin"],
@@ -46,16 +47,20 @@ const Project = forwardRef((props, ref) => {
 
         {/* Subtitle */}
         <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.4 }}
-            className="w-full text-center mb-12"
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, delay: 0.4 }}
+          className="w-full text-center mb-12"
         >
-        <p className={`${spaceMono.className} text-sm text-gray-600 dark:text-gray-400`}>
+          <p
+            className={`${spaceMono.className} text-sm text-gray-600 dark:text-gray-400`}
+          >
             ./My Builds - A Showcase of My Work
-        </p>
+          </p>
         </motion.div>
       </div>
+      {/*ADD UI component Hover Image Links*/}
+      <HoverImageLinks />
     </motion.section>
   );
 });
