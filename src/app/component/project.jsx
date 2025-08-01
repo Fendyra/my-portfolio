@@ -1,9 +1,11 @@
 "use client";
 
-import React, { forwardRef } from "react";
+import React, { forwardRef, useState } from "react";
 import { motion } from "framer-motion";
 import { Montserrat, Space_Mono } from "next/font/google";
 import { HoverImageLinks } from "./ui/HoverImageLinks";
+import Link from "next/link";
+import { onClose } from "./ui/FullScreenMenu"; // Assuming onClose is exported from FullScreenMenu
 
 const montserrat = Montserrat({
   subsets: ["latin"],
@@ -59,8 +61,22 @@ const Project = forwardRef((props, ref) => {
           </p>
         </motion.div>
       </div>
+
       {/*ADD UI component Hover Image Links*/}
       <HoverImageLinks />
+
+      {/* "See More" button */}
+        <div className="mt-6 item-center justify-center flex">
+            <Link
+              href="/works"
+              onClick={onClose}
+              className="border border-foreground rounded-full text-foreground px-8 py-3 text-lg relative overflow-hidden group transition-colors duration-300 hover:bg-foreground hover:text-background"
+            >
+            <span className={`${montserrat.className} relative z-10`}>
+                SEE MORE
+            </span>             
+            </Link>
+        </div>
     </motion.section>
   );
 });
