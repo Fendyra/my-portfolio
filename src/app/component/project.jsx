@@ -70,7 +70,7 @@ const Project = forwardRef((props, ref) => {
             <Link
               href="/works"
               onClick={onClose}
-              className="border border-foreground rounded-full text-foreground px-8 py-3 text-lg relative overflow-hidden group transition-colors duration-300 hover:bg-foreground hover:text-background"
+              className="border border-foreground rounded-full text-foreground px-4 py-2 text-lg relative overflow-hidden group transition-colors duration-300 hover:bg-foreground hover:text-background"
             >
             <span className={`${montserrat.className} relative z-10`}>
                 SEE MORE
