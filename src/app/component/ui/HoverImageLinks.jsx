@@ -27,9 +27,9 @@ export const HoverImageLinks = () => {
           href="#"
         />
         <Link
-          heading="Portfolio V2"
-          subheading="New look. Same dream. Better code."
-          imgSrc="/assets/portfolio-2025.png"
+          heading="Volcanoria"
+          subheading="Explore volcanoes. Learn fast. Stay safe."
+          imgSrc="/assets/volcanoria.png"
           href="#"
         />
       </div>
