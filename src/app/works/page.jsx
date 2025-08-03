@@ -4,7 +4,7 @@ import React, { useState } from "react";
 import { motion } from "framer-motion";
 import Image from "next/image";
 import Link from "next/link";
-import { FiExternalLink, FiGithub } from "react-icons/fi";
+import { FiExternalLink, FiGithub, FiLogOut } from "react-icons/fi"; 
 import HeaderIcons from "../component/header";
 
 // Import font
@@ -114,22 +114,37 @@ const WorksPage = () => {
     <main
       className={`min-h-screen bg-white dark:bg-black text-gray-900 dark:text-white relative p-6 sm:p-12 ${montserrat.className}`}
     >
-        <div className="fixed top-6 left-0 w-full px-4 md:px-8 z-50 flex items-center">
-          <Link href="/main">
-            <Image
-              src="/assets/logo-portfolio.png"
-              alt="Portfolio Logo"
-              width={80}
-              height={80}
-              style={{ cursor: "pointer" }} 
-            />
-          </Link>
-        </div>
+      <div className="fixed top-6 left-0 w-full px-4 md:px-8 z-50 flex items-center">
+        {/* Logo FendyFolio di kiri */}
+        <Link href="/">
+          <Image
+            src="/assets/logo-portfolio.png"
+            alt="Portfolio Logo"
+            width={80}
+            height={80}
+            style={{ cursor: "pointer" }}
+          />
+        </Link>
 
+        {/* Ikon sosial di tengah */}
         <div className="flex-grow flex justify-center">
           <HeaderIcons />
         </div>
 
+        {/* Tombol menu dan tombol exit di kanan */}
+        <div className="flex items-center gap-4">
+          <Link href="/main">
+            <button
+              className="z-50 p-2 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-foreground"
+              aria-label="Kembali ke Portofolio Utama"
+            >
+              <FiLogOut size={24} className="text-foreground" />
+            </button>
+          </Link>
+        </div>
+      </div>
+
+      {/* Konten utama halaman */}
       <div className="container mx-auto mt-20">
         <motion.header
           className="text-center mb-16"
