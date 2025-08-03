@@ -153,15 +153,14 @@ const WorksPage = () => {
           transition={{ duration: 0.5 }}
         >
           <h1
-            className={`text-4xl sm:text-5xl lg:text-6xl font-extrabold mb-4 bg-clip-text text-transparent bg-gradient-to-r from-purple-400 to-blue-400`}
+            className={`${montserrat.className} font-bold text-[clamp(2rem,6vw,4rem)] mb-4 text-center md:text-center lg:text-center`}
           >
             My Projects
           </h1>
           <p
             className={`${spaceMono.className} text-gray-600 dark:text-gray-400 max-w-2xl mx-auto text-lg`}
           >
-            A comprehensive showcase of my work, from web applications to
-            interactive designs.
+            ./What I’ve Been Cooking - A Showcase of My Creations
           </p>
         </motion.header>
 
