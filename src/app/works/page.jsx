@@ -1,10 +1,10 @@
 "use client";
 
-import React, { useState } from "react";
+import React from "react";
 import { motion } from "framer-motion";
 import Image from "next/image";
 import Link from "next/link";
-import { FiExternalLink, FiGithub, FiLogOut } from "react-icons/fi"; 
+import { FiExternalLink, FiGithub, FiLogOut } from "react-icons/fi";
 import HeaderIcons from "../component/header";
 
 // Import font
@@ -12,7 +12,7 @@ import { Montserrat, Space_Mono } from "next/font/google";
 const montserrat = Montserrat({ subsets: ["latin"], weight: ["400", "700"] });
 const spaceMono = Space_Mono({ subsets: ["latin"], weight: ["400"] });
 
-// Data Proyek dengan path relatif dari folder public
+// Data Proyek
 const projects = [
   {
     id: 1,
@@ -99,9 +99,7 @@ const WorksPage = () => {
     hidden: { opacity: 0 },
     visible: {
       opacity: 1,
-      transition: {
-        staggerChildren: 0.1,
-      },
+      transition: { staggerChildren: 0.1 },
     },
   };
 
@@ -115,7 +113,6 @@ const WorksPage = () => {
       className={`min-h-screen bg-white dark:bg-black text-gray-900 dark:text-white relative p-6 sm:p-12 ${montserrat.className}`}
     >
       <div className="fixed top-6 left-0 w-full px-4 md:px-8 z-50 flex items-center">
-        {/* Logo FendyFolio di kiri */}
         <Link href="/">
           <Image
             src="/assets/logo-portfolio.png"
@@ -125,13 +122,9 @@ const WorksPage = () => {
             style={{ cursor: "pointer" }}
           />
         </Link>
-
-        {/* Ikon sosial di tengah */}
         <div className="flex-grow flex justify-center">
           <HeaderIcons />
         </div>
-
-        {/* Tombol menu dan tombol exit di kanan */}
         <div className="flex items-center gap-4">
           <Link href="/main">
             <button
@@ -144,7 +137,6 @@ const WorksPage = () => {
         </div>
       </div>
 
-      {/* Konten utama halaman */}
       <div className="container mx-auto mt-20">
         <motion.header
           className="text-center mb-16"
@@ -153,9 +145,9 @@ const WorksPage = () => {
           transition={{ duration: 0.5 }}
         >
           <h1
-            className={`${montserrat.className} font-bold text-[clamp(2rem,6vw,4rem)] mb-4 text-center md:text-center lg:text-center`}
+            className={`${montserrat.className} font-bold text-[clamp(2rem,6vw,4rem)] mb-4`}
           >
-            My Projects
+            Portfolio Gallery
           </h1>
           <p
             className={`${spaceMono.className} text-gray-600 dark:text-gray-400 max-w-2xl mx-auto text-lg`}
@@ -217,12 +209,13 @@ const WorksPage = () => {
                   </div>
                 </div>
               </div>
+
               <div className="p-6">
                 <h2 className="text-2xl font-bold mb-2">{project.title}</h2>
                 <p className="text-gray-600 dark:text-gray-400 text-base mb-4">
                   {project.description}
                 </p>
-                <div className="flex flex-wrap gap-2">
+                <div className="flex flex-wrap gap-2 mb-4">
                   {project.technologies.map((tech, index) => (
                     <motion.div
                       key={index}
@@ -239,6 +232,30 @@ const WorksPage = () => {
                     </motion.div>
                   ))}
                 </div>
+
+                <Link href={`/project/${project.id}`} passHref legacyBehavior>
+                  <motion.a
+                    className="inline-flex items-center gap-2 border border-gray-400 dark:border-gray-600 rounded-full px-4 py-2 text-sm font-medium text-gray-800 dark:text-white hover:bg-gray-200 dark:hover:bg-gray-800 transition-colors duration-300"
+                    whileHover={{ scale: 1.05 }}
+                    whileTap={{ scale: 0.95 }}
+                  >
+                    Read More
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      fill="none"
+                      viewBox="0 0 24 24"
+                      stroke="currentColor"
+                      className="w-4 h-4"
+                    >
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        strokeWidth={2}
+                        d="M17 8l4 4m0 0l-4 4m4-4H3"
+                      />
+                    </svg>
+                  </motion.a>
+                </Link>
               </div>
             </motion.div>
           ))}
