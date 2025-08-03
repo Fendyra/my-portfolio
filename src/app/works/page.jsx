@@ -1,11 +1,11 @@
 "use client";
 
-import React from "react";
+import React, { useState } from "react";
 import { motion } from "framer-motion";
 import Image from "next/image";
 import Link from "next/link";
 import { FiExternalLink, FiGithub } from "react-icons/fi";
-
+import HeaderIcons from "../component/header";
 
 // Import font
 import { Montserrat, Space_Mono } from "next/font/google";
@@ -25,7 +25,7 @@ const projects = [
     technologies: [
       { name: "Laravel", logo: "/assets/laravel.svg" },
       { name: "TailwindCSS", logo: "/assets/tailwindcss.png" },
-      { name: "Figma", logo: "/assets/figma.svg" },
+      { name: "Figma", logo: "/assets/figma.png" },
       { name: "PHP", logo: "/assets/php.png" },
       { name: "Javascript", logo: "/assets/js.png" },
     ],
@@ -42,7 +42,7 @@ const projects = [
       { name: "PHP", logo: "/assets/php.png" },
       { name: "TailwindCSS", logo: "/assets/tailwindcss.png" },
       { name: "Javascript", logo: "/assets/js.png" },
-      { name: "Figma", logo: "/assets/figma.svg" },
+      { name: "Figma", logo: "/assets/figma.png" },
       { name: "CSS", logo: "/assets/css.png" },
     ],
   },
@@ -58,7 +58,7 @@ const projects = [
       { name: "React", logo: "/assets/react.png" },
       { name: "TailwindCSS", logo: "/assets/tailwindcss.png" },
       { name: "Javascript", logo: "/assets/js.png" },
-      { name: "Figma", logo: "/assets/figma.svg" },
+      { name: "Figma", logo: "/assets/figma.png" },
       { name: "Next Js", logo: "/assets/nextjs.png" },
     ],
   },
@@ -88,7 +88,7 @@ const projects = [
       { name: "React", logo: "/assets/react.png" },
       { name: "TailwindCSS", logo: "/assets/tailwindcss.png" },
       { name: "Javascript", logo: "/assets/js.png" },
-      { name: "Figma", logo: "/assets/figma.svg" },
+      { name: "Figma", logo: "/assets/figma.png" },
       { name: "Next Js", logo: "/assets/nextjs.png" },
     ],
   },
@@ -112,8 +112,24 @@ const WorksPage = () => {
 
   return (
     <main
-      className={`min-h-[100vh] bg-white dark:bg-black text-gray-900 dark:text-white relative overflow-hidden p-6 sm:p-12 ${montserrat.className}`}
+      className={`min-h-screen bg-white dark:bg-black text-gray-900 dark:text-white relative p-6 sm:p-12 ${montserrat.className}`}
     >
+        <div className="fixed top-6 left-0 w-full px-4 md:px-8 z-50 flex items-center">
+          <Link href="/main">
+            <Image
+              src="/assets/logo-portfolio.png"
+              alt="Portfolio Logo"
+              width={80}
+              height={80}
+              style={{ cursor: "pointer" }} 
+            />
+          </Link>
+        </div>
+
+        <div className="flex-grow flex justify-center">
+          <HeaderIcons />
+        </div>
+
       <div className="container mx-auto mt-20">
         <motion.header
           className="text-center mb-16"
@@ -150,8 +166,8 @@ const WorksPage = () => {
                 <Image
                   src={project.image}
                   alt={project.title}
-                  width={600} // Tambahkan width
-                  height={400} // Tambahkan height
+                  width={600}
+                  height={400}
                   className="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-500"
                 />
                 <div className="absolute inset-0 bg-black/50 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end justify-center p-4">
@@ -160,22 +176,28 @@ const WorksPage = () => {
                       <motion.a
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="p-3 bg-white/10 backdrop-blur-sm rounded-full text-white hover:text-purple-400 transition-colors duration-200"
-                        whileHover={{ scale: 1.1 }}
-                        whileTap={{ scale: 0.9 }}
+                        className="flex items-center gap-2 p-3 bg-white/10 backdrop-blur-sm rounded-full text-white hover:bg-white/20 transition-colors duration-200"
+                        whileHover={{ scale: 1.05 }}
+                        whileTap={{ scale: 0.95 }}
                       >
                         <FiExternalLink size={20} />
+                        <span className="font-semibold hidden sm:inline">
+                          Live Demo
+                        </span>
                       </motion.a>
                     </Link>
                     <Link href={project.github} passHref legacyBehavior>
                       <motion.a
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="p-3 bg-white/10 backdrop-blur-sm rounded-full text-white hover:text-purple-400 transition-colors duration-200"
-                        whileHover={{ scale: 1.1 }}
-                        whileTap={{ scale: 0.9 }}
+                        className="flex items-center gap-2 p-3 bg-white/10 backdrop-blur-sm rounded-full text-white hover:bg-white/20 transition-colors duration-200"
+                        whileHover={{ scale: 1.05 }}
+                        whileTap={{ scale: 0.95 }}
                       >
                         <FiGithub size={20} />
+                        <span className="font-semibold hidden sm:inline">
+                          Source Code
+                        </span>
                       </motion.a>
                     </Link>
                   </div>

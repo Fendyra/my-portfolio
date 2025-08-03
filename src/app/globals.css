@@ -5,15 +5,12 @@
 @tailwind utilities;
 
 html, body {
-  height: 100%;
-  overflow: hidden;
+
+  overflow-x: hidden;
 }
 
-#root, .min-h-screen {
-  height: 100vh;
-  overflow: hidden;
-}
 
+/* Biarkan class no-scroll tetap ada jika Anda menggunakannya di tempat lain */
 .no-scroll {
   height: 100vh;
   overflow-x: hidden;
