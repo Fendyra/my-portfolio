@@ -206,7 +206,7 @@ const WorksPage = () => {
         </motion.header>
 
       <motion.div
-          className="flex justify-center gap-4 mb-16"
+          className="flex justify-center gap-4 mb-10"
           initial={{ opacity: 0, y: -20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5, delay: 0.2 }}
@@ -215,7 +215,7 @@ const WorksPage = () => {
             <button
               key={button.category}
               onClick={() => handleFilter(button.category)}
-              className={`px-6 py-2 rounded-full font-semibold transition-colors duration-300 ${
+              className={`px-4 py-2 rounded-full font-semibold transition-colors duration-300 ${
                 filterCategory === button.category
                   ? "bg-black text-white dark:bg-gray-100 dark:text-black shadow-md"
                   : "bg-gray-200 text-gray-700 dark:bg-gray-800 dark:text-gray-300 hover:bg-gray-300 dark:hover:bg-gray-700"
