@@ -21,7 +21,7 @@ const projects = [
       "An e-commerce website for the clothing brand BusyWeeknds, offering a modern, responsive, and user-friendly online shopping experience.",
     image: "/assets/busyweeknds.png",
     link: "https://busyweeknds.fendyverse.web.id/",
-    github: "https://github.com/Fendyra/Busyweeknds",
+    github: "https://github.com/Fendyra/Busyweeknds", 
     technologies: [
       { name: "Laravel", logo: "/assets/laravel.svg" },
       { name: "TailwindCSS", logo: "/assets/tailwindcss.png" },
@@ -32,11 +32,11 @@ const projects = [
   },
   {
     id: 2,
-    title: "E-Learnify",
+    title: "E-Learnify",  
     description:
       "An online learning platform providing structured IT classes for beginners to advanced learners, with registration features and digital course materials.",
     image: "/assets/elearnify.png",
-    link: "#",
+    link: "",
     github: "https://github.com/Fendyra/Elearnify",
     technologies: [
       { name: "PHP", logo: "/assets/php.png" },
@@ -68,7 +68,7 @@ const projects = [
     description:
       "An informative website presenting real-time data and visual distribution of volcanoes across Indonesia, with educational content.",
     image: "/assets/volcanoria.png",
-    link: "#",
+    link: "",
     github: "https://github.com/Fendyra/volcanoria",
     technologies: [
       { name: "HTML", logo: "/assets/html-5.png" },
@@ -82,8 +82,8 @@ const projects = [
     description:
       "The first version of a personal portfolio showcasing identity, projects, and web development skills in a clean and professional layout.",
     image: "/assets/portfolio-V1.png",
-    link: "#",
-    github: "#",
+    link: "https://portfolio-fendyra-b7txyrpxv-fendyras-projects.vercel.app/",
+    github: "https://github.com/Fendyra/portfolio-v2",
     technologies: [
       { name: "React", logo: "/assets/react.png" },
       { name: "TailwindCSS", logo: "/assets/tailwindcss.png" },
@@ -91,6 +91,28 @@ const projects = [
       { name: "Figma", logo: "/assets/figma.png" },
       { name: "Next Js", logo: "/assets/nextjs.png" },
     ],
+  },
+  {
+    id: 6,
+    title: "Printhub",
+    description:
+      "Designed a seamless print-ordering experience from upload to pickup, all in a few intuitive clicks. Built with the team, for real-world workflows.",
+    image: "/assets/printhub.png",
+    link: "",
+    github:
+      "https://www.figma.com/design/OT3qM6FE8dxz1UKspfTtql/RKPL-1?node-id=1-3&t=cZw4Lja3X3ocWT7f-1",
+    technologies: [{ name: "Figma", logo: "/assets/figma.png" }],
+  },
+  {
+    id: 7,
+    title: "BusyWeeknds Design",
+    description:
+      "A comprehensive UI/UX design for the BusyWeeknds e-commerce platform, focusing on user experience and visual appeal.",
+    image: "/assets/busyweeknds_design.png",
+    link: "",
+    github:
+      "https://www.figma.com/design/OT3qM6FE8dxz1UKspfTtql/RKPL-1?node-id=1-3&t=cZw4Lja3X3ocWT7f-1",
+    technologies: [{ name: "Figma", logo: "/assets/figma.png" }],
   },
 ];
 

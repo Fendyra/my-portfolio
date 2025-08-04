@@ -91,7 +91,6 @@ const About = forwardRef((props, ref) => {
     "VS Code",
   ];
 
-  // REMOVED renderStars function
 
   return (
     <motion.section
