@@ -1,10 +1,12 @@
 "use client";
 
-import React, {useState} from "react";
+import React, { useState } from "react";
 import { motion } from "framer-motion";
 import Image from "next/image";
 import Link from "next/link";
 import { FiExternalLink, FiGithub, FiLogOut } from "react-icons/fi";
+// Import icon baru untuk View Design
+import { FiEye } from "react-icons/fi";
 import HeaderIcons from "../component/header";
 
 // Import font
@@ -45,7 +47,7 @@ const AllProjects = [
       { name: "TailwindCSS", logo: "/assets/tailwindcss.png" },
       { name: "Javascript", logo: "/assets/js.png" },
       { name: "Figma", logo: "/assets/figma.png" },
-      { name: "CSS", logo: "/assets/css.png" },
+      { name: "CSS", logo: "/assets/css-3.png" },
     ],
   },
   {
@@ -77,7 +79,7 @@ const AllProjects = [
     technologies: [
       { name: "HTML", logo: "/assets/html-5.png" },
       { name: "PHP", logo: "/assets/php.png" },
-      { name: "CSS", logo: "/assets/css.png" },
+      { name: "CSS", logo: "/assets/css-3.png" },
     ],
   },
   {
@@ -124,19 +126,16 @@ const AllProjects = [
 ];
 
 const WorksPage = () => {
-  // Tambahan: useState untuk mengelola kategori yang dipilih. Defaultnya 'All'.
   const [filterCategory, setFilterCategory] = useState("All");
 
-  // Tambahan: Fungsi untuk mengubah kategori saat tombol diklik.
   const handleFilter = (category) => {
     setFilterCategory(category);
   };
 
-  // Filter proyek berdasarkan kategori yang dipilih
   const filteredProjects =
     filterCategory === "All"
-    ? AllProjects
-    : AllProjects.filter((project) => project.category === filterCategory);
+      ? AllProjects
+      : AllProjects.filter((project) => project.category === filterCategory);
 
   const filterButtons = [
     { name: "All", category: "All" },
@@ -205,7 +204,7 @@ const WorksPage = () => {
           </p>
         </motion.header>
 
-      <motion.div
+        <motion.div
           className="flex justify-center gap-4 mb-10"
           initial={{ opacity: 0, y: -20 }}
           animate={{ opacity: 1, y: 0 }}
@@ -248,41 +247,62 @@ const WorksPage = () => {
                 />
                 <div className="absolute inset-0 bg-black/50 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end justify-center p-4">
                   <div className="flex gap-4">
-                    <Link href={project.link} passHref legacyBehavior>
-                      <motion.a
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="flex items-center gap-2 p-3 bg-white/10 backdrop-blur-sm rounded-full text-white hover:bg-white/20 transition-colors duration-200"
-                        whileHover={{ scale: 1.05 }}
-                        whileTap={{ scale: 0.95 }}
-                      >
-                        <FiExternalLink size={20} />
-                        <span className="font-semibold hidden sm:inline">
-                          Live Demo
-                        </span>
-                      </motion.a>
-                    </Link>
-                    <Link href={project.github} passHref legacyBehavior>
-                      <motion.a
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="flex items-center gap-2 p-3 bg-white/10 backdrop-blur-sm rounded-full text-white hover:bg-white/20 transition-colors duration-200"
-                        whileHover={{ scale: 1.05 }}
-                        whileTap={{ scale: 0.95 }}
-                      >
-                        <FiGithub size={20} />
-                        <span className="font-semibold hidden sm:inline">
-                          Source Code
-                        </span>
-                      </motion.a>
-                    </Link>
+                    {/* Tambahan: Logika kondisional untuk menampilkan tombol */}
+                    {project.category === "UI/UX" ? (
+                      <Link href={project.github} passHref legacyBehavior>
+                        <motion.a
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="flex items-center gap-2 p-3 bg-white/10 backdrop-blur-sm rounded-full text-white hover:bg-white/20 transition-colors duration-200"
+                          whileHover={{ scale: 1.05 }}
+                          whileTap={{ scale: 0.95 }}
+                        >
+                          <FiEye size={20} />{" "}
+                          {/* Menggunakan ikon View Design */}
+                          <span className="font-semibold hidden sm:inline">
+                            View Design
+                          </span>
+                        </motion.a>
+                      </Link>
+                    ) : (
+                      <>
+                        <Link href={project.link} passHref legacyBehavior>
+                          <motion.a
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="flex items-center gap-2 p-3 bg-white/10 backdrop-blur-sm rounded-full text-white hover:bg-white/20 transition-colors duration-200"
+                            whileHover={{ scale: 1.05 }}
+                            whileTap={{ scale: 0.95 }}
+                          >
+                            <FiExternalLink size={20} />
+                            <span className="font-semibold hidden sm:inline">
+                              Live Demo
+                            </span>
+                          </motion.a>
+                        </Link>
+                        <Link href={project.github} passHref legacyBehavior>
+                          <motion.a
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="flex items-center gap-2 p-3 bg-white/10 backdrop-blur-sm rounded-full text-white hover:bg-white/20 transition-colors duration-200"
+                            whileHover={{ scale: 1.05 }}
+                            whileTap={{ scale: 0.95 }}
+                          >
+                            <FiGithub size={20} />
+                            <span className="font-semibold hidden sm:inline">
+                              Source Code
+                            </span>
+                          </motion.a>
+                        </Link>
+                      </>
+                    )}
                   </div>
                 </div>
               </div>
 
               <div className="p-6">
                 <h2 className="text-2xl font-bold mb-2">{project.title}</h2>
-                <p className="text-gray-600 dark:text-gray-400 text-base mb-4">
+                <p className="text-gray-600 dark:text-gray-400 text-base mb-4 text-justify">
                   {project.description}
                 </p>
                 <div className="flex flex-wrap gap-2 mb-4">
@@ -291,6 +311,7 @@ const WorksPage = () => {
                       key={index}
                       className="p-2 border rounded-full border-gray-300 dark:border-gray-700 hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors"
                       whileHover={{ scale: 1.05 }}
+                      whileTap={{ scale: 0.95 }}
                     >
                       <Image
                         src={tech.logo}

@@ -66,7 +66,7 @@ const Project = forwardRef((props, ref) => {
       <HoverImageLinks />
 
       {/* "See More" button */}
-        <div className="mt-6 item-center justify-center flex">
+        <div className="mt-4 item-center justify-center flex">
             <Link
               href="/works"
               onClick={onClose}

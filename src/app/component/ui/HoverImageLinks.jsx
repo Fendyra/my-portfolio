@@ -12,25 +12,25 @@ export const HoverImageLinks = () => {
           heading="BusyWeends Jr"
           subheading="A full-stack e-commerce platform"
           imgSrc="/assets/busyweeknds.png"
-          href="#"
+          href="/works"
         />
         <Link
           heading="E-Learnify"
           subheading="An interactive e-learning platform built for modern learners"
           imgSrc="/assets/elearnify.png"
-          href="#"
+          href="/works"
         />
         <Link
           heading="Portfolio V1"
           subheading="Where it all started - OG Version"
           imgSrc="/assets/portfolio-V1.png"
-          href="#"
+          href="/works"
         />
         <Link
           heading="Volcanoria"
           subheading="Explore volcanoes. Learn fast. Stay safe."
           imgSrc="/assets/volcanoria.png"
-          href="#"
+          href="/works"
         />
       </div>
     </section>
