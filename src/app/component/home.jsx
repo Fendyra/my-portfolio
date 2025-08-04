@@ -65,8 +65,8 @@ function Home() {
     return () => clearTimeout(timeoutId);
   }, []);
 
-  const marqueeText1 = "Design Dreamer - Frontend Survivor - Web Developer ";
-  const marqueeText2 = "Code Artist - UI Enthusiast - Creative Coder ";
+  const marqueeText1 = "Code Artist - Frontend Survivor - Web Developer ";
+  const marqueeText2 = "Fullstack Developer - UI Enthusiast - Creative Coder ";
 
   const numberOfClones = 3;
 

@@ -1,6 +1,6 @@
 "use client";
 
-import React from "react";
+import React, {useState} from "react";
 import { motion } from "framer-motion";
 import Image from "next/image";
 import Link from "next/link";
@@ -13,15 +13,16 @@ const montserrat = Montserrat({ subsets: ["latin"], weight: ["400", "700"] });
 const spaceMono = Space_Mono({ subsets: ["latin"], weight: ["400"] });
 
 // Data Proyek
-const projects = [
+const AllProjects = [
   {
     id: 1,
     title: "BusyWeeknds",
     description:
       "An e-commerce website for the clothing brand BusyWeeknds, offering a modern, responsive, and user-friendly online shopping experience.",
+    category: "Web",
     image: "/assets/busyweeknds.png",
     link: "https://busyweeknds.fendyverse.web.id/",
-    github: "https://github.com/Fendyra/Busyweeknds", 
+    github: "https://github.com/Fendyra/Busyweeknds",
     technologies: [
       { name: "Laravel", logo: "/assets/laravel.svg" },
       { name: "TailwindCSS", logo: "/assets/tailwindcss.png" },
@@ -32,9 +33,10 @@ const projects = [
   },
   {
     id: 2,
-    title: "E-Learnify",  
+    title: "E-Learnify",
     description:
       "An online learning platform providing structured IT classes for beginners to advanced learners, with registration features and digital course materials.",
+    category: "Web",
     image: "/assets/elearnify.png",
     link: "",
     github: "https://github.com/Fendyra/Elearnify",
@@ -51,6 +53,7 @@ const projects = [
     title: "Portfolio V2",
     description:
       "A modern and creative upgrade of the personal portfolio, featuring interactive navigation and visually engaging design to highlight works.",
+    category: "Web",
     image: "/assets/portfolio-2025.png",
     link: "#",
     github: "https://github.com/Fendyra/my-portfolio",
@@ -67,6 +70,7 @@ const projects = [
     title: "Volcanoria",
     description:
       "An informative website presenting real-time data and visual distribution of volcanoes across Indonesia, with educational content.",
+    category: "Web",
     image: "/assets/volcanoria.png",
     link: "",
     github: "https://github.com/Fendyra/volcanoria",
@@ -81,6 +85,7 @@ const projects = [
     title: "Portfolio V1",
     description:
       "The first version of a personal portfolio showcasing identity, projects, and web development skills in a clean and professional layout.",
+    category: "Web",
     image: "/assets/portfolio-V1.png",
     link: "https://portfolio-fendyra-b7txyrpxv-fendyras-projects.vercel.app/",
     github: "https://github.com/Fendyra/portfolio-v2",
@@ -97,6 +102,7 @@ const projects = [
     title: "Printhub",
     description:
       "Designed a seamless print-ordering experience from upload to pickup, all in a few intuitive clicks. Built with the team, for real-world workflows.",
+    category: "UI/UX",
     image: "/assets/printhub.png",
     link: "",
     github:
@@ -108,6 +114,7 @@ const projects = [
     title: "BusyWeeknds Design",
     description:
       "A comprehensive UI/UX design for the BusyWeeknds e-commerce platform, focusing on user experience and visual appeal.",
+    category: "UI/UX",
     image: "/assets/busyweeknds_design.png",
     link: "",
     github:
@@ -117,6 +124,26 @@ const projects = [
 ];
 
 const WorksPage = () => {
+  // Tambahan: useState untuk mengelola kategori yang dipilih. Defaultnya 'All'.
+  const [filterCategory, setFilterCategory] = useState("All");
+
+  // Tambahan: Fungsi untuk mengubah kategori saat tombol diklik.
+  const handleFilter = (category) => {
+    setFilterCategory(category);
+  };
+
+  // Filter proyek berdasarkan kategori yang dipilih
+  const filteredProjects =
+    filterCategory === "All"
+    ? AllProjects
+    : AllProjects.filter((project) => project.category === filterCategory);
+
+  const filterButtons = [
+    { name: "All", category: "All" },
+    { name: "Web", category: "Web" },
+    { name: "UI/UX", category: "UI/UX" },
+  ];
+
   const containerVariants = {
     hidden: { opacity: 0 },
     visible: {
@@ -178,13 +205,34 @@ const WorksPage = () => {
           </p>
         </motion.header>
 
+      <motion.div
+          className="flex justify-center gap-4 mb-16"
+          initial={{ opacity: 0, y: -20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5, delay: 0.2 }}
+        >
+          {filterButtons.map((button) => (
+            <button
+              key={button.category}
+              onClick={() => handleFilter(button.category)}
+              className={`px-6 py-2 rounded-full font-semibold transition-colors duration-300 ${
+                filterCategory === button.category
+                  ? "bg-black text-white dark:bg-gray-100 dark:text-black shadow-md"
+                  : "bg-gray-200 text-gray-700 dark:bg-gray-800 dark:text-gray-300 hover:bg-gray-300 dark:hover:bg-gray-700"
+              }`}
+            >
+              {button.name}
+            </button>
+          ))}
+        </motion.div>
+
         <motion.div
           className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
           variants={containerVariants}
           initial="hidden"
           animate="visible"
         >
-          {projects.map((project) => (
+          {filteredProjects.map((project) => (
             <motion.div
               key={project.id}
               className="relative group overflow-hidden rounded-xl border border-gray-200 dark:border-gray-800 shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 bg-gray-50 dark:bg-gray-900"

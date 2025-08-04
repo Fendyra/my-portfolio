@@ -189,7 +189,7 @@ const About = forwardRef((props, ref) => {
                 <p
                   className={`${plusJakartaSans.className} text-base leading-relaxed max-w-prose text-gray-700 dark:text-gray-300 text-justify`}
                 >
-                  Creative developer blending UI design with frontend code to
+                  Creative developer blending UI design with cretivity code to
                   craft modern, user-friendly digital experiences.
                 </p>
               </motion.div>
