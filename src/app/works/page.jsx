@@ -4,7 +4,9 @@ import React, { useState } from "react";
 import { motion } from "framer-motion";
 import Image from "next/image";
 import Link from "next/link";
-import { FiExternalLink, FiGithub, FiLogOut } from "react-icons/fi";
+import { FiExternalLink, FiGithub } from "react-icons/fi";
+import { FaArrowRightLong } from "react-icons/fa6";
+
 // Import icon baru untuk View Design
 import { FiEye } from "react-icons/fi";
 import HeaderIcons from "../component/header";
@@ -179,7 +181,7 @@ const WorksPage = () => {
               className="z-50 p-2 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-foreground"
               aria-label="Kembali ke Portofolio Utama"
             >
-              <FiLogOut size={24} className="text-foreground" />
+              <FaArrowRightLong size={24} className="text-foreground" />
             </button>
           </Link>
         </div>
@@ -324,7 +326,7 @@ const WorksPage = () => {
                   ))}
                 </div>
 
-                <Link href={`/project/${project.id}`} passHref legacyBehavior>
+                <Link href={`/works/${project.id}`} passHref legacyBehavior>
                   <motion.a
                     className="inline-flex items-center gap-2 border border-gray-400 dark:border-gray-600 rounded-full px-4 py-2 text-sm font-medium text-gray-800 dark:text-white hover:bg-gray-200 dark:hover:bg-gray-800 transition-colors duration-300"
                     whileHover={{ scale: 1.05 }}
