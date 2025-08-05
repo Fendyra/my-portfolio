@@ -10,6 +10,7 @@ import HeaderIcons from "../component/header";
 import Home from "../component/home";
 import About from "../component/about";
 import Project from "../component/project";
+import Service from "../component/service";
 
 const montserrat = Montserrat({
   subsets: ["latin"],
@@ -60,6 +61,7 @@ const MainPortfolio = () => {
       <Home aboutSectionRef={aboutSectionRef} />
       <About ref={aboutSectionRef} />
       <Project ref={aboutSectionRef} />
+      <Service ref={aboutSectionRef} />
     </div>
   );
 };
