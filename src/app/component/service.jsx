@@ -29,11 +29,11 @@ const Service = forwardRef((props, ref) => {
             initial={{ opacity: 0, y: -30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: 0.2 }}
-            className={`relative flex items-center justify-center overflow-hidden pointer-events-none w-full py-2 md:py-6 lg:py-8 bg-inherit ${montserrat.className} text-[clamp(3rem,17vw,15rem)] font-black uppercase tracking-tight leading-none whitespace-nowrap text-black/15 dark:text-white/10`}
+            className={`relative flex items-center justify-center overflow-hidden pointer-events-none w-full py-2 md:py-6 lg:py-8 bg-inherit ${montserrat.className} text-[clamp(3rem,17vw,15rem)] font-black uppercase mt-12 tracking-tight leading-none whitespace-nowrap text-black/15 dark:text-white/10`}
             aria-hidden="true"
             aria-label="MY SERVICES - Developer Portfolio Heading"
             >
-            SERVICES
+            WHAT I DO
             </motion.div>
     
             {/* Subtitle */}
