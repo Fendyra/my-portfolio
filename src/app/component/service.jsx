@@ -18,42 +18,52 @@ const spaceMono = Space_Mono({
 
 const Service = forwardRef((props, ref) => {
     return (
-        <motion.section
+      <motion.section
         ref={ref}
         id="service"
         className="min-h-[100vh] bg-white dark:bg-black text-gray-900 dark:text-white relative overflow-hidden"
-        >
+      >
         {/* Main Service Heading */}
         <div className="w-full max-w-none mx-0 px-0 relative">
-            <motion.div
+          <motion.div
             initial={{ opacity: 0, y: -30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: 0.2 }}
             className={`relative flex items-center justify-center overflow-hidden pointer-events-none w-full py-2 md:py-6 lg:py-8 bg-inherit ${montserrat.className} text-[clamp(3rem,17vw,15rem)] font-black uppercase mt-12 tracking-tight leading-none whitespace-nowrap text-black/15 dark:text-white/10`}
             aria-hidden="true"
             aria-label="MY SERVICES - Developer Portfolio Heading"
-            >
+          >
             WHAT I DO
-            </motion.div>
-    
-            {/* Subtitle */}
-            <motion.div
+          </motion.div>
+
+          {/* Subtitle */}
+          <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.4 }}
             className="w-full text-center mb-12"
+          >
+            <p
+              className={`${spaceMono.className} text-sm text-gray-600 dark:text-gray-400`}
             >
-            <p className={`${spaceMono.className} text-sm text-gray-600 dark:text-gray-400`}>
-                ./My Services - A Showcase of My Work
+              ./What I Code — What You Get
             </p>
-            </motion.div>
+          </motion.div>
         </div>
-    
+
         {/* Service Content */}
-        <div className="max-w-screen-xl mx-auto px-4 sm:px-6 lg:px-8">
-            {/* Add your service content here */}
+        <div className="max-w-screen-xl mx-auto px-2 sm:px-4 lg:px-6">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.6 }}
+            className="text-4xl md:text-5xl lg:text-6xl font-bold justify-left mb-14 px-2 sm:px-4 lg:px-6 text-gray-900 dark:text-white"
+          >
+            The Essentials:
+          </motion.div>
+
         </div>
-        </motion.section>
+      </motion.section>
     );
     });
 
