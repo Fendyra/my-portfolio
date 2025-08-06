@@ -65,7 +65,7 @@ const Service = forwardRef((props, ref) => {
             The Essentials:
           </motion.div>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-2 md:gap-8 lg:gap-8">
             {/* Service Items 1*/}
             <motion.div
               initial={{ opacity: 0, y: 20 }}
@@ -74,7 +74,7 @@ const Service = forwardRef((props, ref) => {
               viewport={{ once: true }}
               className="p-6 flex flex-col items-start hover:shadow-lg transition-shadow duration-300 mt-16"
             >
-              <HiOutlineSparkles size={90} className="text-foreground" />
+              <HiOutlineSparkles size={100} className="text-foreground" />
               <h2 className="text-3xl md:text-54xl lg:text-5xl mb-6 font-bold">
                 Ideation & Wireframing
               </h2>
@@ -93,7 +93,7 @@ const Service = forwardRef((props, ref) => {
               viewport={{ once: true }}
               className="p-6 flex flex-col items-start hover:shadow-lg transition-shadow duration-300 mt-16"
             >
-              <FaCode size={90} className="text-foreground" />
+              <FaCode size={100} className="text-foreground" />
               <h2 className="text-3xl md:text-54xl lg:text-5xl mb-6 font-bold">
                 Design to Code
               </h2>
@@ -113,14 +113,12 @@ const Service = forwardRef((props, ref) => {
               viewport={{ once: true }}
               className="p-6 flex flex-col items-start hover:shadow-lg transition-shadow duration-300 mt-16"
             >
-              <TbHandClick size={90} className="text-foreground" />
+              <TbHandClick size={100} className="text-foreground" />
               <h2 className="text-3xl md:text-54xl lg:text-5xl mb-6 font-bold">
                 Interaction Development
               </h2>
               <p className="text-gray-600 dark:text-gray-400 text-justify">
-                I enhance user experience through purposeful animations and
-                micro-interactions. From subtle hover effects to dynamic
-                transitions, every movement adds clarity, emotion, and delight.
+                I enhance user experience through purposeful animations and micro-interactions. From subtle hover effects to dynamic transitions, every movement adds clarity, emotion, and delight.
               </p>
             </motion.div>
           </div>
