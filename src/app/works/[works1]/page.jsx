@@ -22,7 +22,7 @@ const spaceMono = Space_Mono({ subsets: ["latin"], weight: ["400"] });
 const BusyWeekndsDetail = () => {
   const project = {
     id: 1,
-    title: "BusyWeeknds Jr",
+    title: "BusyWeeknds",
     description:
       "An e-commerce platform I developed for a clothing brand, designed to provide a seamless online shopping experience.",
     category: "Web",
@@ -109,12 +109,12 @@ const BusyWeekndsDetail = () => {
             transition={{ delay: 0.5, duration: 0.6 }}
           >
             <h1
-              className={`${montserrat.className} font-bold text-5xl md:text-7xl mb-4`}
+              className={`${montserrat.className} font-bold text-4xl md:text-6xl lg:text-6xl mb-4`}
             >
               {project.title}
             </h1>
             <p
-              className={`${spaceMono.className} text-xl md:text-2xl max-w-prose`}
+              className={`${spaceMono.className} text-lg md:text-lg lg:text-lg max-w-prose text-justify`}
             >
               {project.description}
             </p>
@@ -170,7 +170,7 @@ const BusyWeekndsDetail = () => {
             <h2 className={`${montserrat.className} text-3xl font-bold mb-4`}>
               Project Overview
             </h2>
-            <p className="text-lg leading-relaxed text-gray-700 dark:text-gray-300">
+            <p className="text-lg leading-relaxed text-gray-700 dark:text-gray-300 text-justify">
               BusyWeeknds is an e-commerce platform I developed for a clothing
               brand, designed to provide a seamless online shopping experience.
               The project showcases modern web development practices with a
@@ -211,11 +211,11 @@ const BusyWeekndsDetail = () => {
                   </svg>
                 </span>
                 <h3
-                  className={`${montserrat.className} text-xl font-semibold text-gray-900 dark:text-white mb-1`}
+                  className={`${montserrat.className} text-xl font-semibold text-gray-900 dark:text-white mb-1 ml-2 md:ml-2 lg:ml-2`}
                 >
                   Initial Planning & Design
                 </h3>
-                <p className="text-gray-600 dark:text-gray-400">
+                <p className="text-gray-600 dark:text-gray-400 ml-2 md:ml-2 lg:ml-2 text-justify">
                   Careful planning of the user experience and crafting a
                   responsive UI with Figma.
                 </p>
@@ -241,11 +241,11 @@ const BusyWeekndsDetail = () => {
                   </svg>
                 </span>
                 <h3
-                  className={`${montserrat.className} text-xl font-semibold text-gray-900 dark:text-white mb-1`}
+                  className={`${montserrat.className} text-xl font-semibold text-gray-900 dark:text-white mb-1 ml-2 md:ml-2 lg:ml-2 `}
                 >
                   Full-stack Development
                 </h3>
-                <p className="text-gray-600 dark:text-gray-400">
+                <p className="text-gray-600 dark:text-gray-400 ml-2 md:ml-2 lg:ml-2 text-justify">
                   Using Laravel for the backend and Tailwind CSS for rapid
                   frontend development.
                 </p>
@@ -271,12 +271,12 @@ const BusyWeekndsDetail = () => {
                   </svg>
                 </span>
                 <h3
-                  className={`${montserrat.className} text-xl font-semibold text-gray-900 dark:text-white mb-1`}
+                  className={`${montserrat.className} text-xl font-semibold text-gray-900 dark:text-white mb-1 ml-2 md:ml-2 lg:ml-2`}
                 >
                   Feature Implementation
                 </h3>
-                <p className="text-gray-600 dark:text-gray-400">
-                  Implementing shopping cart, payment integration, and inventory
+                <p className="text-gray-600 dark:text-gray-400 ml-2 md:ml-2 lg:ml-2 text-justify">
+                  Implementing shopping cart, authentication, and inventory
                   management, all with clean and maintainable code.
                 </p>
               </motion.li>
@@ -329,7 +329,7 @@ const BusyWeekndsDetail = () => {
                   animate={{ height: "auto", opacity: 1 }}
                   exit={{ height: 0, opacity: 0 }}
                   transition={{ duration: 0.3 }}
-                  className="p-4 pt-0 text-gray-700 dark:text-gray-300"
+                  className="p-4 pt-0 text-gray-700 dark:text-gray-300 mt-3 text-justify"
                 >
                   <p>
                     The biggest success of this project was creating a fully
@@ -376,7 +376,7 @@ const BusyWeekndsDetail = () => {
                   animate={{ height: "auto", opacity: 1 }}
                   exit={{ height: 0, opacity: 0 }}
                   transition={{ duration: 0.3 }}
-                  className="p-4 pt-0 text-gray-700 dark:text-gray-300"
+                  className="p-4 pt-0 text-gray-700 dark:text-gray-300 mt-3 text-justify"
                 >
                   <p>
                     One of the main challenges was implementing secure payment
