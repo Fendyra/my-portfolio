@@ -9,10 +9,10 @@ export const HoverImageLinks = () => {
     <section className="bg-inherit p-4 md:p-8">
       <div className="mx-auto max-w-5xl">
         <Link
-          heading="BusyWeends Jr"
+          heading="BusyWeends"
           subheading="A full-stack e-commerce platform"
           imgSrc="/assets/busyweeknds.png"
-          href="/works"
+          href="/works/1"
         />
         <Link
           heading="E-Learnify"

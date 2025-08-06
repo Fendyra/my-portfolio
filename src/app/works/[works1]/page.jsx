@@ -37,12 +37,12 @@ const BusyWeekndsDetail = () => {
       { name: "Javascript", logo: "/assets/js.png" },
     ],
     screenshots: [
-      "/assets/busyweeknds_design.png",
-      "/assets/elearnify.png",
-      "/assets/portfolio-2025.png",
-      "/assets/printhub.png",
-      "/assets/volcanoria.png",
-      "/assets/portfolio-V1.png",
+      "/assets/work[1]-1.png",
+      "/assets/work[1]-2.png",      
+      "/assets/work[1]-3.png",
+      "/assets/work[1]-4.png",
+      "/assets/work[1]-5.png",
+      "/assets/work[1]-6.png",
     ],
   };
 
