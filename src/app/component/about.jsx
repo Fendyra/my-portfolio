@@ -45,7 +45,7 @@ const cvFile =
 const MotionImage = motion(Image);
 
 const About = forwardRef((props, ref) => {
-  const paragraph1 = `Hi, I'm Fendyra Restu Dewangga — a frontend developer and UI enthusiast passionate about building clean, responsive, and user-centered web experiences. Currently in my 5th semester studying Information Systems at UPN "Veteran" Yogyakarta, I combine design thinking with code using tools like Laravel, React, Next.js, Tailwind, and Figma.`;
+  const paragraph1 = `Hi, I'm Fendyra Restu Dewangga — a Creative Fullstack Developer with specialists in frontend developer and UI enthusiast passionate about building clean, responsive, and user-centered web experiences. Currently in my 5th semester studying Information Systems at UPN "Veteran" Yogyakarta, I combine design thinking with code using tools like Laravel, React, Next.js, Tailwind, and Figma.`;
   const paragraph2 = `I love turning ideas into intuitive interfaces that feel natural across devices. For me, great design starts with empathy and ends with purposeful execution. Outside of coding, I lead creative initiatives as the Head of Talent & Interests in the student association, where I bridge tech, culture, and community.`;
 
   const fullDescription = `${paragraph1}\n\n${paragraph2}`;
