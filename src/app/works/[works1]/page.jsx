@@ -22,7 +22,7 @@ const spaceMono = Space_Mono({ subsets: ["latin"], weight: ["400"] });
 const BusyWeekndsDetail = () => {
   const project = {
     id: 1,
-    title: "BusyWeeknds",
+    title: "BusyWeeknds Jr",
     description:
       "An e-commerce platform I developed for a clothing brand, designed to provide a seamless online shopping experience.",
     category: "Web",
