@@ -22,7 +22,7 @@ const menuItems = [
   { name: "Home", href: "#home", largeText: "DIVE IN" },
   { name: "About", href: "#about", largeText: "WHO AM I" },
   { name: "Works", href: "#project", largeText: "CREATIONS" },
-  { name: "Service", href: "#service", largeText: "THIS IS IT" },
+  { name: "Service", href: "#service", largeText: "THE CORE" },
   { name: "Contact", href: "#contact", largeText: "PING ME" },
 ];
 
