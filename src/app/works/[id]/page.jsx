@@ -82,10 +82,12 @@ const AllProjects = [
       { name: "CSS", logo: "/assets/css-3.png" },
     ],
     screenshots: [
-      "/assets/elearnify.png",
-      "/assets/printhub.png",
-      "/assets/portfolio-V1.png",
-      "/assets/volcanoria.png",
+      "/assets/work[2]-1.png",
+      "/assets/work[2]-2.png",
+      "/assets/work[2]-3.png",
+      "/assets/work[2]-4.png",
+      "/assets/work[2]-5.png",
+      "/assets/work[2]-6.png",
     ],
     overview:
       "E-Learnify is a platform designed to provide a structured online learning environment for various IT classes. It was built to offer a user-friendly interface for both beginners and advanced learners.",
