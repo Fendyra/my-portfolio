@@ -1,4 +1,3 @@
-// src/app/works/[id]/page.jsx
 "use client";
 
 import React, { useState, useEffect } from "react";
@@ -44,7 +43,7 @@ const AllProjects = [
       "/assets/work[1]-5.png",
       "/assets/work[1]-6.png",
     ],
-    overview: "BusyWeeknds is an e-commerce platform I developed for a clothing brand, designed to provide a seamless online shopping experience. The project showcases modern web development practices with a focus on user experience and responsive design.",
+    overview: "BusyWeeknds is an e-commerce platform I developed for a clothing brand, designed to provide a seamless online shopping experience.",
     journey: [
       { heading: "Initial Planning & Design", text: "Careful planning of the user experience and crafting a responsive UI with Figma." },
       { heading: "Full-stack Development", text: "Using Laravel for the backend and Tailwind CSS for rapid frontend development." },
