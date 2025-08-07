@@ -404,7 +404,7 @@ const WorksPage = () => {
                 />
               </div>
               <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-2">
-                Project Not Deployed 🌐
+                Project Not Deployed
               </h3>
               <p className="text-gray-600 dark:text-gray-400 mb-6">
                 The live demo for {selectedProject.title} is currently not
@@ -422,12 +422,7 @@ const WorksPage = () => {
                   <FiGithub size={20} />
                   <span>View Source Code</span>
                 </Link>
-                <button
-                  onClick={closeNotification}
-                  className="w-full px-6 py-3 border border-gray-300 dark:border-gray-700 rounded-full font-semibold text-gray-800 dark:text-white hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors"
-                >
-                  Close
-                </button>
+    
               </div>
             </motion.div>
           </motion.div>

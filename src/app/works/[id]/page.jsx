@@ -23,7 +23,8 @@ const AllProjects = [
   {
     id: 1,
     title: "BusyWeeknds",
-    description: "An e-commerce platform I developed for a clothing brand, designed to provide a seamless online shopping experience.",
+    description:
+      "An e-commerce platform I developed for a clothing brand, designed to provide a seamless online shopping experience.",
     category: "Web",
     image: "/assets/busyweeknds.png",
     link: "https://busyweeknds.fendyverse.web.id/",
@@ -43,22 +44,35 @@ const AllProjects = [
       "/assets/work[1]-5.png",
       "/assets/work[1]-6.png",
     ],
-    overview: "BusyWeeknds is an e-commerce platform I developed for a clothing brand, designed to provide a seamless online shopping experience.",
+    overview:
+      "BusyWeeknds is an e-commerce platform I developed for a clothing brand, designed to provide a seamless online shopping experience.",
     journey: [
-      { heading: "Initial Planning & Design", text: "Careful planning of the user experience and crafting a responsive UI with Figma." },
-      { heading: "Full-stack Development", text: "Using Laravel for the backend and Tailwind CSS for rapid frontend development." },
-      { heading: "Feature Implementation", text: "Implementing shopping cart, authentication, and inventory management, all with clean and maintainable code." },
+      {
+        heading: "Initial Planning & Design",
+        text: "Careful planning of the user experience and crafting a responsive UI with Figma.",
+      },
+      {
+        heading: "Full-stack Development",
+        text: "Using Laravel for the backend and Tailwind CSS for rapid frontend development.",
+      },
+      {
+        heading: "Feature Implementation",
+        text: "Implementing shopping cart, authentication, and inventory management, all with clean and maintainable code.",
+      },
     ],
-    success: "The biggest success of this project was creating a fully functional e-commerce platform that meets modern web standards. The responsive design ensures optimal user experience across all devices, and the clean interface makes product discovery intuitive.",
-    challenges: "One of the main challenges was implementing secure payment processing while maintaining user-friendly checkout flow. I also focused on optimizing the website's performance to ensure fast loading times, which is crucial for e-commerce success."
+    success:
+      "The biggest success of this project was creating a fully functional e-commerce platform that meets modern web standards. The responsive design ensures optimal user experience across all devices, and the clean interface makes product discovery intuitive.",
+    challenges:
+      "One of the main challenges was implementing secure payment processing while maintaining user-friendly checkout flow. I also focused on optimizing the website's performance to ensure fast loading times, which is crucial for e-commerce success.",
   },
   {
     id: 2,
     title: "E-Learnify",
-    description: "An online learning platform providing structured IT classes for beginners to advanced learners, with registration features and digital course materials.",
+    description:
+      "An online learning platform providing structured IT classes for beginners to advanced learners, with registration features and digital course materials.",
     category: "Web",
     image: "/assets/elearnify.png",
-    link: "http://example-elearnify-demo.com",
+    link: "",
     github: "https://github.com/Fendyra/Elearnify",
     technologies: [
       { name: "PHP", logo: "/assets/php.png" },
@@ -73,14 +87,26 @@ const AllProjects = [
       "/assets/portfolio-V1.png",
       "/assets/volcanoria.png",
     ],
-    overview: "E-Learnify is a platform designed to provide a structured online learning environment for various IT classes. It was built to offer a user-friendly interface for both beginners and advanced learners.",
+    overview:
+      "E-Learnify is a platform designed to provide a structured online learning environment for various IT classes. It was built to offer a user-friendly interface for both beginners and advanced learners.",
     journey: [
-      { heading: "Concept & UI/UX Design", text: "Developed the core concept and designed the user flow and interface using Figma to ensure a smooth learning experience." },
-      { heading: "Backend Logic & Database", text: "Implemented the backend using PHP to handle user authentication, course management, and resource storage." },
-      { heading: "Frontend Implementation", text: "Built a responsive and dynamic frontend using TailwindCSS and vanilla JavaScript to deliver a clean and interactive user interface." },
+      {
+        heading: "Concept & UI/UX Design",
+        text: "Developed the core concept and designed the user flow and interface using Figma to ensure a smooth learning experience.",
+      },
+      {
+        heading: "Backend Logic & Database",
+        text: "Implemented the backend using PHP to handle user authentication, course management, and resource storage.",
+      },
+      {
+        heading: "Frontend Implementation",
+        text: "Built a responsive and dynamic frontend using TailwindCSS and vanilla JavaScript to deliver a clean and interactive user interface.",
+      },
     ],
-    success: "Successfully created a robust platform with a clear and intuitive user journey, from class registration to accessing digital course materials. The system is scalable and ready for future content expansion.",
-    challenges: "A key challenge was managing a dynamic database of courses and users efficiently. I also focused on ensuring a responsive layout for optimal viewing on all devices, which was a priority for an e-learning platform."
+    success:
+      "Successfully created a robust platform with a clear and intuitive user journey, from class registration to accessing digital course materials. The system is scalable and ready for future content expansion.",
+    challenges:
+      "A key challenge was managing a dynamic database of courses and users efficiently. I also focused on ensuring a responsive layout for optimal viewing on all devices, which was a priority for an e-learning platform.",
   },
   // Add other projects here
 ];
@@ -109,14 +135,39 @@ const ProjectDetail = ({ params }) => {
   const toggleAccordion = (index) => {
     setOpenAccordion(openAccordion === index ? null : index);
   };
-  
+
+  // State for notification
+  const [showNotification, setShowNotification] = useState(false);
+
+  const handleLiveDemoClick = () => {
+    if (!project.link) {
+      setShowNotification(true);
+      // Remove setTimeout so the user can close it manually
+    } else {
+      window.open(project.link, "_blank");
+    }
+  };
+
+  // close notification
+  const closeNotification = () => {
+    setShowNotification(false);
+  };
+
+  // If project not found, show a 404-like message
   if (!project) {
     return (
-      <main className={`min-h-screen flex items-center justify-center ${montserrat.className}`}>
+      <main
+        className={`min-h-screen flex items-center justify-center ${montserrat.className}`}
+      >
         <div className="text-center">
           <h1 className="text-4xl font-bold mb-4">Project Not Found</h1>
-          <p className="text-gray-600 dark:text-gray-400">The project you are looking for does not exist.</p>
-          <Link href="/works" className="mt-4 inline-block text-blue-500 hover:underline">
+          <p className="text-gray-600 dark:text-gray-400">
+            The project you are looking for does not exist.
+          </p>
+          <Link
+            href="/works"
+            className="mt-4 inline-block text-blue-500 hover:underline"
+          >
             ← Back to Projects
           </Link>
         </div>
@@ -192,15 +243,17 @@ const ProjectDetail = ({ params }) => {
             </div>
             {/* CTA Buttons */}
             <div className="flex flex-wrap gap-4 mt-8">
-              <Link
-                href={project.link}
-                target="_blank"
-                rel="noopener noreferrer"
+              {/* Change Link to a button that triggers the notification */}
+              <motion.button
+                onClick={handleLiveDemoClick}
                 className="inline-flex items-center gap-2 px-6 py-3 bg-white text-black rounded-full hover:bg-gray-200 transition-colors"
+                initial={{ opacity: 0, x: -10 }}
+                animate={{ opacity: 1, x: 0 }}
+                transition={{ delay: 1, duration: 0.6 }}
               >
                 <FiExternalLink size={20} />
                 <span className="font-medium">Live Demo</span>
-              </Link>
+              </motion.button>
               <Link
                 href={project.github}
                 target="_blank"
@@ -266,7 +319,9 @@ const ProjectDetail = ({ params }) => {
                       ></path>
                     </svg>
                   </span>
-                  <h3 className={`${montserrat.className} text-xl font-semibold text-gray-900 dark:text-white mb-1 ml-2 md:ml-2 lg:ml-2`}>
+                  <h3
+                    className={`${montserrat.className} text-xl font-semibold text-gray-900 dark:text-white mb-1 ml-2 md:ml-2 lg:ml-2`}
+                  >
                     {step.heading}
                   </h3>
                   <p className="text-gray-600 dark:text-gray-400 ml-2 md:ml-2 lg:ml-2 text-justify">
@@ -372,7 +427,7 @@ const ProjectDetail = ({ params }) => {
             </AnimatePresence>
           </div>
         </motion.div>
-        
+
         {/* Screenshots Section */}
         <motion.div
           className="mb-16"
@@ -405,7 +460,6 @@ const ProjectDetail = ({ params }) => {
             ))}
           </div>
         </motion.div>
-
       </div>
 
       {/* Floating CTA Buttons */}
@@ -414,14 +468,12 @@ const ProjectDetail = ({ params }) => {
         className="fixed bottom-6 right-6 flex flex-col gap-3 z-50 opacity-0"
         initial={{ y: 50 }}
       >
-        <Link
-          href={project.link}
-          target="_blank"
-          rel="noopener noreferrer"
+        <motion.button
+          onClick={handleLiveDemoClick}
           className="p-4 bg-black dark:bg-white text-white dark:text-black rounded-full shadow-lg hover:bg-gray-800 dark:hover:bg-gray-200 transition-colors"
         >
           <FiExternalLink size={24} />
-        </Link>
+        </motion.button>
         <Link
           href={project.github}
           target="_blank"
@@ -431,6 +483,73 @@ const ProjectDetail = ({ params }) => {
           <FiGithub size={24} />
         </Link>
       </motion.div>
+
+      {/* Notification for Live Demo */}
+      <AnimatePresence>
+        {showNotification && (
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.3 }}
+            className="fixed inset-0 z-50 flex items-center justify-center bg-black/50 backdrop-blur-sm p-4"
+          >
+            <motion.div
+              initial={{ scale: 0.8, y: 50, opacity: 0 }}
+              animate={{ scale: 1, y: 0, opacity: 1 }}
+              exit={{ scale: 0.8, y: 50, opacity: 0 }}
+              transition={{ type: "spring", stiffness: 200, damping: 25 }}
+              className="bg-white dark:bg-gray-900 text-black dark:text-white rounded-2xl p-8 max-w-sm w-full text-center shadow-2xl relative"
+            >
+              <button
+                onClick={closeNotification}
+                className="absolute top-4 right-4 text-gray-400 hover:text-gray-600 dark:hover:text-gray-200 transition-colors"
+              >
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  className="h-6 w-6"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth={2}
+                    d="M6 18L18 6M6 6l12 12"
+                  />
+                </svg>
+              </button>
+              <div className="flex justify-center mb-4">
+                <FiExternalLink
+                  size={48}
+                  className="text-gray-500 dark:text-gray-400"
+                />
+              </div>
+              <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-2">
+                Project Not Deployed 
+              </h3>
+              <p className="text-gray-600 dark:text-gray-400 mb-6">
+                The live demo for {project.title} is currently not available
+                publicly. This project is only running in a local environment
+                (localhost).
+              </p>
+              <div className="flex flex-col gap-3">
+                <Link
+                  href={project.github}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  onClick={closeNotification}
+                  className="flex items-center justify-center gap-2 w-full px-6 py-3 bg-black dark:bg-white text-white dark:text-black rounded-full font-semibold hover:bg-gray-800 dark:hover:bg-gray-200 transition-colors"
+                >
+                  <FiGithub size={20} />
+                  <span>View Source Code</span>
+                </Link>
+              </div>
+            </motion.div>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </main>
   );
 };
