@@ -1,6 +1,7 @@
+// src/app/works/[id]/page.jsx
 "use client";
 
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import {
   motion,
   useScroll,
@@ -12,19 +13,18 @@ import {
 import Image from "next/image";
 import Link from "next/link";
 import { FiArrowLeft, FiExternalLink, FiGithub, FiEye } from "react-icons/fi";
-import { FaArrowRightLong } from "react-icons/fa6"; // Assuming you might use this one too
 
 // Import font
 import { Montserrat, Space_Mono } from "next/font/google";
 const montserrat = Montserrat({ subsets: ["latin"], weight: ["400", "700"] });
 const spaceMono = Space_Mono({ subsets: ["latin"], weight: ["400"] });
 
-const BusyWeekndsDetail = () => {
-  const project = {
+// Centralized project data. This should ideally be in a separate file like 'projectsData.js'
+const AllProjects = [
+  {
     id: 1,
     title: "BusyWeeknds",
-    description:
-      "An e-commerce platform I developed for a clothing brand, designed to provide a seamless online shopping experience.",
+    description: "An e-commerce platform I developed for a clothing brand, designed to provide a seamless online shopping experience.",
     category: "Web",
     image: "/assets/busyweeknds.png",
     link: "https://busyweeknds.fendyverse.web.id/",
@@ -38,19 +38,58 @@ const BusyWeekndsDetail = () => {
     ],
     screenshots: [
       "/assets/work[1]-1.png",
-      "/assets/work[1]-2.png",      
+      "/assets/work[1]-2.png",
       "/assets/work[1]-3.png",
       "/assets/work[1]-4.png",
       "/assets/work[1]-5.png",
       "/assets/work[1]-6.png",
     ],
-  };
+    overview: "BusyWeeknds is an e-commerce platform I developed for a clothing brand, designed to provide a seamless online shopping experience. The project showcases modern web development practices with a focus on user experience and responsive design.",
+    journey: [
+      { heading: "Initial Planning & Design", text: "Careful planning of the user experience and crafting a responsive UI with Figma." },
+      { heading: "Full-stack Development", text: "Using Laravel for the backend and Tailwind CSS for rapid frontend development." },
+      { heading: "Feature Implementation", text: "Implementing shopping cart, authentication, and inventory management, all with clean and maintainable code." },
+    ],
+    success: "The biggest success of this project was creating a fully functional e-commerce platform that meets modern web standards. The responsive design ensures optimal user experience across all devices, and the clean interface makes product discovery intuitive.",
+    challenges: "One of the main challenges was implementing secure payment processing while maintaining user-friendly checkout flow. I also focused on optimizing the website's performance to ensure fast loading times, which is crucial for e-commerce success."
+  },
+  {
+    id: 2,
+    title: "E-Learnify",
+    description: "An online learning platform providing structured IT classes for beginners to advanced learners, with registration features and digital course materials.",
+    category: "Web",
+    image: "/assets/elearnify.png",
+    link: "http://example-elearnify-demo.com",
+    github: "https://github.com/Fendyra/Elearnify",
+    technologies: [
+      { name: "PHP", logo: "/assets/php.png" },
+      { name: "TailwindCSS", logo: "/assets/tailwindcss.png" },
+      { name: "Javascript", logo: "/assets/js.png" },
+      { name: "Figma", logo: "/assets/figma.png" },
+      { name: "CSS", logo: "/assets/css-3.png" },
+    ],
+    screenshots: [
+      "/assets/elearnify.png",
+      "/assets/printhub.png",
+      "/assets/portfolio-V1.png",
+      "/assets/volcanoria.png",
+    ],
+    overview: "E-Learnify is a platform designed to provide a structured online learning environment for various IT classes. It was built to offer a user-friendly interface for both beginners and advanced learners.",
+    journey: [
+      { heading: "Concept & UI/UX Design", text: "Developed the core concept and designed the user flow and interface using Figma to ensure a smooth learning experience." },
+      { heading: "Backend Logic & Database", text: "Implemented the backend using PHP to handle user authentication, course management, and resource storage." },
+      { heading: "Frontend Implementation", text: "Built a responsive and dynamic frontend using TailwindCSS and vanilla JavaScript to deliver a clean and interactive user interface." },
+    ],
+    success: "Successfully created a robust platform with a clear and intuitive user journey, from class registration to accessing digital course materials. The system is scalable and ready for future content expansion.",
+    challenges: "A key challenge was managing a dynamic database of courses and users efficiently. I also focused on ensuring a responsive layout for optimal viewing on all devices, which was a priority for an e-learning platform."
+  },
+  // Add other projects here
+];
 
-  // State for accordion
-  const [openAccordion, setOpenAccordion] = useState(null);
-  const toggleAccordion = (index) => {
-    setOpenAccordion(openAccordion === index ? null : index);
-  };
+const ProjectDetail = ({ params }) => {
+  const { id } = params;
+  const projectId = parseInt(id);
+  const project = AllProjects.find((p) => p.id === projectId);
 
   // Scroll-based effects for parallax and sticky CTA
   const { scrollYProgress } = useScroll();
@@ -65,6 +104,26 @@ const BusyWeekndsDetail = () => {
       animate(scope.current, { opacity: 0, y: 50 });
     }
   });
+
+  // State for accordion
+  const [openAccordion, setOpenAccordion] = useState(null);
+  const toggleAccordion = (index) => {
+    setOpenAccordion(openAccordion === index ? null : index);
+  };
+  
+  if (!project) {
+    return (
+      <main className={`min-h-screen flex items-center justify-center ${montserrat.className}`}>
+        <div className="text-center">
+          <h1 className="text-4xl font-bold mb-4">Project Not Found</h1>
+          <p className="text-gray-600 dark:text-gray-400">The project you are looking for does not exist.</p>
+          <Link href="/works" className="mt-4 inline-block text-blue-500 hover:underline">
+            ← Back to Projects
+          </Link>
+        </div>
+      </main>
+    );
+  }
 
   return (
     <main
@@ -171,10 +230,7 @@ const BusyWeekndsDetail = () => {
               Project Overview
             </h2>
             <p className="text-lg leading-relaxed text-gray-700 dark:text-gray-300 text-justify">
-              BusyWeeknds is an e-commerce platform I developed for a clothing
-              brand, designed to provide a seamless online shopping experience.
-              The project showcases modern web development practices with a
-              focus on user experience and responsive design.
+              {project.overview}
             </p>
           </motion.div>
 
@@ -189,97 +245,36 @@ const BusyWeekndsDetail = () => {
               Development Journey
             </h2>
             <ol className="relative border-l border-gray-200 dark:border-gray-700 ml-4 pl-4 space-y-8">
-              {/* Step 1 */}
-              <motion.li
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.5, delay: 0.3 }}
-                viewport={{ once: true }}
-              >
-                <span className="absolute flex items-center justify-center w-6 h-6 bg-blue-100 rounded-full -left-3 ring-8 ring-white dark:ring-black dark:bg-blue-900">
-                  <svg
-                    className="w-3 h-3 text-blue-800 dark:text-blue-300"
-                    fill="currentColor"
-                    viewBox="0 0 20 20"
-                    xmlns="http://www.w3.org/2000/svg"
-                  >
-                    <path
-                      fillRule="evenodd"
-                      d="M6 2a1 1 0 00-1 1v1H4a2 2 0 00-2 2v10a2 2 0 002 2h12a2 2 0 002-2V6a2 2 0 00-2-2h-1V3a1 1 0 10-2 0v1H7V3a1 1 0 00-1-1zm0 5a1 1 0 000 2h8a1 1 0 100-2H6z"
-                      clipRule="evenodd"
-                    ></path>
-                  </svg>
-                </span>
-                <h3
-                  className={`${montserrat.className} text-xl font-semibold text-gray-900 dark:text-white mb-1 ml-2 md:ml-2 lg:ml-2`}
+              {project.journey.map((step, index) => (
+                <motion.li
+                  key={index}
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.5, delay: 0.3 + index * 0.2 }}
+                  viewport={{ once: true }}
                 >
-                  Initial Planning & Design
-                </h3>
-                <p className="text-gray-600 dark:text-gray-400 ml-2 md:ml-2 lg:ml-2 text-justify">
-                  Careful planning of the user experience and crafting a
-                  responsive UI with Figma.
-                </p>
-              </motion.li>
-              {/* Step 2 */}
-              <motion.li
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.5, delay: 0.5 }}
-                viewport={{ once: true }}
-              >
-                <span className="absolute flex items-center justify-center w-6 h-6 bg-blue-100 rounded-full -left-3 ring-8 ring-white dark:ring-black dark:bg-blue-900">
-                  <svg
-                    className="w-3 h-3 text-blue-800 dark:text-blue-300"
-                    fill="currentColor"
-                    viewBox="0 0 20 20"
-                    xmlns="http://www.w3.org/2000/svg"
-                  >
-                    <path
-                      d="M7 3a1 1 0 000 2h6a1 1 0 100-2H7zM4 7a1 1 0 011-1h10a1 1 0 110 2H5a1 1 0 01-1-1zM6 11a1 1 0 011-1h2a1 1 0 110 2H7a1 1 0 01-1-1z"
-                      clipRule="evenodd"
-                    ></path>
-                  </svg>
-                </span>
-                <h3
-                  className={`${montserrat.className} text-xl font-semibold text-gray-900 dark:text-white mb-1 ml-2 md:ml-2 lg:ml-2 `}
-                >
-                  Full-stack Development
-                </h3>
-                <p className="text-gray-600 dark:text-gray-400 ml-2 md:ml-2 lg:ml-2 text-justify">
-                  Using Laravel for the backend and Tailwind CSS for rapid
-                  frontend development.
-                </p>
-              </motion.li>
-              {/* Step 3 */}
-              <motion.li
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.5, delay: 0.7 }}
-                viewport={{ once: true }}
-              >
-                <span className="absolute flex items-center justify-center w-6 h-6 bg-blue-100 rounded-full -left-3 ring-8 ring-white dark:ring-black dark:bg-blue-900">
-                  <svg
-                    className="w-3 h-3 text-blue-800 dark:text-blue-300"
-                    fill="currentColor"
-                    viewBox="0 0 20 20"
-                    xmlns="http://www.w3.org/2000/svg"
-                  >
-                    <path
-                      d="M10 2a5 5 0 00-5 5v2a2 2 0 00-2 2v5a2 2 0 002 2h10a2 2 0 002-2v-5a2 2 0 00-2-2V7a5 5 0 00-5-5zm-2 2a3 3 0 00-3 3v2a2 2 0 002 2h2a2 2 0 002-2V7a3 3 0 00-3-3z"
-                      clipRule="evenodd"
-                    ></path>
-                  </svg>
-                </span>
-                <h3
-                  className={`${montserrat.className} text-xl font-semibold text-gray-900 dark:text-white mb-1 ml-2 md:ml-2 lg:ml-2`}
-                >
-                  Feature Implementation
-                </h3>
-                <p className="text-gray-600 dark:text-gray-400 ml-2 md:ml-2 lg:ml-2 text-justify">
-                  Implementing shopping cart, authentication, and inventory
-                  management, all with clean and maintainable code.
-                </p>
-              </motion.li>
+                  <span className="absolute flex items-center justify-center w-6 h-6 bg-blue-100 rounded-full -left-3 ring-8 ring-white dark:ring-black dark:bg-blue-900">
+                    <svg
+                      className="w-3 h-3 text-blue-800 dark:text-blue-300"
+                      fill="currentColor"
+                      viewBox="0 0 20 20"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <path
+                        fillRule="evenodd"
+                        d="M6 2a1 1 0 00-1 1v1H4a2 2 0 00-2 2v10a2 2 0 002 2h12a2 2 0 002-2V6a2 2 0 00-2-2h-1V3a1 1 0 10-2 0v1H7V3a1 1 0 00-1-1zm0 5a1 1 0 000 2h8a1 1 0 100-2H6z"
+                        clipRule="evenodd"
+                      ></path>
+                    </svg>
+                  </span>
+                  <h3 className={`${montserrat.className} text-xl font-semibold text-gray-900 dark:text-white mb-1 ml-2 md:ml-2 lg:ml-2`}>
+                    {step.heading}
+                  </h3>
+                  <p className="text-gray-600 dark:text-gray-400 ml-2 md:ml-2 lg:ml-2 text-justify">
+                    {step.text}
+                  </p>
+                </motion.li>
+              ))}
             </ol>
           </motion.div>
         </div>
@@ -331,13 +326,7 @@ const BusyWeekndsDetail = () => {
                   transition={{ duration: 0.3 }}
                   className="p-4 pt-0 text-gray-700 dark:text-gray-300 mt-3 text-justify"
                 >
-                  <p>
-                    The biggest success of this project was creating a fully
-                    functional e-commerce platform that meets modern web
-                    standards. The responsive design ensures optimal user
-                    experience across all devices, and the clean interface makes
-                    product discovery intuitive.
-                  </p>
+                  <p>{project.success}</p>
                 </motion.div>
               )}
             </AnimatePresence>
@@ -378,19 +367,13 @@ const BusyWeekndsDetail = () => {
                   transition={{ duration: 0.3 }}
                   className="p-4 pt-0 text-gray-700 dark:text-gray-300 mt-3 text-justify"
                 >
-                  <p>
-                    One of the main challenges was implementing secure payment
-                    processing while maintaining user-friendly checkout flow. I
-                    also focused on optimizing the website's performance to
-                    ensure fast loading times, which is crucial for e-commerce
-                    success.
-                  </p>
+                  <p>{project.challenges}</p>
                 </motion.div>
               )}
             </AnimatePresence>
           </div>
         </motion.div>
-
+        
         {/* Screenshots Section */}
         <motion.div
           className="mb-16"
@@ -423,6 +406,7 @@ const BusyWeekndsDetail = () => {
             ))}
           </div>
         </motion.div>
+
       </div>
 
       {/* Floating CTA Buttons */}
@@ -452,4 +436,4 @@ const BusyWeekndsDetail = () => {
   );
 };
 
-export default BusyWeekndsDetail;
+export default ProjectDetail;

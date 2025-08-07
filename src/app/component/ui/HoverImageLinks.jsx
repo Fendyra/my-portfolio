@@ -18,19 +18,19 @@ export const HoverImageLinks = () => {
           heading="E-Learnify"
           subheading="An interactive e-learning platform built for modern learners"
           imgSrc="/assets/elearnify.png"
-          href="/works"
+          href="/works/2"
         />
         <Link
           heading="Portfolio V1"
           subheading="Where it all started - OG Version"
           imgSrc="/assets/portfolio-V1.png"
-          href="/works"
+          href="/works/5"
         />
         <Link
           heading="Volcanoria"
           subheading="Explore volcanoes. Learn fast. Stay safe."
           imgSrc="/assets/volcanoria.png"
-          href="/works"
+          href="/works/4"
         />
       </div>
     </section>
