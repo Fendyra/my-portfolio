@@ -1,14 +1,11 @@
 "use client";
 
 import React, { useState } from "react";
-import { motion } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
 import Image from "next/image";
 import Link from "next/link";
-import { FiExternalLink, FiGithub } from "react-icons/fi";
+import { FiExternalLink, FiGithub, FiEye } from "react-icons/fi";
 import { FaArrowRightLong } from "react-icons/fa6";
-
-// Import icon baru untuk View Design
-import { FiEye } from "react-icons/fi";
 import HeaderIcons from "../component/header";
 
 // Import font
@@ -16,7 +13,7 @@ import { Montserrat, Space_Mono } from "next/font/google";
 const montserrat = Montserrat({ subsets: ["latin"], weight: ["400", "700"] });
 const spaceMono = Space_Mono({ subsets: ["latin"], weight: ["400"] });
 
-// Data Proyek
+// Project Data
 const AllProjects = [
   {
     id: 1,
@@ -42,7 +39,7 @@ const AllProjects = [
       "An online learning platform providing structured IT classes for beginners to advanced learners, with registration features and digital course materials.",
     category: "Web",
     image: "/assets/elearnify.png",
-    link: "",
+    link: "", // Empty link to trigger notification
     github: "https://github.com/Fendyra/Elearnify",
     technologies: [
       { name: "PHP", logo: "/assets/php.png" },
@@ -59,7 +56,7 @@ const AllProjects = [
       "A modern and creative upgrade of the personal portfolio, featuring interactive navigation and visually engaging design to highlight works.",
     category: "Web",
     image: "/assets/portfolio-2025.png",
-    link: "#",
+    link: "", // Empty link to trigger notification
     github: "https://github.com/Fendyra/my-portfolio",
     technologies: [
       { name: "React", logo: "/assets/react.png" },
@@ -76,7 +73,7 @@ const AllProjects = [
       "An informative website presenting real-time data and visual distribution of volcanoes across Indonesia, with educational content.",
     category: "Web",
     image: "/assets/volcanoria.png",
-    link: "",
+    link: "", // Empty link to trigger notification
     github: "https://github.com/Fendyra/volcanoria",
     technologies: [
       { name: "HTML", logo: "/assets/html-5.png" },
@@ -108,7 +105,7 @@ const AllProjects = [
       "Designed a seamless print-ordering experience from upload to pickup, all in a few intuitive clicks. Built with the team, for real-world workflows.",
     category: "UI/UX",
     image: "/assets/printhub.png",
-    link: "",
+    link: "", // Empty link
     github:
       "https://www.figma.com/design/OT3qM6FE8dxz1UKspfTtql/RKPL-1?node-id=1-3&t=cZw4Lja3X3ocWT7f-1",
     technologies: [{ name: "Figma", logo: "/assets/figma.png" }],
@@ -120,7 +117,7 @@ const AllProjects = [
       "A comprehensive UI/UX design for the BusyWeeknds e-commerce platform, focusing on user experience and visual appeal.",
     category: "UI/UX",
     image: "/assets/busyweeknds_design.png",
-    link: "",
+    link: "", // Empty link
     github:
       "https://www.figma.com/design/OT3qM6FE8dxz1UKspfTtql/RKPL-1?node-id=1-3&t=cZw4Lja3X3ocWT7f-1",
     technologies: [{ name: "Figma", logo: "/assets/figma.png" }],
@@ -129,9 +126,25 @@ const AllProjects = [
 
 const WorksPage = () => {
   const [filterCategory, setFilterCategory] = useState("All");
+  const [showNotification, setShowNotification] = useState(false);
+  const [selectedProject, setSelectedProject] = useState(null);
 
   const handleFilter = (category) => {
     setFilterCategory(category);
+  };
+
+  const handleLiveDemoClick = (project) => {
+    if (!project.link) {
+      setSelectedProject(project);
+      setShowNotification(true);
+    } else {
+      window.open(project.link, "_blank");
+    }
+  };
+
+  const closeNotification = () => {
+    setShowNotification(false);
+    setSelectedProject(null);
   };
 
   const filteredProjects =
@@ -179,7 +192,7 @@ const WorksPage = () => {
           <Link href="/main">
             <button
               className="z-50 p-2 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-foreground"
-              aria-label="Kembali ke Portofolio Utama"
+              aria-label="Back to Main Portfolio"
             >
               <FaArrowRightLong size={24} className="text-foreground" />
             </button>
@@ -249,7 +262,6 @@ const WorksPage = () => {
                 />
                 <div className="absolute inset-0 bg-black/50 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end justify-center p-4">
                   <div className="flex gap-4">
-                    {/* Tambahan: Logika kondisional untuk menampilkan tombol */}
                     {project.category === "UI/UX" ? (
                       <Link href={project.github} passHref legacyBehavior>
                         <motion.a
@@ -260,7 +272,6 @@ const WorksPage = () => {
                           whileTap={{ scale: 0.95 }}
                         >
                           <FiEye size={20} />{" "}
-                          {/* Menggunakan ikon View Design */}
                           <span className="font-semibold hidden sm:inline">
                             View Design
                           </span>
@@ -268,20 +279,17 @@ const WorksPage = () => {
                       </Link>
                     ) : (
                       <>
-                        <Link href={project.link} passHref legacyBehavior>
-                          <motion.a
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            className="flex items-center gap-2 p-3 bg-white/10 backdrop-blur-sm rounded-full text-white hover:bg-white/20 transition-colors duration-200"
-                            whileHover={{ scale: 1.05 }}
-                            whileTap={{ scale: 0.95 }}
-                          >
-                            <FiExternalLink size={20} />
-                            <span className="font-semibold hidden sm:inline">
-                              Live Demo
-                            </span>
-                          </motion.a>
-                        </Link>
+                        <motion.button
+                          onClick={() => handleLiveDemoClick(project)}
+                          className="flex items-center gap-2 p-3 bg-white/10 backdrop-blur-sm rounded-full text-white hover:bg-white/20 transition-colors duration-200"
+                          whileHover={{ scale: 1.05 }}
+                          whileTap={{ scale: 0.95 }}
+                        >
+                          <FiExternalLink size={20} />
+                          <span className="font-semibold hidden sm:inline">
+                            Live Demo
+                          </span>
+                        </motion.button>
                         <Link href={project.github} passHref legacyBehavior>
                           <motion.a
                             target="_blank"
@@ -325,7 +333,6 @@ const WorksPage = () => {
                     </motion.div>
                   ))}
                 </div>
-
                 <Link href={`/works/${project.id}`} passHref legacyBehavior>
                   <motion.a
                     className="inline-flex items-center gap-2 border border-gray-400 dark:border-gray-600 rounded-full px-4 py-2 text-sm font-medium text-gray-800 dark:text-white hover:bg-gray-200 dark:hover:bg-gray-800 transition-colors duration-300"
@@ -354,6 +361,78 @@ const WorksPage = () => {
           ))}
         </motion.div>
       </div>
+
+      {/* Notification Pop-up Component */}
+      <AnimatePresence>
+        {showNotification && selectedProject && (
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            className="fixed inset-0 z-50 bg-black/70 flex items-center justify-center p-4 backdrop-blur-sm"
+          >
+            <motion.div
+              initial={{ scale: 0.8, y: 50, opacity: 0 }}
+              animate={{ scale: 1, y: 0, opacity: 1 }}
+              exit={{ scale: 0.8, y: 50, opacity: 0 }}
+              transition={{ type: "spring", stiffness: 200, damping: 25 }}
+              className="bg-white dark:bg-gray-900 rounded-2xl p-8 max-w-sm w-full text-center shadow-2xl relative"
+            >
+              <button
+                onClick={closeNotification}
+                className="absolute top-4 right-4 text-gray-400 hover:text-gray-600 dark:hover:text-gray-200 transition-colors"
+              >
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  className="h-6 w-6"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth={2}
+                    d="M6 18L18 6M6 6l12 12"
+                  />
+                </svg>
+              </button>
+              <div className="flex justify-center mb-4">
+                <FiExternalLink
+                  size={48}
+                  className="text-gray-500 dark:text-gray-400"
+                />
+              </div>
+              <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-2">
+                Project Not Deployed 🌐
+              </h3>
+              <p className="text-gray-600 dark:text-gray-400 mb-6">
+                The live demo for **{selectedProject.title}** is currently not
+                available publicly. This project is only running in a local
+                environment (localhost).
+              </p>
+              <div className="flex flex-col gap-3">
+                <Link
+                  href={selectedProject.github}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  onClick={closeNotification}
+                  className="flex items-center justify-center gap-2 w-full px-6 py-3 bg-black dark:bg-white text-white dark:text-black rounded-full font-semibold hover:bg-gray-800 dark:hover:bg-gray-200 transition-colors"
+                >
+                  <FiGithub size={20} />
+                  <span>View Source Code</span>
+                </Link>
+                <button
+                  onClick={closeNotification}
+                  className="w-full px-6 py-3 border border-gray-300 dark:border-gray-700 rounded-full font-semibold text-gray-800 dark:text-white hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors"
+                >
+                  Close
+                </button>
+              </div>
+            </motion.div>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </main>
   );
 };
