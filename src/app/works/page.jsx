@@ -5,7 +5,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import Image from "next/image";
 import Link from "next/link";
 import { FiExternalLink, FiGithub, FiEye } from "react-icons/fi";
-import { FaArrowRightLong } from "react-icons/fa6";
+import { RiArrowLeftDoubleFill } from "react-icons/ri";
 import HeaderIcons from "../component/header";
 
 // Import font
@@ -194,7 +194,7 @@ const WorksPage = () => {
               className="z-50 p-2 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-foreground"
               aria-label="Back to Main Portfolio"
             >
-              <FaArrowRightLong size={24} className="text-foreground" />
+              <RiArrowLeftDoubleFill size={40} className="text-foreground" />
             </button>
           </Link>
         </div>
@@ -407,7 +407,7 @@ const WorksPage = () => {
                 Project Not Deployed 🌐
               </h3>
               <p className="text-gray-600 dark:text-gray-400 mb-6">
-                The live demo for **{selectedProject.title}** is currently not
+                The live demo for {selectedProject.title} is currently not
                 available publicly. This project is only running in a local
                 environment (localhost).
               </p>
