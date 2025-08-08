@@ -267,7 +267,8 @@ const AllProjects = [
     journey: [
       {
         heading: "User Research & Problem Definition",
-        text: "We began with extensive user research to identify pain points in existing print-ordering services. This included understanding user needs, common frustrations, and ideal workflows, which became the foundation for our design strategy.",      },
+        text: "We began with extensive user research to identify pain points in existing print-ordering services. This included understanding user needs, common frustrations, and ideal workflows, which became the foundation for our design strategy.",
+      },
       {
         heading: "Wireframing & Prototyping in Figma",
         text: "I used Figma to build the entire user flow, from low-fidelity wireframes to a high-fidelity, interactive prototype. This allowed us to quickly test and iterate on key features like file upload, order customization, and the checkout process to ensure a smooth and logical user journey.",
@@ -281,6 +282,46 @@ const AllProjects = [
       "Successfully delivered a clean and intuitive UI/UX prototype that reduced print ordering into a 3-step journey. Feedback from test users highlighted ease of use, visual clarity, and clear navigation as standout elements.",
     challenges:
       "One of the main challenges was designing for both novice and experienced users, requiring a balance between guidance and efficiency. Additionally, mapping real-world workflow complexities into a digital format without overwhelming the interface posed a unique challenge.",
+  },
+  {
+    id: 7,
+    title: "BusyWeeknds Design",
+    description:
+      "A comprehensive UI/UX design for the BusyWeeknds e-commerce platform, focusing on user experience and visual appeal.",
+    category: "UI/UX",
+    image: "/assets/busyweeknds_design.png",
+    link: "", // Empty link
+    github:
+      "https://www.figma.com/design/OT3qM6FE8dxz1UKspfTtql/RKPL-1?node-id=1-3&t=cZw4Lja3X3ocWT7f-1",
+    technologies: [{ name: "Figma", logo: "/assets/figma.png" }],
+    screenshots: [
+      "/assets/work[1]-1.png",
+      "/assets/work[1]-2.png",
+      "/assets/work[1]-3.png",
+      "/assets/work[1]-4.png",
+      "/assets/work[1]-5.png",
+      "/assets/work[1]-6.png",
+    ],
+    overview:
+      "BusyWeeknds (UI/UX Version) is a visual design project for a clothing brand's e-commerce platform. It focused on creating a user-friendly, trend-aware, and mobile-optimized interface that enhances the shopping journey while reflecting the brand’s youthful, casual identity.",
+    journey: [
+      {
+        heading: "Brand Research & Style Direction",
+        text: "Conducted moodboarding and competitor analysis to understand visual trends in fashion e-commerce. Defined a style direction aligning with the brand’s identity: minimal, bold, and modern.",
+      },
+      {
+        heading: "User Flow & Wireframing",
+        text: "Mapped out complete shopping flow—from landing page to checkout. Created wireframes to ensure clarity and reduce friction in browsing, selecting sizes, and completing orders.",
+      },
+      {
+        heading: "UI Design & Prototyping",
+        text: "Designed high-fidelity UI in Figma with responsive layouts, clean typography, and dynamic visuals. Prototyped interactive pages to simulate real-world user scenarios for usability testing.",
+      },
+    ],
+    success:
+      "The project successfully translated the brand’s identity into a seamless digital experience. User testing highlighted the smooth product discovery flow and strong visual appeal, especially on mobile.",
+    challenges:
+      "Designing a layout that balances visual impact with performance and usability was the main challenge. Iterating between clean aesthetics and functional UI—especially for the checkout—required attention to detail and feedback loops.",
   },
   // Add other projects here
 ];
