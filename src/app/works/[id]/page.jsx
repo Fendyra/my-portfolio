@@ -110,6 +110,51 @@ const AllProjects = [
     challenges:
       "A key challenge was managing a dynamic database of courses and users efficiently. I also focused on ensuring a responsive layout for optimal viewing on all devices, which was a priority for an e-learning platform.",
   },
+  {
+    id: 3,
+    title: "Portfolio V2",
+    description:
+      "A modern and creative upgrade of the personal portfolio, featuring interactive navigation and visually engaging design to highlight works.",
+    category: "Web",
+    image: "/assets/portfolio-2025.png",
+    link: "", // Empty link to trigger notification
+    github: "https://github.com/Fendyra/my-portfolio",
+    technologies: [
+      { name: "React", logo: "/assets/react.png" },
+      { name: "TailwindCSS", logo: "/assets/tailwindcss.png" },
+      { name: "Javascript", logo: "/assets/js.png" },
+      { name: "Figma", logo: "/assets/figma.png" },
+      { name: "Next Js", logo: "/assets/nextjs.png" },
+    ],
+    screenshots: [
+      "/assets/work[2]-1.png",
+      "/assets/work[2]-2.png",
+      "/assets/work[2]-3.png",
+      "/assets/work[2]-4.png",
+      "/assets/work[2]-5.png",
+      "/assets/work[2]-6.png",
+    ],
+    overview:
+      "Portfolio v2 is a redesigned and improved personal portfolio website, built to reflect a modern creative developer profile. The goal was to present works in a more interactive and immersive way, using motion, clean design, and responsive layout.",
+    journey: [
+      {
+        heading: "Conceptualization & Design",
+        text: "The process began with defining a new visual identity. I used Figma to design a dark-themed interface with a strong focus on typography, motion, and a minimalist color palette. The goal was to move away from traditional static portfolios and create a more immersive user journey.",
+      },
+      {
+        heading: "Frontend Development",
+        text: "Developed the website using Next.js with Tailwind CSS for utility-first styling. Added smooth animations and transitions using Framer Motion to enhance user interaction.",
+      },
+      {
+        heading: "Responsive & Optimaztion Development",
+        text: "Using Tailwind CSS, I ensured the design was fully responsive across all devices. The project was built with a focus on code efficiency and performance optimization, resulting in a fast and seamless experience for every visitor.",
+      },
+    ],
+    success:
+      "Successfully built a modern, fully responsive, and animated portfolio that showcases projects, services, and skills effectively. Navigation feels smooth and intuitive across devices, with a strong emphasis on personal branding.",
+    challenges:
+      "One of the main challenges was balancing interactivity and performance. Integrating complex animations without compromising speed or user experience required careful tuning and optimization across breakpoints.",
+  },
   // Add other projects here
 ];
 
