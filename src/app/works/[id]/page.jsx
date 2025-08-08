@@ -198,6 +198,51 @@ const AllProjects = [
     challenges:
       "The biggest challenge was integrating dynamic map data with the backend and ensuring that updates were reflected accurately and in real-time. Designing a user-friendly interface to display technical data in a simplified manner was also key.",
   },
+  {
+    id: 5,
+    title: "Portfolio V1",
+    description:
+      "The first version of a personal portfolio showcasing identity, projects, and web development skills in a clean and professional layout.",
+    category: "Web",
+    image: "/assets/portfolio-V1.png",
+    link: "https://portfolio-fendyra-b7txyrpxv-fendyras-projects.vercel.app/",
+    github: "https://github.com/Fendyra/portfolio-v2",
+    technologies: [
+      { name: "React", logo: "/assets/react.png" },
+      { name: "TailwindCSS", logo: "/assets/tailwindcss.png" },
+      { name: "Javascript", logo: "/assets/js.png" },
+      { name: "Figma", logo: "/assets/figma.png" },
+      { name: "Next Js", logo: "/assets/nextjs.png" },
+    ],
+    screenshots: [
+      "/assets/work[4]-1.png",
+      "/assets/work[4]-2.png",
+      "/assets/work[4]-3.png",
+      "/assets/work[4]-4.png",
+      "/assets/work[4]-5.png",
+      "/assets/work[4]-6.png",
+    ],
+    overview:
+      "This is the 'OG version' of my personal portfolio, a project that laid the foundation for my professional journey. It was designed to be a clean, straightforward platform to introduce my identity, showcase my early projects, and demonstrate my foundational web development skills. The focus was on creating a simple, navigable, and professional online presence.",
+    journey: [
+      {
+        heading: "Learning The Ropes",
+        text: "The development journey began with learning Next.js and React. The core challenge was to understand component-based architecture, state management, and the principles of server-side rendering (SSR) to build a performant single-page application.",
+      },
+      {
+        heading: "Interactivity & Responsiveness",
+        text: "Using Tailwind CSS, I focused on creating a responsive and mobile-first design. This stage was crucial for mastering utility-first CSS and ensuring a consistent user experience across different screen sizes. The structure was built to be modular and easy to maintain.",
+      },
+      {
+        heading: "Deployment & Maintenance",
+        text: "Deployed the portfolio using Vercel for easy publishing and ongoing adjustments. The simplicity of code ensures easy updates and scalability for future enhancements.",
+      },
+    ],
+    success:
+      "The biggest success was successfully building a functional and professional portfolio from scratch. This project served as a critical learning experience, proving my ability to build a complete web application with modern frameworks and establishing my initial digital footprint as a developer.",
+    challenges:
+      "The main challenge was the learning curve associated with a new tech stack, particularly mastering React's component lifecycle and Next.js's file-based routing. Another hurdle was implementing a clean, responsive design that was both visually appealing and highly performant without relying on pre-built UI kits.",
+  },
   // Add other projects here
 ];
 
