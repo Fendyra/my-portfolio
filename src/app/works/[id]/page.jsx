@@ -215,12 +215,12 @@ const AllProjects = [
       { name: "Next Js", logo: "/assets/nextjs.png" },
     ],
     screenshots: [
-      "/assets/work[4]-1.png",
-      "/assets/work[4]-2.png",
-      "/assets/work[4]-3.png",
-      "/assets/work[4]-4.png",
-      "/assets/work[4]-5.png",
-      "/assets/work[4]-6.png",
+      "/assets/work[5]-1.png",
+      "/assets/work[5]-2.png",
+      "/assets/work[5]-3.png",
+      "/assets/work[5]-4.png",
+      "/assets/work[5]-5.png",
+      "/assets/work[5]-6.png",
     ],
     overview:
       "This is the 'OG version' of my personal portfolio, a project that laid the foundation for my professional journey. It was designed to be a clean, straightforward platform to introduce my identity, showcase my early projects, and demonstrate my foundational web development skills. The focus was on creating a simple, navigable, and professional online presence.",
