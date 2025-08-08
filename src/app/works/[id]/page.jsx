@@ -321,7 +321,7 @@ const AllProjects = [
     success:
       "The project successfully translated the brand’s identity into a seamless digital experience. User testing highlighted the smooth product discovery flow and strong visual appeal, especially on mobile.",
     challenges:
-      "Designing a layout that balances visual impact with performance and usability was the main challenge. Iterating between clean aesthetics and functional UI—especially for the checkout—required attention to detail and feedback loops.",
+      "Designing a layout that balances visual impact with performance and usability was the main challenge. Iterating between clean aesthetics and functional UI especially for the checkout required attention to detail and feedback loops.",
   },
   // Add other projects here
 ];
