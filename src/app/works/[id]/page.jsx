@@ -255,12 +255,12 @@ const AllProjects = [
       "https://www.figma.com/design/OT3qM6FE8dxz1UKspfTtql/RKPL-1?node-id=1-3&t=cZw4Lja3X3ocWT7f-1",
     technologies: [{ name: "Figma", logo: "/assets/figma.png" }],
     screenshots: [
-      "/assets/work[5]-1.png",
-      "/assets/work[5]-2.png",
-      "/assets/work[5]-3.png",
-      "/assets/work[5]-4.png",
-      "/assets/work[5]-5.png",
-      "/assets/work[5]-6.png",
+      "/assets/work[6]-1.png",
+      "/assets/work[6]-2.png",
+      "/assets/work[6]-3.png",
+      "/assets/work[6]-4.png",
+      "/assets/work[6]-5.png",
+      "/assets/work[6]-6.png",
     ],
     overview:
       "Printhub is a UI/UX design project that reimagines the print-ordering process. My team and I focused on creating an intuitive, end-to-end workflow, from the initial file upload to the final pickup. The design prioritizes user experience, aiming to simplify a traditionally complex process into a few clean, guided steps.",
