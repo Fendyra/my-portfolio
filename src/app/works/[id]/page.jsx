@@ -155,6 +155,49 @@ const AllProjects = [
     challenges:
       "One of the main challenges was balancing interactivity and performance. Integrating complex animations without compromising speed or user experience required careful tuning and optimization across breakpoints.",
   },
+  {
+    id: 4,
+    title: "Volcanoria",
+    description:
+      "An informative website presenting real-time data and visual distribution of volcanoes across Indonesia, with educational content.",
+    category: "Web",
+    image: "/assets/volcanoria.png",
+    link: "", // Empty link to trigger notification
+    github: "https://github.com/Fendyra/volcanoria",
+    technologies: [
+      { name: "HTML", logo: "/assets/html-5.png" },
+      { name: "PHP", logo: "/assets/php.png" },
+      { name: "CSS", logo: "/assets/css-3.png" },
+    ],
+    screenshots: [
+      "/assets/work[4]-1.png",
+      "/assets/work[4]-2.png",
+      "/assets/work[4]-3.png",
+      "/assets/work[4]-4.png",
+      "/assets/work[4]-5.png",
+      "/assets/work[4]-6.png",
+    ],
+    overview:
+      "Volcanoria is a web-based platform built to provide real-time volcanic activity data and educational content. The project focuses on delivering accessible and visually engaging information for public awareness and disaster preparedness in Indonesia.",
+    journey: [
+      {
+        heading: "Planning & Research",
+        text: "Started with researching the needs of users who require accessible volcano monitoring, especially in Indonesia. Defined essential features such as interactive maps, eruption status updates, and visual indicators.",
+      },
+      {
+        heading: "Interface & Visualization Design",
+        text: "The focus was on creating an engaging and functional interface. Using HTML and CSS, with the help of a framework like Bootstrap, I designed a responsive layout. JavaScript was implemented to manage dynamic interactions and visually display the data.",
+      },
+      {
+        heading: "Educational Content Structure",
+        text: "I structured the educational content to be easy to understand, from basic definitions of volcanology to disaster mitigation information. The goal was not just to provide data but also to raise public awareness and knowledge about the importance of being prepared for volcanic activity.",
+      },
+    ],
+    success:
+      "The primary success of this project lies in its ability to present complex data in a visual and interactive format. The website serves as a valuable resource for users who want to learn about volcanology in Indonesia, featuring intuitive navigation and an informative design.",
+    challenges:
+      "The biggest challenge was integrating dynamic map data with the backend and ensuring that updates were reflected accurately and in real-time. Designing a user-friendly interface to display technical data in a simplified manner was also key.",
+  },
   // Add other projects here
 ];
 
