@@ -127,12 +127,12 @@ const AllProjects = [
       { name: "Next Js", logo: "/assets/nextjs.png" },
     ],
     screenshots: [
-      "/assets/work[2]-1.png",
-      "/assets/work[2]-2.png",
-      "/assets/work[2]-3.png",
-      "/assets/work[2]-4.png",
-      "/assets/work[2]-5.png",
-      "/assets/work[2]-6.png",
+      "/assets/work[3]-1.png",
+      "/assets/work[3]-2.png",
+      "/assets/work[3]-3.png",
+      "/assets/work[3]-4.png",
+      "/assets/work[3]-5.png",
+      "/assets/work[3]-6.png",
     ],
     overview:
       "Portfolio v2 is a redesigned and improved personal portfolio website, built to reflect a modern creative developer profile. The goal was to present works in a more interactive and immersive way, using motion, clean design, and responsive layout.",
