@@ -243,6 +243,45 @@ const AllProjects = [
     challenges:
       "The main challenge was the learning curve associated with a new tech stack, particularly mastering React's component lifecycle and Next.js's file-based routing. Another hurdle was implementing a clean, responsive design that was both visually appealing and highly performant without relying on pre-built UI kits.",
   },
+  {
+    id: 6,
+    title: "Printhub",
+    description:
+      "Designed a seamless print-ordering experience from upload to pickup, all in a few intuitive clicks. Built with the team, for real-world workflows.",
+    category: "UI/UX",
+    image: "/assets/printhub.png",
+    link: "", // Empty link
+    github:
+      "https://www.figma.com/design/OT3qM6FE8dxz1UKspfTtql/RKPL-1?node-id=1-3&t=cZw4Lja3X3ocWT7f-1",
+    technologies: [{ name: "Figma", logo: "/assets/figma.png" }],
+    screenshots: [
+      "/assets/work[5]-1.png",
+      "/assets/work[5]-2.png",
+      "/assets/work[5]-3.png",
+      "/assets/work[5]-4.png",
+      "/assets/work[5]-5.png",
+      "/assets/work[5]-6.png",
+    ],
+    overview:
+      "Printhub is a UI/UX design project that reimagines the print-ordering process. My team and I focused on creating an intuitive, end-to-end workflow, from the initial file upload to the final pickup. The design prioritizes user experience, aiming to simplify a traditionally complex process into a few clean, guided steps.",
+    journey: [
+      {
+        heading: "User Research & Problem Definition",
+        text: "We began with extensive user research to identify pain points in existing print-ordering services. This included understanding user needs, common frustrations, and ideal workflows, which became the foundation for our design strategy.",      },
+      {
+        heading: "Wireframing & Prototyping in Figma",
+        text: "I used Figma to build the entire user flow, from low-fidelity wireframes to a high-fidelity, interactive prototype. This allowed us to quickly test and iterate on key features like file upload, order customization, and the checkout process to ensure a smooth and logical user journey.",
+      },
+      {
+        heading: "Collaborative Design Iteration",
+        text: "Working closely with my team, we refined the visual design and interaction patterns. The goal was to create a clean, modern aesthetic that was both visually appealing and highly usable, reflecting a professional and trustworthy service.",
+      },
+    ],
+    success:
+      "Successfully delivered a clean and intuitive UI/UX prototype that reduced print ordering into a 3-step journey. Feedback from test users highlighted ease of use, visual clarity, and clear navigation as standout elements.",
+    challenges:
+      "One of the main challenges was designing for both novice and experienced users, requiring a balance between guidance and efficiency. Additionally, mapping real-world workflow complexities into a digital format without overwhelming the interface posed a unique challenge.",
+  },
   // Add other projects here
 ];
 
