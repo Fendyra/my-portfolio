@@ -3,7 +3,6 @@ import { useEffect, useRef, useState } from "react";
 const TextPressure = ({
   text = "Compressa",
   fontFamily = "Montserrat",
-  // This font is just an example, you should not use it in commercial projects.
   fontUrl = "https://res.cloudinary.com/dr6lvwubh/raw/upload/v1529908256/CompressaPRO-GX.woff2",
 
   width = true,
@@ -15,8 +14,9 @@ const TextPressure = ({
   stroke = false,
   scale = false,
 
-  textColor = "#FFFFFF",
-  strokeColor = "#FF0000",
+  // Mengubah nilai default agar tidak hardcoded
+  textColor,
+  strokeColor,
   strokeWidth = 2,
   className = "font-montserrat text-[clamp(2rem,8vw,5rem)] lg:text-[clamp(3rem,6vw,5rem)] font-bold mb-1 ml-[25vw] md:ml-0 lg:ml-[150px] hover:scale-105 hover:letter-spacing-[0.1em] hover:text-shadow-md transition-all duration-300",
 
@@ -158,7 +158,7 @@ const TextPressure = ({
         }
         .stroke span {
           position: relative;
-          color: ${textColor};
+          color: ${textColor}; // Menggunakan properti yang diterima
         }
         .stroke span::after {
           content: attr(data-char);
@@ -168,7 +168,7 @@ const TextPressure = ({
           color: transparent;
           z-index: -1;
           -webkit-text-stroke-width: ${strokeWidth}px;
-          -webkit-text-stroke-color: ${strokeColor};
+          -webkit-text-stroke-color: ${strokeColor}; // Menggunakan properti yang diterima
         }
       `}</style>
 

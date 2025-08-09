@@ -1,9 +1,9 @@
 "use client";
 
-import React, { forwardRef } from "react";
+import React, { forwardRef, useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import Image from "next/image";
-import dynamic from "next/dynamic"; // Impor dynamic
+import dynamic from "next/dynamic";
 import {
   Montserrat,
   Space_Mono,
@@ -50,6 +50,28 @@ const cvFile =
 const MotionImage = motion(Image);
 
 const About = forwardRef((props, ref) => {
+  const [isDarkMode, setIsDarkMode] = useState(false);
+
+  useEffect(() => {
+    // Memeriksa status dark mode saat komponen di-mount
+    const checkTheme = () => {
+      setIsDarkMode(document.documentElement.classList.contains("dark"));
+    };
+
+    checkTheme();
+
+    // Menambahkan event listener untuk mendeteksi perubahan tema
+    const observer = new MutationObserver(checkTheme);
+    observer.observe(document.documentElement, {
+      attributes: true,
+      attributeFilter: ["class"],
+    });
+
+    return () => {
+      observer.disconnect();
+    };
+  }, []);
+
   const paragraph1 = `Hi, I'm Fendyra Restu Dewangga — a Creative Fullstack Developer with specialists in frontend developer and UI enthusiast passionate about building clean, responsive, and user-centered web experiences. Currently in my 5th semester studying Information Systems at UPN "Veteran" Yogyakarta, I combine design thinking with code using tools like Laravel, React, Next.js, Tailwind, and Figma.`;
   const paragraph2 = `I love turning ideas into intuitive interfaces that feel natural across devices. For me, great design starts with empathy and ends with purposeful execution. Outside of coding, I lead creative initiatives as the Head of Talent & Interests in the student association, where I bridge tech, culture, and community.`;
 
@@ -94,6 +116,9 @@ const About = forwardRef((props, ref) => {
     "Prototyping",
     "VS Code",
   ];
+
+  const textColor = isDarkMode ? "#ffffff" : "#000000";
+  const strokeColor = isDarkMode ? "#5e6666c7" : "#08084dff";
 
   return (
     <motion.section
@@ -153,44 +178,47 @@ const About = forwardRef((props, ref) => {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.8 }}
           >
-            <div className="flex flex-col items-start mb-2">
-                <DynamicTextPressure
-                  text="Fendyra"
-                  flex={true}
-                  alpha={false}
-                  stroke={false}
-                  width={true}
-                  weight={true}
-                  italic={true}
-                  textColor="#ffffff"
-                  strokeColor="#ff0000"
-                  minFontSize={25}
-                />
-                  <DynamicTextPressure
-                    text="Restu"
-                    flex={true}
-                    alpha={false}
-                    stroke={false}
-                    width={true}
-                    weight={true}
-                    italic={true}
-                    textColor="#ffffff"
-                    strokeColor="#ff0000"
-                    minFontSize={25}
-                  />
-                  <DynamicTextPressure
-                    text="Dewangga"
-                    flex={true}
-                    alpha={false}
-                    stroke={false}
-                    width={true}
-                    weight={true}
-                    italic={true}
-                    textColor="#ffffff"
-                    strokeColor="#ff0000"
-                    minFontSize={25}
-                  />
-              </div>
+            <div className="flex flex-col items-start mb-2 text-white dark:text-black">
+              <DynamicTextPressure
+                text="Fendyra"
+                flex={true}
+                alpha={false}
+                stroke={false}
+                width={true}
+                weight={true}
+                italic={true}
+                textColor={textColor}
+                strokeColor={strokeColor}
+                minFontSize={25}
+                className="text-white dark:text-black"
+              />
+              <DynamicTextPressure
+                text="Restu"
+                flex={true}
+                alpha={false}
+                stroke={false}
+                width={true}
+                weight={true}
+                italic={true}
+                textColor={textColor}
+                strokeColor={strokeColor}
+                minFontSize={25}
+                className="text-white dark:text-black"
+              />
+              <DynamicTextPressure
+                text="Dewangga"
+                flex={true}
+                alpha={false}
+                stroke={false}
+                width={true}
+                weight={true}
+                italic={true}
+                textColor={textColor}
+                strokeColor={strokeColor}
+                minFontSize={25}
+                className="text-white dark:text-black"
+              />
+            </div>
 
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mt-6">
               <motion.div
