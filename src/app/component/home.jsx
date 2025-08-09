@@ -30,35 +30,11 @@ const oswald = Oswald({
 
 function Home() {
   const [displayName, setDisplayName] = useState("Fendyra Restu D");
-  // State untuk melacak mode gelap/terang, nilai default berdasarkan class 'dark' di <html>
-  const [isDarkMode, setIsDarkMode] = useState(
-    () =>
-      typeof window !== "undefined" &&
-      document.documentElement.classList.contains("dark")
-  );
-
-  // Efek untuk mendengarkan perubahan class 'dark' pada elemen <html>
-  useEffect(() => {
-    const observer = new MutationObserver((mutations) => {
-      mutations.forEach((mutation) => {
-        if (mutation.attributeName === "class") {
-          setIsDarkMode(mutation.target.classList.contains("dark"));
-        }
-      });
-    });
-
-    observer.observe(document.documentElement, {
-      attributes: true,
-    });
-
-    return () => observer.disconnect();
-  }, []);
 
   const fullName = "Designed by Fendyra";
   const typingSpeed = 150;
   const delayBeforeRestart = 1000;
 
-  // Efek untuk animasi teks
   useEffect(() => {
     let index = 0;
     let forward = true;
@@ -116,22 +92,15 @@ function Home() {
     }
   };
 
-  // Logika untuk menentukan warna berdasarkan mode
-  const raysColor = isDarkMode ? "#00ffff" : "#ff9e00"; // Warna light rays yang valid
-  const sectionBgClass = isDarkMode ? "bg-black" : "bg-white";
-  const textColorClass = isDarkMode ? "text-white" : "text-black";
-  const marqueeColorClass = isDarkMode ? "text-white" : "text-gray-300"; // Teks marquee lebih lembut di light mode
-
   return (
     <motion.section
-      className={`relative flex flex-col items-center justify-center py-16 px-4 text-center min-h-screen ${sectionBgClass}`}
+      className="relative flex flex-col items-center justify-center py-16 px-4 text-center min-h-screen bg-white dark:bg-black text-black dark:text-white"
       id="home"
     >
-      {/* LightRays Component sebagai background */}
       <div className="absolute top-0 left-0 w-full h-full z-0">
         <LightRays
           raysOrigin="top-center"
-          raysColor={raysColor}
+          raysColor="#6e7979e0"
           raysSpeed={1.5}
           lightSpread={0.8}
           rayLength={1.2}
@@ -142,7 +111,6 @@ function Home() {
         />
       </div>
 
-      {/* Konten Halaman Home dengan z-index lebih tinggi */}
       <MotionImage
         src="/assets/logo-portfolio.png"
         alt="Logo Portfolio"
@@ -168,7 +136,6 @@ function Home() {
           className={`${oswald.className}
             text-5xl md:text-7xl
             font-bold leading-none
-            ${textColorClass}
           `}
           initial={{ opacity: 0, y: -50 }}
           animate={{ opacity: 1, y: 0 }}
@@ -185,7 +152,7 @@ function Home() {
                   .map((_, i) => (
                     <span
                       key={`marquee1-${i}`}
-                      className={`${oswald.className} blink-text uppercase font-bold text-[6rem] md:text-[8rem] lg:text-[10rem] leading-none ${marqueeColorClass}`}
+                      className={`${oswald.className} blink-text uppercase font-bold text-[6rem] md:text-[8rem] lg:text-[10rem] leading-none`}
                     >
                       {marqueeText1}
                     </span>
@@ -202,7 +169,7 @@ function Home() {
                   .map((_, i) => (
                     <span
                       key={`marquee2-${i}`}
-                      className={`${oswald.className} blink-text uppercase font-bold text-[6rem] md:text-[8rem] lg:text-[10rem] leading-none ${marqueeColorClass}`}
+                      className={`${oswald.className} blink-text uppercase font-bold text-[6rem] md:text-[8rem] lg:text-[10rem] leading-none`}
                     >
                       {marqueeText2}
                     </span>
@@ -215,7 +182,7 @@ function Home() {
         <motion.a
           href="#about"
           onClick={handleScrollToAbout}
-          className={`mt-8 px-6 py-3 ${textColorClass} font-semibold flex items-center justify-center cursor-pointer`}
+          className="mt-8 px-6 py-3 font-semibold flex items-center justify-center cursor-pointer"
           variants={arrowVariants}
           initial="initial"
           animate="animate"
