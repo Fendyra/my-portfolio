@@ -18,7 +18,6 @@ import {
 
 import { SpinningText } from "./ui/SpinningText";
 
-// Gunakan dynamic import untuk menonaktifkan SSR
 const DynamicTextPressure = dynamic(() => import("./ui/TextPressure"), {
   ssr: false,
 });
