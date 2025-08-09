@@ -1,8 +1,9 @@
 "use client";
 
-import React, { useEffect, forwardRef } from "react";
+import React, { forwardRef } from "react";
 import { motion } from "framer-motion";
 import Image from "next/image";
+import dynamic from "next/dynamic"; // Impor dynamic
 import {
   Montserrat,
   Space_Mono,
@@ -16,6 +17,11 @@ import {
 } from "./ui/text-reveal-card";
 
 import { SpinningText } from "./ui/SpinningText";
+
+// Gunakan dynamic import untuk menonaktifkan SSR
+const DynamicTextPressure = dynamic(() => import("./ui/TextPressure"), {
+  ssr: false,
+});
 
 const montserrat = Montserrat({
   subsets: ["latin"],
@@ -61,22 +67,21 @@ const About = forwardRef((props, ref) => {
     { name: "Framer Motion" },
     { name: "MYSQL" },
     { name: "UI/UX" },
-    { name: "Git"},
+    { name: "Git" },
     { name: "Responsive Design" },
     { name: "Web Performance" },
     { name: "Github" },
-    { name: "Vercel"},
-    { name: "Deployment"},
+    { name: "Vercel" },
+    { name: "Deployment" },
     { name: "Prototyping" },
-    { name: "Node.js"},
-    { name: "PostgreSQL"},
+    { name: "Node.js" },
+    { name: "PostgreSQL" },
     { name: "Laravel" },
     { name: "PHP" },
-    { name: "VS Code"},
+    { name: "VS Code" },
     { name: "Web Development" },
   ];
 
-  // Tag that will be styled as 'active' (can be derived from skills with high level, or separate)
   const activeTags = [
     "HTML",
     "Next.js",
@@ -91,17 +96,15 @@ const About = forwardRef((props, ref) => {
     "VS Code",
   ];
 
-
   return (
     <motion.section
       ref={ref}
       id="about"
       className="min-h-[100vh] bg-white dark:bg-black text-gray-900 dark:text-white relative overflow-hidden"
     >
-      {/* Full-Width Edge-to-Edge Heading */}
       <div className="w-full max-w-none mx-0 px-0 relative">
         <motion.div
-          initial={{ opacity: 0, y: -30 }} // Retain animation from original motion.h1
+          initial={{ opacity: 0, y: -30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{
             duration: 0.8,
@@ -125,9 +128,7 @@ const About = forwardRef((props, ref) => {
         </motion.div>
       </div>
 
-      {/* Content Container with Padding */}
       <div className="px-6 md:px-10 lg:px-16 pb-14">
-        {/* Subtitle */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
@@ -141,35 +142,58 @@ const About = forwardRef((props, ref) => {
           </p>
         </motion.div>
 
-        {/* Main About Section */}
         <motion.div
           initial={{ opacity: 0, y: 50 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.6 }}
           className="grid grid-cols-1 md:grid-cols-2 gap-10 items-center"
         >
-          {/* Left Column (Name and Intro) */}
           <motion.div
             className="relative md:col-span-1 md:col-start-1"
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.8 }}
           >
-            {/* Name as Focal Point - MODIFIED FOR RESPONSIVENESS AND LAYOUT */}
             <div className="flex flex-col items-start mb-2">
-              <h3 className="font-montserrat text-[clamp(2rem,8vw,5rem)] lg:text-[clamp(3rem,6vw,5rem)] font-bold mb-1 hover:scale-105 hover:letter-spacing-[0.1em] hover:text-shadow-md transition-all duration-300">
-                Fendyra
-              </h3>
-              <h3 className="font-montserrat text-[clamp(2rem,8vw,5rem)] lg:text-[clamp(3rem,6vw,5rem)] font-bold mb-1 ml-[25vw] md:ml-0 lg:ml-[150px] hover:scale-105 hover:letter-spacing-[0.1em] hover:text-shadow-md transition-all duration-300">
-                Restu
-              </h3>
-              <h3 className="font-montserrat text-[clamp(2rem,8vw,5rem)] lg:text-[clamp(3rem,6vw,5rem)] font-bold ml-[35vw] md:ml-0 lg:ml-[230px] hover:scale-105 hover:letter-spacing-[0.1em] hover:text-shadow-md transition-all duration-300">
-                Dewangga
-              </h3>
-            </div>
+                <DynamicTextPressure
+                  text="Fendyra"
+                  flex={true}
+                  alpha={false}
+                  stroke={false}
+                  width={true}
+                  weight={true}
+                  italic={true}
+                  textColor="#ffffff"
+                  strokeColor="#ff0000"
+                  minFontSize={25}
+                />
+                  <DynamicTextPressure
+                    text="Restu"
+                    flex={true}
+                    alpha={false}
+                    stroke={false}
+                    width={true}
+                    weight={true}
+                    italic={true}
+                    textColor="#ffffff"
+                    strokeColor="#ff0000"
+                    minFontSize={25}
+                  />
+                  <DynamicTextPressure
+                    text="Dewangga"
+                    flex={true}
+                    alpha={false}
+                    stroke={false}
+                    width={true}
+                    weight={true}
+                    italic={true}
+                    textColor="#ffffff"
+                    strokeColor="#ff0000"
+                    minFontSize={25}
+                  />
+              </div>
 
-            {/* Intro Section */}
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mt-2">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mt-6">
               <motion.div
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
@@ -196,7 +220,6 @@ const About = forwardRef((props, ref) => {
             </div>
           </motion.div>
 
-          {/* Right Column (Profile Image) */}
           <motion.div
             initial={{ opacity: 0, x: 50 }}
             animate={{ opacity: 1, x: 0 }}
@@ -206,15 +229,14 @@ const About = forwardRef((props, ref) => {
             <MotionImage
               src="/assets/photo-profile.jpg"
               alt="Fendyra's Profile Picture"
-              width={350}
-              height={450}
+              width={380}
+              height={480}
               className="rounded-lg shadow-xl object-cover max-w-[350px] md:max-w-[450px] w-full h-full"
               priority
             />
           </motion.div>
         </motion.div>
 
-        {/* Extended About Section - BEYOND THE CODE */}
         <motion.div
           initial={{ opacity: 0, y: 50 }}
           animate={{ opacity: 1, y: 0 }}
@@ -228,14 +250,12 @@ const About = forwardRef((props, ref) => {
           </h2>
 
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12">
-            {/* Left Column - Description and Spinning Text */}
             <motion.div
               initial={{ opacity: 0, x: -20 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.6, delay: 1.3 }}
               className="space-y-6"
             >
-              {/* TextRevealCard Wrapper - Pastikan perataan kiri pada md dan di atasnya */}
               <div className="w-full flex justify-start text-justify">
                 <TextRevealCard
                   text={fullDescription}
@@ -248,7 +268,6 @@ const About = forwardRef((props, ref) => {
                 </TextRevealCard>
               </div>
 
-              {/* SpinningText Container */}
               <motion.div
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
@@ -273,14 +292,12 @@ const About = forwardRef((props, ref) => {
               </motion.div>
             </motion.div>
 
-            {/* Right Column - Skills Tags */}
             <motion.div
               initial={{ opacity: 0, x: 20 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.6, delay: 1.4 }}
               className="flex flex-col items-start lg:items-end"
             >
-              {/* Skills Label */}
               <motion.div
                 initial={{ opacity: 0, y: -10 }}
                 animate={{ opacity: 1, y: 0 }}
@@ -294,7 +311,6 @@ const About = forwardRef((props, ref) => {
                 </p>
               </motion.div>
 
-              {/* Tags Container - Fixed Structure */}
               <div className="flex flex-wrap gap-2 max-w-full md:max-w-[500px] lg:max-w-[550px] justify-start lg:justify-end">
                 {skills.map((skill, index) => {
                   const isActive = activeTags.includes(skill.name);
