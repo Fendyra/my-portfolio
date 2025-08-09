@@ -154,7 +154,7 @@ const FullScreenMenu = ({ isOpen, onClose }) => {
         {/* "Get in Touch" button */}
         <div className="mt-12">
           <Link
-            href="/contact"
+            href="#contact"
             onClick={onClose}
             className="border border-foreground rounded-full text-foreground px-8 py-3 text-lg relative overflow-hidden group transition-colors duration-300 hover:bg-foreground hover:text-background"
           >
