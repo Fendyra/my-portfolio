@@ -3,7 +3,7 @@
 import { Montserrat } from "next/font/google";
 import Spline from "@splinetool/react-spline";
 import { useRouter } from "next/navigation";
-import React, { useEffect } from "react";
+import React, { useEffect, useRef } from "react";
 
 const montserrat = Montserrat({
   subsets: ["latin"],
@@ -12,20 +12,33 @@ const montserrat = Montserrat({
 
 export default function Home() {
   const router = useRouter();
+  const clickableRef = useRef(null);
 
-  // Function to handle navigation to the 'main' page
-  const handleEnterPortfolio = () => {
+  const handleNavigate = () => {
     router.push("main");
   };
 
-  // useEffect to add and remove keyboard event listener
   useEffect(() => {
     const handleKeyPress = (event) => {
-      handleEnterPortfolio();
+      // Navigasi langsung tanpa memeriksa tombol spesifik
+      handleNavigate();
     };
 
+    const handleClick = () => {
+      handleNavigate();
+    };
+
+    const clickableElement = clickableRef.current;
+    if (clickableElement) {
+      clickableElement.addEventListener("click", handleClick);
+    }
+
     document.addEventListener("keydown", handleKeyPress);
+
     return () => {
+      if (clickableElement) {
+        clickableElement.removeEventListener("click", handleClick);
+      }
       document.removeEventListener("keydown", handleKeyPress);
     };
   }, [router]);
@@ -37,16 +50,16 @@ export default function Home() {
         height: "100vh",
         background: "none",
         overflow: "hidden",
-        cursor: "default", // Default cursor for the page
+        cursor: "pointer", // Cursor selalu terlihat
       }}
     >
-      {/* Spline animation takes up the full background */}
       <div
         style={{
+          position: "relative",
           width: "100%",
           height: "100%",
-          cursor: "pointer", // Show pointer cursor over Spline
-          pointerEvents: "auto", // Enable interaction with Spline
+          // pointerEvents: "none" di sini akan memblokir interaksi
+          // Lebih baik atur cursor di main dan div Spline
         }}
       >
         <Spline scene="https://prod.spline.design/Ojj9hnP0nag78PfW/scene.splinecode" />
@@ -64,10 +77,10 @@ export default function Home() {
           alignItems: "center",
           padding: "0.5vw",
           boxSizing: "border-box",
-          pointerEvents: "none",
+          pointerEvents: "none", // Teks ini tidak boleh interaktif
         }}
       >
-        {/* Text elements for the portfolio title */}
+        {/* Konten teks seperti sebelumnya */}
         <div
           style={{
             color: "white",
@@ -97,7 +110,6 @@ export default function Home() {
             fontWeight: "bold",
             whiteSpace: "nowrap",
             fontFamily: montserrat.style.fontFamily,
-
           }}
         >
           2025 SHOWCASE
@@ -137,28 +149,36 @@ export default function Home() {
         </div>
       </div>
 
-      {/* Clickable button to enter the portfolio */}
       <div
-        onClick={handleEnterPortfolio}
+        ref={clickableRef}
         style={{
           position: "absolute",
           bottom: "10vh",
           left: "50%",
           transform: "translateX(-50%)",
           color: "white",
-          fontSize: "1.8vw",
+          fontSize: "clamp(1rem, 1.8vw, 2.5rem)", // Responsif
           fontWeight: "bold",
           padding: "15px 30px",
-          cursor: "pointer", // Show pointer cursor on hover
+          cursor: "pointer",
           textAlign: "center",
           textTransform: "uppercase",
           zIndex: 10,
-          transition: "background-color 0.3s ease",
-          pointerEvents: "auto", // Ensure the button is interactive
+          transition: "transform 0.3s ease, opacity 0.3s ease, color 0.3s ease",
+          pointerEvents: "auto",
           fontFamily: montserrat.style.fontFamily,
+          userSelect: "none", // Agar teks tidak bisa diseleksi
+        }}
+        onMouseEnter={(e) => {
+          e.currentTarget.style.transform = "translateX(-50%) scale(1.05)";
+          e.currentTarget.style.opacity = "0.8";
+        }}
+        onMouseLeave={(e) => {
+          e.currentTarget.style.transform = "translateX(-50%) scale(1)";
+          e.currentTarget.style.opacity = "1";
         }}
       >
-        CLICK ENTER TO VIEW PORTFOLIO 
+        CLICK ENTER TO VIEW PORTFOLIO
       </div>
     </main>
   );
