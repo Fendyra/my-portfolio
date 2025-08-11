@@ -157,7 +157,7 @@ export default function Home() {
           left: "50%",
           transform: "translateX(-50%)",
           color: "white",
-          fontSize: "clamp(1rem, 1.8vw, 2.5rem)", // Responsif
+          fontSize: "clamp(0.5rem, 1.8vw, 2.5rem)", // Responsif
           fontWeight: "bold",
           padding: "15px 30px",
           cursor: "pointer",
