@@ -23,7 +23,7 @@ const menuItems = [
   { name: "About", href: "#about", largeText: "WHO AM I" },
   { name: "Works", href: "#project", largeText: "CREATIONS" },
   { name: "Service", href: "#service", largeText: "THE CORE" },
-  { name: "Contact", href: "#footer", largeText: "PING ME" },
+  { name: "Contact", href: "#contact", largeText: "PING ME" },
 ];
 
 const FullScreenMenu = ({ isOpen, onClose }) => {
@@ -121,13 +121,13 @@ const FullScreenMenu = ({ isOpen, onClose }) => {
                   {hoveredItem === item.name && (
                     <motion.div
                       className={`
-                        absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2
-                        pointer-events-none whitespace-nowrap
-                        font-extrabold
-                        text-[clamp(3rem,20vw,10rem)] /* Responsive font size: min 3rem, fluid 20vw, max 10rem */
-                        opacity-25 /* Consistent opacity for the soft ambient effect */
-                        z-0 /* Ensure it's behind the clickable menu items */
-                      `}
+                          absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2
+                          pointer-events-none whitespace-nowrap
+                          font-extrabold
+                          text-[clamp(3rem,20vw,10rem)] /* Responsive font size: min 3rem, fluid 20vw, max 10rem */
+                          opacity-25 /* Consistent opacity for the soft ambient effect */
+                          z-0 /* Ensure it's behind the clickable menu items */
+                        `}
                       variants={backgroundTextVariants}
                       initial="hidden"
                       animate="visible"

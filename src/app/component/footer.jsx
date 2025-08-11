@@ -122,6 +122,7 @@ const Footer = forwardRef((props, ref) => {
   return (
     <motion.footer
       ref={ref}
+      id="contact" // <--- Ini adalah bagian yang ditambahkan
       className="bg-white dark:bg-black text-black dark:text-white py-24 px-4 md:px-8"
       variants={footerVariants}
       initial="hidden"
