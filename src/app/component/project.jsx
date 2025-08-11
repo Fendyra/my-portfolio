@@ -18,6 +18,74 @@ const spaceMono = Space_Mono({
   variable: "--font-space-mono",
 });
 
+// Define animation variants for the section's children
+const staggerContainer = {
+  hidden: { opacity: 0 },
+  show: {
+    opacity: 1,
+    transition: {
+      staggerChildren: 0.15, // Stagger delay between each project link
+      delayChildren: 0.3, // Initial delay for the entire block
+    },
+  },
+};
+
+const slideUpAndFade = {
+  hidden: { opacity: 0, y: 50 },
+  show: {
+    opacity: 1,
+    y: 0,
+    transition: {
+      type: "spring",
+      stiffness: 100,
+      damping: 10,
+      duration: 0.8,
+      ease: "easeOut",
+    },
+  },
+};
+
+const headingVariants = {
+  hidden: { opacity: 0, scale: 0.8, y: -30, filter: "blur(5px)" },
+  visible: {
+    opacity: 0.1,
+    scale: 1,
+    y: 0,
+    filter: "blur(0px)",
+    transition: {
+      type: "spring", // Use spring for a more organic, cinematic feel
+      stiffness: 150,
+      damping: 15,
+      delay: 0.2, // A slight delay for a more cinematic feel
+    },
+  },
+};
+
+const subtitleVariants = {
+  hidden: { opacity: 0, y: 20 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: {
+      duration: 0.6,
+      ease: "easeOut",
+      delay: 0.5, // Syncs with heading but appears slightly after
+    },
+  },
+};
+
+const ctaButtonVariants = {
+  hidden: { opacity: 0, scale: 0.9 },
+  visible: {
+    opacity: 1,
+    scale: 1,
+    transition: {
+      duration: 0.6,
+      ease: "easeOut",
+    },
+  },
+};
+
 const Project = forwardRef((props, ref) => {
   return (
     <motion.section
@@ -28,9 +96,10 @@ const Project = forwardRef((props, ref) => {
       {/* Main Project Heading */}
       <div className="w-full max-w-none mx-0 px-0 relative">
         <motion.div
-          initial={{ opacity: 0, y: -30 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5, delay: 0.2 }}
+          variants={headingVariants}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, amount: 0.2 }}
           className={`
             relative flex items-center justify-center overflow-hidden pointer-events-none
             w-full
@@ -39,7 +108,7 @@ const Project = forwardRef((props, ref) => {
             ${montserrat.className}
             text-[clamp(3rem,17vw,15rem)]
             font-black uppercase tracking-tight leading-none whitespace-nowrap
-            text-black/15 dark:text-white/10
+            text-black dark:text-white
           `}
           aria-hidden="true"
           aria-label="MY WORKS - Developer Portfolio Heading"
@@ -49,9 +118,10 @@ const Project = forwardRef((props, ref) => {
 
         {/* Subtitle */}
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.4 }}
+          variants={subtitleVariants}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, amount: 0.2 }}
           className="w-full text-center mb-12"
         >
           <p
@@ -62,21 +132,34 @@ const Project = forwardRef((props, ref) => {
         </motion.div>
       </div>
 
-      {/*ADD UI component Hover Image Links*/}
-      <HoverImageLinks />
+      {/* Animate the list of links as a single staggered group */}
+      <motion.div
+        variants={staggerContainer}
+        initial="hidden"
+        whileInView="show"
+        viewport={{ once: true, amount: 0.2 }}
+      >
+        <HoverImageLinks />
+      </motion.div>
 
-      {/* "See More" button */}
-        <div className="mt-4 item-center justify-center flex">
-            <Link
-              href="/works"
-              onClick={onClose}
-              className="border border-foreground rounded-full text-foreground px-4 py-2 text-lg relative overflow-hidden group transition-colors duration-300 hover:bg-foreground hover:text-background"
-            >
-            <span className={`${montserrat.className} relative z-10`}>
-                SEE MORE
-            </span>             
-            </Link>
-        </div>
+      {/* Animate the "See More" button separately */}
+      <motion.div
+        variants={ctaButtonVariants}
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true, amount: 0.5 }}
+        className="mt-4 item-center justify-center flex"
+      >
+        <Link
+          href="/works"
+          onClick={onClose}
+          className="border border-foreground rounded-full text-foreground px-4 py-2 text-lg relative overflow-hidden group transition-colors duration-300 hover:bg-foreground hover:text-background"
+        >
+          <span className={`${montserrat.className} relative z-10`}>
+            SEE MORE
+          </span>
+        </Link>
+      </motion.div>
     </motion.section>
   );
 });

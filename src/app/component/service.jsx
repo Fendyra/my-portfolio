@@ -173,7 +173,7 @@ const Service = forwardRef((props, ref) => {
             variants={cardItemVariants}
             whileHover={{ scale: 1.03, y: -5 }}
             transition={{ type: "spring", stiffness: 300 }}
-            className="p-6 flex flex-col items-start rounded-lg border border-gray-200 dark:border-gray-800 shadow-lg hover:shadow-2xl transition-all duration-300 mt-16 bg-white dark:bg-black"
+            className="p-6 flex flex-col items-start rounded-lg shadow-lg hover:shadow-2xl transition-all duration-300 mt-16 bg-white dark:bg-black"
           >
             <motion.div variants={iconVariants}>
               <FaCode size={100} className="text-foreground" />
@@ -193,7 +193,7 @@ const Service = forwardRef((props, ref) => {
             variants={cardItemVariants}
             whileHover={{ scale: 1.03, y: -5 }}
             transition={{ type: "spring", stiffness: 300 }}
-            className="p-6 flex flex-col items-start rounded-lg border border-gray-200 dark:border-gray-800 shadow-lg hover:shadow-2xl transition-all duration-300 mt-16 bg-white dark:bg-black"
+            className="p-6 flex flex-col items-start rounded-lg shadow-lg hover:shadow-2xl transition-all duration-300 mt-16 bg-white dark:bg-black"
           >
             <motion.div variants={iconVariants}>
               <TbHandClick size={100} className="text-foreground" />

@@ -31,79 +31,174 @@ const socialLinks = [
   },
 ];
 
+// Define animation variants for the whole footer container
+const footerVariants = {
+  hidden: { opacity: 0 },
+  visible: {
+    opacity: 1,
+    transition: {
+      staggerChildren: 0.2, // Stagger delay for top-level children (left/right columns)
+      delayChildren: 0.5,
+    },
+  },
+};
+
+// Variants for the left column (the heading)
+const headingContainerVariants = {
+  hidden: { opacity: 0 },
+  visible: {
+    opacity: 1,
+    transition: {
+      staggerChildren: 0.2, // Delay between each line of the heading
+    },
+  },
+};
+
+const headingLineVariants = {
+  hidden: { opacity: 0, y: 30, letterSpacing: "-0.2em" },
+  visible: {
+    opacity: 1,
+    y: 0,
+    letterSpacing: "0em",
+    transition: {
+      duration: 0.8,
+      ease: "easeOut",
+    },
+  },
+};
+
+// Variants for the right column (contact info)
+const contactItemVariants = {
+  hidden: { opacity: 0, y: 20 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: {
+      duration: 0.7,
+      ease: "easeOut",
+    },
+  },
+};
+
+const emailLinkVariants = {
+  hidden: { opacity: 0, x: -50 },
+  visible: {
+    opacity: 1,
+    x: 0,
+    transition: {
+      duration: 0.7,
+      ease: "easeOut",
+      delay: 0.2, // Delay after the paragraph appears
+    },
+  },
+};
+
+const socialLinkVariants = {
+  hidden: { opacity: 0, x: -20 },
+  visible: {
+    opacity: 1,
+    x: 0,
+    transition: {
+      duration: 0.5,
+      ease: "easeOut",
+    },
+  },
+};
+
+const backgroundTextVariants = {
+  hidden: { opacity: 0, scale: 0.95 },
+  visible: {
+    opacity: 0.1,
+    scale: 1,
+    transition: {
+      duration: 1.5,
+      ease: "easeInOut",
+      delay: 1.5, // Start after other elements have appeared
+    },
+  },
+};
+
 const Footer = forwardRef((props, ref) => {
   return (
     <motion.footer
       ref={ref}
       className="bg-white dark:bg-black text-black dark:text-white py-24 px-4 md:px-8"
+      variants={footerVariants}
+      initial="hidden"
+      whileInView="visible"
+      viewport={{ once: true, amount: 0.2 }}
     >
       <div className="max-w-7xl mx-auto">
-        <motion.div
-          initial={{ opacity: 0, y: 50 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.6 }}
-          className="grid grid-cols-1 md:grid-cols-2 gap-16 md:gap-10 lg:gap-24 items-start"
-        >
+        <motion.div className="grid grid-cols-1 md:grid-cols-2 gap-16 md:gap-10 lg:gap-24 items-start">
           {/* Left Column (Heading) */}
           <motion.div
             className="relative px-2 md:px-0"
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.8 }}
+            variants={headingContainerVariants}
           >
             <div className="flex flex-col items-start mb-2">
-              <h3
+              <motion.h3
+                variants={headingLineVariants}
                 className={`${montserrat.className} text-[clamp(2.5rem,8vw,5rem)] lg:text-[clamp(3rem,6vw,5rem)] font-bold mb-1 hover:scale-105 hover:tracking-wide transition-all duration-300`}
               >
                 LET'S
-              </h3>
-              <h3
+              </motion.h3>
+              <motion.h3
+                variants={headingLineVariants}
                 className={`italic text-[clamp(2.5rem,8vw,5rem)] lg:text-[clamp(3rem,6vw,5rem)] font-bold mb-1 ml-[25vw] md:ml-0 lg:ml-[150px] hover:scale-105 hover:tracking-wide transition-all duration-300`}
                 style={{ fontFamily: playfairDisplay.variable }}
               >
                 GET IN
-              </h3>
-              <h3
+              </motion.h3>
+              <motion.h3
+                variants={headingLineVariants}
                 className={`${montserrat.className} text-[clamp(2.5rem,8vw,5rem)] lg:text-[clamp(3rem,6vw,5rem)] font-bold ml-[45vw] md:ml-0 lg:ml-[260px] hover:scale-105 hover:tracking-wide transition-all duration-300`}
               >
                 TOUCH
-              </h3>
+              </motion.h3>
             </div>
           </motion.div>
 
           {/* Right Column (Contact Info) */}
-          <motion.div
-            className="flex flex-col items-start px-2 md:px-0"
-            initial={{ opacity: 0, x: 50 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.6, delay: 0.9 }}
-          >
+          <motion.div className="flex flex-col items-start px-2 md:px-0">
             {/* Short Message */}
-            <p
+            <motion.p
+              variants={contactItemVariants}
               className={`${montserrat.className} text-base md:text-lg text-gray-700 dark:text-gray-300 max-w-lg mb-8 text-justify`}
             >
               Have a project in mind or just want to say hello? I'm always open
               to new opportunities and collaborations. Feel free to reach out,
               and let's build something amazing together!
-            </p>
+            </motion.p>
 
             {/* Email with Animated Hover */}
-            <Link
-              href="mailto:fendyrarestu2004@gmail.com"
-              passHref
-              legacyBehavior
-            >
-              <a
-                className={`${montserrat.className} relative text-xl md:text-2xl font-bold mb-8 group`}
+            <motion.div variants={emailLinkVariants}>
+              <Link
+                href="mailto:fendyrarestu2004@gmail.com"
+                passHref
+                legacyBehavior
               >
-                <span className="bg-gradient-to-r from-blue-500 to-indigo-500 dark:from-purple-400 dark:to-pink-500 bg-[length:0%_2px] bg-no-repeat bg-left-bottom group-hover:bg-[length:100%_2px] transition-all duration-500 ease-out">
-                  fendyrarestu2004@gmail.com
-                </span>
-              </a>
-            </Link>
+                <a
+                  className={`${montserrat.className} relative text-xl md:text-2xl font-bold mb-8 group`}
+                >
+                  <span className="bg-gradient-to-r from-blue-500 to-indigo-500 dark:from-purple-400 dark:to-pink-500 bg-[length:0%_2px] bg-no-repeat bg-left-bottom group-hover:bg-[length:100%_2px] transition-all duration-500 ease-out">
+                    fendyrarestu2004@gmail.com
+                  </span>
+                </a>
+              </Link>
+            </motion.div>
 
             {/* Social Media Links */}
-            <div className="flex flex-col space-y-4">
+            <motion.div
+              className="flex flex-col space-y-4"
+              variants={{
+                visible: {
+                  transition: {
+                    staggerChildren: 0.1,
+                    delayChildren: 0.3,
+                  },
+                },
+              }}
+            >
               <span
                 className={`${montserrat.className} text-lg font-bold relative`}
               >
@@ -118,17 +213,23 @@ const Footer = forwardRef((props, ref) => {
                     target="_blank"
                     rel="noopener noreferrer"
                     className="group inline-flex items-center text-gray-700 dark:text-gray-400 hover:text-black dark:hover:text-white transition-colors duration-300"
-                    initial={{ opacity: 0, x: -20 }}
-                    animate={{ opacity: 1, x: 0 }}
-                    transition={{
-                      duration: 0.5,
-                      delay: 1.1 + index * 0.1,
-                    }}
+                    variants={socialLinkVariants}
+                    whileHover={{ scale: 1.05 }}
+                    whileTap={{ scale: 0.95 }}
                   >
-                    <Icon
-                      size={24}
-                      className="mr-4 group-hover:scale-110 transition-transform duration-300"
-                    />
+                    <motion.div
+                      whileHover={{ rotate: 8 }}
+                      transition={{
+                        type: "spring",
+                        stiffness: 400,
+                        damping: 10,
+                      }}
+                    >
+                      <Icon
+                        size={24}
+                        className="mr-4 transition-transform duration-300"
+                      />
+                    </motion.div>
                     <span
                       className={`${montserrat.className} text-lg font-medium relative`}
                     >
@@ -138,15 +239,13 @@ const Footer = forwardRef((props, ref) => {
                   </motion.a>
                 );
               })}
-            </div>
+            </motion.div>
           </motion.div>
         </motion.div>
       </div>
       <motion.div
-        initial={{ opacity: 0, y: -30 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.5, delay: 0.2 }}
-        className={`relative flex items-center justify-center overflow-hidden pointer-events-none w-full bg-inherit text-[clamp(3rem,17vw,15rem)] font-black mt-4 tracking-tight leading-none whitespace-nowrap text-black/15 dark:text-white/10`}
+        variants={backgroundTextVariants}
+        className={`relative flex items-center justify-center overflow-hidden pointer-events-none w-full text-[clamp(3rem,17vw,15rem)] font-black mt-4 tracking-tight leading-none whitespace-nowrap text-black dark:text-white`}
         aria-hidden="true"
         aria-label="Footer"
       >
