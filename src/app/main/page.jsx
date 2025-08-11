@@ -12,6 +12,7 @@ import About from "../component/about";
 import Project from "../component/project";
 import Service from "../component/service";
 import Footer from "../component/footer";
+import ClosingSection from "../component/closing";
 
 const montserrat = Montserrat({
   subsets: ["latin"],
@@ -64,6 +65,7 @@ const MainPortfolio = () => {
       <Project ref={aboutSectionRef} />
       <Service ref={aboutSectionRef} />
       <Footer ref={aboutSectionRef} />
+      <ClosingSection />
     </div>
   );
 };
