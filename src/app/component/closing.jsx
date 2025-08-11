@@ -4,49 +4,49 @@ import React from "react";
 import { motion } from "framer-motion";
 import Image from "next/image";
 
-// Pastikan path ini sesuai dengan struktur proyek Anda.
+// Ensure this path is consistent with your project structure.
 const LOGO_PATH = "/assets/logo-portfolio.png";
 
 const ClosingSection = () => {
-  // Animasi Framer Motion untuk pergerakan ayun (rotasi) ke kiri dan ke kanan
+  // Framer Motion animation for the swinging (rotation) movement to the left and right
   const logoVariants = {
-    // Fase awal saat komponen dimuat
+    // Initial phase when the component is loaded
     initial: {
       opacity: 0,
       scale: 0.8,
       rotate: 0,
     },
-    // Fase animasi utama yang akan diulang
+    // Main animation phase that will be repeated
     animate: {
       opacity: 1,
-      // Mengayunkan logo dari -15 derajat ke 15 derajat dan kembali
+      // Swings the logo from -15 degrees to 15 degrees and back
       rotate: [-15, 15, -15],
-      // Efek 'breathing' saat logo berayun
+      // 'Breathing' effect as the logo swings
       scale: [1, 1.1, 1],
     },
   };
 
-  // Transisi untuk mengatur kecepatan dan easing dari animasi
+  // Transition to control the speed and easing of the animation
   const logoTransition = {
     rotate: {
-      duration: 8, // 8 detik untuk satu siklus ayunan
+      duration: 8, // 8 seconds for one swing cycle
       ease: "easeInOut",
       repeat: Infinity,
     },
     scale: {
-      duration: 4, // 4 detik untuk satu siklus skala
+      duration: 4, // 4 seconds for one scale cycle
       ease: "easeInOut",
       repeat: Infinity,
     },
   };
 
   return (
-    // Bagian utama dengan tinggi layar penuh dan centering
-    <section className="relative flex min-h-screen items-center justify-center bg-white dark:bg-black p-4">
-      {/* Container untuk memastikan logo tetap responsif */}
-      <div className="relative w-full h-full flex items-center justify-center overflow-hidden">
+    // Main section with full screen height and centering, now using flex-col
+    <section className="relative flex flex-col items-center justify-center bg-white dark:bg-black p-4">
+      {/* Container to ensure the logo remains responsive. Using grow to fill the space */}
+      <div className="relative flex-grow flex items-center justify-center overflow-hidden w-full">
         <motion.div
-          // Menggunakan variants dan transition yang sudah didefinisikan
+          // Using the variants and transitions that have been defined
           variants={logoVariants}
           initial="initial"
           animate="animate"
@@ -63,6 +63,60 @@ const ClosingSection = () => {
           />
         </motion.div>
       </div>
+
+      {/* Mini Footer Section */}
+      <footer className="w-full">
+        {/* Thin horizontal border line */}
+        <div className="border-t border-gray-300 dark:border-gray-700 w-full mb-4"></div>
+
+        {/* Responsive 3-column layout */}
+        <div className="flex flex-col md:flex-row justify-between items-center text-center text-sm md:text-base font-bold text-gray-800 dark:text-gray-200">
+          {/* Left Column: Copyright */}
+          <div className="flex-1 text-left mb-2 md:mb-0">
+            <span>FENDYVERS — 2025</span>
+          </div>
+
+          {/* Center Column: Social Links */}
+          <div className="flex-1 text-center mb-2 md:mb-0">
+            <a
+              href="https://www.linkedin.com/in/fendyra-dewangga"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="hover:text-gray-500 transition-colors"
+            >
+              LINKEDIN
+            </a>
+            <span className="mx-2">/</span>
+            <a
+              href="https://github.com/Fendyra"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="hover:text-gray-500 transition-colors"
+            >
+              GITHUB
+            </a>
+            <span className="mx-2">/</span>
+            <a
+              href="mailto:fendyrarestu2004@gmail.com"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="hover:text-gray-500 transition-colors"
+            >
+              EMAIL
+            </a>
+          </div>
+
+          {/* Right Column: Back to Top button */}
+          <div className="flex-1 text-right">
+            <a
+              className="hover:text-gray-500 transition-colors focus:outline-none"
+              href="mailto:fendyrarestu2004@gmail.com"
+            >
+              LET'S CONNECT
+            </a>
+          </div>
+        </div>
+      </footer>
     </section>
   );
 };
