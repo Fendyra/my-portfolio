@@ -76,6 +76,37 @@ const slideUpAndFade = {
   },
 };
 
+// New animation variants for the background heading
+const backgroundHeadingVariants = {
+  hidden: { opacity: 0, scale: 0.8, y: -30, filter: "blur(5px)" },
+  visible: {
+    opacity: 0.1, // Adjusted to be very subtle
+    scale: 1,
+    y: 0,
+    filter: "blur(0px)",
+    transition: {
+      type: "spring",
+      stiffness: 150,
+      damping: 15,
+      delay: 0.2, // A slight delay for a more cinematic feel
+    },
+  },
+};
+
+// New animation variants for the subtitle
+const subtitleVariants = {
+  hidden: { opacity: 0, y: 20 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: {
+      duration: 0.6,
+      ease: "easeOut",
+      delay: 0.5, // Syncs with heading but appears slightly after
+    },
+  },
+};
+
 const About = forwardRef((props, ref) => {
   const [isDarkMode, setIsDarkMode] = useState(false);
 
@@ -151,16 +182,22 @@ const About = forwardRef((props, ref) => {
       id="about"
       className="min-h-[100vh] bg-white dark:bg-black text-gray-900 dark:text-white relative overflow-hidden px-6 md:px-10 lg:px-16"
     >
-      {/* Background Heading - Animated to fade in from top */}
+      {/* Background Heading - Animated with `backgroundHeadingVariants` */}
       <motion.div
-        initial={{ opacity: 0, y: -30 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{
-          duration: 0.8,
-          ease: "easeOut",
-          delay: 0.2,
-        }}
-        className={`relative flex items-center justify-center overflow-hidden pointer-events-none w-full py-2 md:py-6 lg:py-8 bg-inherit ${montserrat.className} text-[clamp(4rem,20vw,15rem)] font-black uppercase tracking-tight leading-none whitespace-nowrap text-black/15 dark:text-white/10`}
+        variants={backgroundHeadingVariants}
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true, amount: 0.2 }}
+        className={`
+            relative flex items-center justify-center overflow-hidden pointer-events-none
+            w-full
+            py-2 md:py-6 lg:py-8
+            bg-inherit
+            ${montserrat.className}
+            text-[clamp(3rem,17vw,15rem)]
+            font-black uppercase tracking-tight leading-none whitespace-nowrap
+            text-black dark:text-white
+          `}
         aria-hidden="true"
         aria-label="CTRL + ME - Developer Portfolio Heading"
       >
@@ -175,9 +212,12 @@ const About = forwardRef((props, ref) => {
         viewport={{ once: true, amount: 0.2 }}
         className="pb-14"
       >
-        {/* Subtitle - Animates with staggerContainer */}
+        {/* Subtitle - Animates with `subtitleVariants` */}
         <motion.div
-          variants={slideUpAndFade}
+          variants={subtitleVariants}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, amount: 0.2 }}
           className="w-full text-center mb-12"
         >
           <p
