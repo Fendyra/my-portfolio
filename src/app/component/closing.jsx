@@ -4,12 +4,11 @@ import React from "react";
 import { motion } from "framer-motion";
 import Image from "next/image";
 
-// Logo Anda berada di direktori 'public/assets/'.
 // Pastikan path ini sesuai dengan struktur proyek Anda.
 const LOGO_PATH = "/assets/logo-portfolio.png";
 
 const ClosingSection = () => {
-  // Animasi Framer Motion untuk rotasi dan scaling
+  // Animasi Framer Motion untuk pergerakan ayun (rotasi) ke kiri dan ke kanan
   const logoVariants = {
     // Fase awal saat komponen dimuat
     initial: {
@@ -20,23 +19,22 @@ const ClosingSection = () => {
     // Fase animasi utama yang akan diulang
     animate: {
       opacity: 1,
-      // Animasi berulang untuk rotasi 360 derajat dan efek 'breathing'
-      rotate: 360,
-      scale: [1, 1.1, 1], // Mengubah skala dari 1 -> 1.1 -> 1
+      // Mengayunkan logo dari -15 derajat ke 15 derajat dan kembali
+      rotate: [-15, 15, -15],
+      // Efek 'breathing' saat logo berayun
+      scale: [1, 1.1, 1],
     },
   };
 
   // Transisi untuk mengatur kecepatan dan easing dari animasi
   const logoTransition = {
-    // Transisi untuk animasi rotasi
     rotate: {
-      duration: 10, // 10 detik untuk satu putaran penuh
+      duration: 8, // 8 detik untuk satu siklus ayunan
       ease: "easeInOut",
       repeat: Infinity,
     },
-    // Transisi untuk efek skala (breathing effect)
     scale: {
-      duration: 5, // 5 detik untuk satu siklus skala
+      duration: 4, // 4 detik untuk satu siklus skala
       ease: "easeInOut",
       repeat: Infinity,
     },
@@ -44,10 +42,9 @@ const ClosingSection = () => {
 
   return (
     // Bagian utama dengan tinggi layar penuh dan centering
-    // Menggunakan kelas `bg-white dark:bg-black` untuk adaptasi tema
     <section className="relative flex min-h-screen items-center justify-center bg-white dark:bg-black p-4">
       {/* Container untuk memastikan logo tetap responsif */}
-      <div className="relative w-full h-full flex items-center justify-center">
+      <div className="relative w-full h-full flex items-center justify-center overflow-hidden">
         <motion.div
           // Menggunakan variants dan transition yang sudah didefinisikan
           variants={logoVariants}
