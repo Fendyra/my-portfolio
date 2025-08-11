@@ -23,7 +23,7 @@ const menuItems = [
   { name: "About", href: "#about", largeText: "WHO AM I" },
   { name: "Works", href: "#project", largeText: "CREATIONS" },
   { name: "Service", href: "#service", largeText: "THE CORE" },
-  { name: "Contact", href: "#contact", largeText: "PING ME" },
+  { name: "Contact", href: "#footer", largeText: "PING ME" },
 ];
 
 const FullScreenMenu = ({ isOpen, onClose }) => {
