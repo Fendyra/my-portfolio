@@ -201,7 +201,7 @@ const Footer = forwardRef((props, ref) => {
               }}
             >
               <span
-                className={`${montserrat.className} text-lg font-bold relative`}
+                className={`${montserrat.className} text-lg font-bold relative mt-3`}
               >
                 Social Links
               </span>
