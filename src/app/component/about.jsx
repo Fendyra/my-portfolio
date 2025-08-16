@@ -45,7 +45,7 @@ const inter = Inter({
 });
 
 const cvFile =
-  "https://drive.google.com/file/d/1s_T7k2oWPsuW1i3_CyB1SiGFDdr5qttz/view?usp=sharing";
+  "https://drive.google.com/file/d/1sm5DfIxKZxg7CzshhjsXLBBDd33HPA44/view?usp=drive_link";
 
 const MotionImage = motion(Image);
 
