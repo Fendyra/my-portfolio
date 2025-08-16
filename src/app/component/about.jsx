@@ -15,48 +15,42 @@ import {
   TextRevealCard,
   TextRevealCardDescription,
 } from "./ui/text-reveal-card";
-
 import { SpinningText } from "./ui/SpinningText";
 
+// Dynamically import TextPressure to avoid SSR issues
 const DynamicTextPressure = dynamic(() => import("./ui/TextPressure"), {
   ssr: false,
 });
 
-const montserrat = Montserrat({
-  subsets: ["latin"],
-  weight: ["400", "700"],
-});
-
+// Google Fonts setup
+const montserrat = Montserrat({ subsets: ["latin"], weight: ["400", "700"] });
 const spaceMono = Space_Mono({
   subsets: ["latin"],
   weight: ["400", "700"],
   variable: "--font-space-mono",
 });
-
 const plusJakartaSans = Plus_Jakarta_Sans({
   subsets: ["latin"],
   weight: ["400", "700"],
   display: "swap",
 });
+const inter = Inter({ subsets: ["latin"], weight: ["400"] });
 
-const inter = Inter({
-  subsets: ["latin"],
-  weight: ["400"],
-});
-
+// CV File URL
 const cvFile =
   "https://drive.google.com/file/d/1sm5DfIxKZxg7CzshhjsXLBBDd33HPA44/view?usp=drive_link";
 
+// Framer Motion image wrapper
 const MotionImage = motion(Image);
 
-// Define variants for the container and child elements
+// Animation Variants
 const staggerContainer = {
   hidden: { opacity: 0 },
   show: {
     opacity: 1,
     transition: {
-      staggerChildren: 0.1, // Stagger delay between child animations
-      delayChildren: 0.3, // Initial delay before the first child animates
+      staggerChildren: 0.1, // Delay between children
+      delayChildren: 0.3, // Initial delay before animations start
     },
   },
 };
@@ -76,11 +70,10 @@ const slideUpAndFade = {
   },
 };
 
-// New animation variants for the background heading
 const backgroundHeadingVariants = {
   hidden: { opacity: 0, scale: 0.8, y: -30, filter: "blur(5px)" },
   visible: {
-    opacity: 0.1, // Adjusted to be very subtle
+    opacity: 0.1, // Very subtle effect
     scale: 1,
     y: 0,
     filter: "blur(0px)",
@@ -88,51 +81,47 @@ const backgroundHeadingVariants = {
       type: "spring",
       stiffness: 150,
       damping: 15,
-      delay: 0.2, // A slight delay for a more cinematic feel
+      delay: 0.2,
     },
   },
 };
 
-// New animation variants for the subtitle
 const subtitleVariants = {
   hidden: { opacity: 0, y: 20 },
   visible: {
     opacity: 1,
     y: 0,
-    transition: {
-      duration: 0.6,
-      ease: "easeOut",
-      delay: 0.5, // Syncs with heading but appears slightly after
-    },
+    transition: { duration: 0.6, ease: "easeOut", delay: 0.5 },
   },
 };
 
 const About = forwardRef((props, ref) => {
   const [isDarkMode, setIsDarkMode] = useState(false);
 
+  // Detect dark mode theme from <html> class
   useEffect(() => {
     const checkTheme = () => {
       setIsDarkMode(document.documentElement.classList.contains("dark"));
     };
 
     checkTheme();
-
     const observer = new MutationObserver(checkTheme);
     observer.observe(document.documentElement, {
       attributes: true,
       attributeFilter: ["class"],
     });
 
-    return () => {
-      observer.disconnect();
-    };
+    return () => observer.disconnect();
   }, []);
 
+  // About text content
   const paragraph1 = `Hi, I'm Fendyra Restu Dewangga — a Creative Fullstack Developer with specialists in frontend developer and UI enthusiast passionate about building clean, responsive, and user-centered web experiences. Currently in my 5th semester studying Information Systems at UPN "Veteran" Yogyakarta, I combine design thinking with code using tools like Laravel, React, Next.js, Tailwind, and Figma.`;
+
   const paragraph2 = `I love turning ideas into intuitive interfaces that feel natural across devices. For me, great design starts with empathy and ends with purposeful execution. Outside of coding, I lead creative initiatives as the Head of Talent & Interests in the student association, where I bridge tech, culture, and community.`;
 
   const fullDescription = `${paragraph1}\n\n${paragraph2}`;
 
+  // Skills data
   const skills = [
     { name: "HTML" },
     { name: "CSS" },
@@ -159,6 +148,7 @@ const About = forwardRef((props, ref) => {
     { name: "Web Development" },
   ];
 
+  // Highlighted skill tags
   const activeTags = [
     "HTML",
     "Next.js",
@@ -173,6 +163,7 @@ const About = forwardRef((props, ref) => {
     "VS Code",
   ];
 
+  // Color setup based on theme
   const textColor = isDarkMode ? "#ffffff" : "#000000";
   const strokeColor = isDarkMode ? "#5e6666c7" : "#08084dff";
 
@@ -182,29 +173,20 @@ const About = forwardRef((props, ref) => {
       id="about"
       className="min-h-[100vh] bg-white dark:bg-black text-gray-900 dark:text-white relative overflow-hidden px-6 md:px-10 lg:px-16"
     >
-      {/* Background Heading - Animated with `backgroundHeadingVariants` */}
+      {/* Background heading text */}
       <motion.div
         variants={backgroundHeadingVariants}
         initial="hidden"
         whileInView="visible"
         viewport={{ once: true, amount: 0.2 }}
-        className={`
-            relative flex items-center justify-center overflow-hidden pointer-events-none
-            w-full
-            py-2 md:py-6 lg:py-8
-            bg-inherit
-            ${montserrat.className}
-            text-[clamp(3rem,17vw,15rem)]
-            font-black uppercase tracking-tight leading-none whitespace-nowrap
-            text-black dark:text-white
-          `}
+        className={`${montserrat.className} relative flex items-center justify-center overflow-hidden pointer-events-none w-full py-2 md:py-6 lg:py-8 text-[clamp(3rem,17vw,15rem)] font-black uppercase tracking-tight leading-none whitespace-nowrap text-black dark:text-white`}
         aria-hidden="true"
         aria-label="CTRL + ME - Developer Portfolio Heading"
       >
         CTRL + ME
       </motion.div>
 
-      {/* Main Content Container - Using whileInView for scroll animation */}
+      {/* Main content container */}
       <motion.div
         variants={staggerContainer}
         initial="hidden"
@@ -212,7 +194,7 @@ const About = forwardRef((props, ref) => {
         viewport={{ once: true, amount: 0.2 }}
         className="pb-14"
       >
-        {/* Subtitle - Animates with `subtitleVariants` */}
+        {/* Subtitle */}
         <motion.div
           variants={subtitleVariants}
           initial="hidden"
@@ -227,57 +209,55 @@ const About = forwardRef((props, ref) => {
           </p>
         </motion.div>
 
-        {/* Main Grid - Animates with staggerContainer */}
+        {/* Grid: Text + Image */}
         <motion.div
           variants={slideUpAndFade}
           className="grid grid-cols-1 md:grid-cols-2 gap-10 items-center"
         >
-          {/* Text Content - Animates with staggerContainer */}
+          {/* Left: Intro text with animated name */}
           <motion.div
             variants={slideUpAndFade}
-            className="relative md:col-span-1 md:col-start-1"
+            className="relative md:col-span-1"
           >
             <div className="flex flex-col items-start mb-2 text-white dark:text-black">
               <DynamicTextPressure
                 text="Fendyra"
-                flex={true}
+                flex
                 alpha={false}
                 stroke={false}
-                width={true}
-                weight={true}
-                italic={true}
+                width
+                weight
+                italic
                 textColor={textColor}
                 strokeColor={strokeColor}
                 minFontSize={25}
-                className="text-white dark:text-black"
               />
               <DynamicTextPressure
                 text="Restu"
-                flex={true}
+                flex
                 alpha={false}
                 stroke={false}
-                width={true}
-                weight={true}
-                italic={true}
+                width
+                weight
+                italic
                 textColor={textColor}
                 strokeColor={strokeColor}
                 minFontSize={25}
-                className="text-white dark:text-black"
               />
               <DynamicTextPressure
                 text="Dewangga"
-                flex={true}
+                flex
                 alpha={false}
                 stroke={false}
-                width={true}
-                weight={true}
-                italic={true}
+                width
+                weight
+                italic
                 textColor={textColor}
                 strokeColor={strokeColor}
                 minFontSize={25}
-                className="text-white dark:text-black"
               />
             </div>
+
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mt-6">
               <motion.div variants={slideUpAndFade}>
                 <p
@@ -286,6 +266,7 @@ const About = forwardRef((props, ref) => {
                   [INTRO]
                 </p>
               </motion.div>
+
               <motion.div variants={slideUpAndFade}>
                 <p
                   className={`${plusJakartaSans.className} text-base leading-relaxed max-w-prose text-gray-700 dark:text-gray-300 text-justify`}
@@ -297,10 +278,10 @@ const About = forwardRef((props, ref) => {
             </div>
           </motion.div>
 
-          {/* Profile Image - Animates with staggerContainer */}
+          {/* Right: Profile Image */}
           <motion.div
             variants={slideUpAndFade}
-            className="flex justify-center md:justify-end md:col-span-1"
+            className="flex justify-center md:justify-end"
           >
             <MotionImage
               src="/assets/photo-profile.jpg"
@@ -320,9 +301,13 @@ const About = forwardRef((props, ref) => {
           >
             BEYOND THE CODE
           </h2>
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12">
-            {/* Description and CV Button */}
-            <motion.div variants={slideUpAndFade} className="space-y-6">
+
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12">
+            {/* Left: Description + CV Button */}
+            <motion.div
+              variants={slideUpAndFade}
+              className="space-y-6 flex flex-col items-start"
+            >
               <div className="w-full flex justify-start text-justify">
                 <TextRevealCard
                   text={fullDescription}
@@ -334,6 +319,8 @@ const About = forwardRef((props, ref) => {
                   </TextRevealCardDescription>
                 </TextRevealCard>
               </div>
+
+              {/* Spinning CV button */}
               <motion.div
                 variants={slideUpAndFade}
                 className="flex items-start justify-start w-full"
@@ -343,10 +330,7 @@ const About = forwardRef((props, ref) => {
                   target="_blank"
                   rel="noopener noreferrer"
                   className="relative inline-flex items-center justify-center rounded-full hover:scale-105 transition-transform duration-300"
-                  style={{
-                    width: "12ch",
-                    height: "12ch",
-                  }}
+                  style={{ width: "12ch", height: "12ch" }}
                 >
                   <SpinningText>
                     explore me • view resume • peek my cv •
@@ -356,10 +340,10 @@ const About = forwardRef((props, ref) => {
               </motion.div>
             </motion.div>
 
-            {/* Skills & Tools Section */}
+            {/* Right: Skills & Tools */}
             <motion.div
               variants={slideUpAndFade}
-              className="flex flex-col items-start lg:items-end"
+              className="flex flex-col items-start md:items-end"
             >
               <motion.div variants={slideUpAndFade} className="mb-4">
                 <p
@@ -368,8 +352,8 @@ const About = forwardRef((props, ref) => {
                   [SKILLS & TOOLS]
                 </p>
               </motion.div>
-              <div className="flex flex-wrap gap-2 max-w-full md:max-w-[500px] lg:max-w-[550px] justify-start lg:justify-end">
-                {/* Individual Skill Tags - Staggered animation */}
+
+              <div className="flex flex-wrap gap-2 max-w-full md:max-w-[500px] lg:max-w-[550px] justify-start md:justify-end">
                 {skills.map((skill, index) => {
                   const isActive = activeTags.includes(skill.name);
                   return (
@@ -381,13 +365,11 @@ const About = forwardRef((props, ref) => {
                         y: -2,
                         transition: { duration: 0.2 },
                       }}
-                      className={`
-                        px-4 py-2 rounded-full text-sm font-medium border cursor-pointer select-none transition-all duration-300 ease-in-out flex flex-col items-center justify-center transform-gpu will-change-transform ${
-                          isActive
-                            ? "bg-black text-white border-black shadow-md dark:bg-white dark:text-black dark:border-white dark:shadow-md"
-                            : "bg-transparent text-black border-black hover:bg-black hover:text-white hover:shadow-lg hover:shadow-black/20 dark:text-white dark:border-white dark:hover:bg-white dark:hover:text-black dark:hover:shadow-lg dark:hover:shadow-white/20"
-                        }
-                      `}
+                      className={`px-4 py-2 rounded-full text-sm font-medium border cursor-pointer select-none transition-all duration-300 ease-in-out flex items-center justify-center transform-gpu will-change-transform ${
+                        isActive
+                          ? "bg-black text-white border-black shadow-md dark:bg-white dark:text-black dark:border-white dark:shadow-md"
+                          : "bg-transparent text-black border-black hover:bg-black hover:text-white hover:shadow-lg hover:shadow-black/20 dark:text-white dark:border-white dark:hover:bg-white dark:hover:text-black dark:hover:shadow-lg dark:hover:shadow-white/20"
+                      }`}
                       aria-label={`${skill.name} skill tag`}
                     >
                       <span>{skill.name}</span>
