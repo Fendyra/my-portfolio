@@ -6,6 +6,7 @@ import { Playfair_Display, Montserrat } from "next/font/google";
 import Link from "next/link";
 import { FaGithub, FaLinkedinIn, FaInstagram } from "react-icons/fa";
 
+// Font configurations
 const playfairDisplay = Playfair_Display({
   subsets: ["latin"],
   weight: ["400", "700"],
@@ -17,6 +18,7 @@ const montserrat = Montserrat({
   weight: ["400", "700"],
 });
 
+// Social media links
 const socialLinks = [
   { name: "GitHub", href: "https://github.com/Fendyra", icon: FaGithub },
   {
@@ -122,7 +124,7 @@ const Footer = forwardRef((props, ref) => {
   return (
     <motion.footer
       ref={ref}
-      id="contact" // <--- Ini adalah bagian yang ditambahkan
+      id="contact"
       className="bg-white dark:bg-black text-black dark:text-white py-24 px-4 md:px-8"
       variants={footerVariants}
       initial="hidden"
@@ -145,14 +147,14 @@ const Footer = forwardRef((props, ref) => {
               </motion.h3>
               <motion.h3
                 variants={headingLineVariants}
-                className={`italic text-[clamp(2.5rem,8vw,5rem)] lg:text-[clamp(3rem,6vw,5rem)] font-bold mb-1 ml-[25vw] md:ml-0 lg:ml-[150px] hover:scale-105 hover:tracking-wide transition-all duration-300`}
+                className={`italic text-[clamp(2.5rem,8vw,5rem)] lg:text-[clamp(3rem,6vw,5rem)] font-bold mb-1 ml-[25vw] md:ml-[8vw] lg:ml-[150px] hover:scale-105 hover:tracking-wide transition-all duration-300`}
                 style={{ fontFamily: playfairDisplay.variable }}
               >
                 GET IN
               </motion.h3>
               <motion.h3
                 variants={headingLineVariants}
-                className={`${montserrat.className} text-[clamp(2.5rem,8vw,5rem)] lg:text-[clamp(3rem,6vw,5rem)] font-bold ml-[45vw] md:ml-0 lg:ml-[260px] hover:scale-105 hover:tracking-wide transition-all duration-300`}
+                className={`${montserrat.className} text-[clamp(2.5rem,8vw,5rem)] lg:text-[clamp(3rem,6vw,5rem)] font-bold ml-[45vw] md:ml-[15vw] lg:ml-[260px] hover:scale-105 hover:tracking-wide transition-all duration-300`}
               >
                 TOUCH
               </motion.h3>
