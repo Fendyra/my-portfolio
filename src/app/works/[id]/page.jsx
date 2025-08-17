@@ -117,7 +117,7 @@ const AllProjects = [
       "A modern and creative upgrade of the personal portfolio, featuring interactive navigation and visually engaging design to highlight works.",
     category: "Web",
     image: "/assets/portfolio-2025.png",
-    link: "", // Empty link to trigger notification
+    link: "https://fendyra.vercel.app/", 
     github: "https://github.com/Fendyra/my-portfolio",
     technologies: [
       { name: "React", logo: "/assets/react.png" },
